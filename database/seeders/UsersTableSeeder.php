@@ -1,7 +1,8 @@
 <?php
+namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\User;
+use App\Models\User;
 
 class UsersTableSeeder extends Seeder
 {
@@ -17,5 +18,9 @@ class UsersTableSeeder extends Seeder
             'email' => 'test@haposoft.com',
             'password' => bcrypt('12345678')
         ]);
+    }
+
+    public function testExample () {
+        dd(123445);
     }
 }
