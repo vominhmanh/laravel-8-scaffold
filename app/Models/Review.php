@@ -18,11 +18,8 @@ class Review extends Model
         'user_id',
     ];
 
-    public function course () 
+    public function course() 
     {
-        return $this -> belongsTo(Course::class);
+        return $this->belongsTo(Course::class);
     }
-
-
-
 }

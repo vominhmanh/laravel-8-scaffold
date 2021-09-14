@@ -17,14 +17,13 @@ class Lesson extends Model
         'duration',
     ];
 
-    public function user() 
+    public function users() 
     {
-        return $this -> belongsToMany(User::class);
+        return $this->belongsToMany(User::class);
     }
 
-    public function comment() 
+    public function comments() 
     {
-        return $this -> hasMany(Comment::class);
+        return $this->hasMany(Comment::class);
     }
-
 }

@@ -42,13 +42,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function lesson() 
+    public function lessons() 
     {
-        return $this -> hasMany(Lesson::class);
+        return $this->hasMany(Lesson::class);
     }
 
-    public function course() 
+    public function courses() 
     {
-        return $this -> hasMany(Course::class);
+        return $this->hasMany(Course::class);
     }
 }
