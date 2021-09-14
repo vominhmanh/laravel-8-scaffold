@@ -22,6 +22,7 @@ class CreateCoursesTable extends Migration
             $table->text('description');
             $table->string('teacher_name');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

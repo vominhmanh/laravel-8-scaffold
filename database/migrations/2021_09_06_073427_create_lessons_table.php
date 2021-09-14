@@ -19,6 +19,7 @@ class CreateLessonsTable extends Migration
             $table->string('video_link');
             $table->time('duration');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
