@@ -1,4 +1,26 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/js/popper.js": "/js/popper.js",
+    "/css/app.css": "/css/app.css",
+    "/images/avatar.png": "/images/avatar.png",
+    "/images/avatar_hapolearn.jpg": "/images/avatar_hapolearn.jpg",
+    "/images/fb_logo.png": "/images/fb_logo.png",
+    "/images/frontend.png": "/images/frontend.png",
+    "/images/green_banner.png": "/images/green_banner.png",
+    "/images/hapo_learn.png": "/images/hapo_learn.png",
+    "/images/hapo_learn_banner.png": "/images/hapo_learn_banner.png",
+    "/images/hapo_learn_white.png": "/images/hapo_learn_white.png",
+    "/images/java.png": "/images/java.png",
+    "/images/laptop_large.png": "/images/laptop_large.png",
+    "/images/laptop_small.png": "/images/laptop_small.png",
+    "/images/laravel.png": "/images/laravel.png",
+    "/images/logo_small.png": "/images/logo_small.png",
+    "/images/mail_logo.png": "/images/mail_logo.png",
+    "/images/phone_logo.png": "/images/phone_logo.png",
+    "/images/php.png": "/images/php.png",
+    "/images/rectangle36.png": "/images/rectangle36.png",
+    "/images/times-solid.svg": "/images/times-solid.svg",
+    "/images/whyhapo_background.png": "/images/whyhapo_background.png",
+    "/fonts/UTM BryantLG.ttf": "/fonts/UTM BryantLG.ttf",
+    "/fonts/UTM BryantLG_B.ttf": "/fonts/UTM BryantLG_B.ttf"
 }
