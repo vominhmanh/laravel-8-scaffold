@@ -1,0 +1,14 @@
+.alert-popup {
+  width: 300px;
+  position: fixed;
+  z-index: 1030;
+  top: 150px;
+  right: 100px;
+}
+
+@media only screen and (max-width: 575.98px) {
+  .alert-popup {
+    top: 80px;
+    right: 30px;
+  }
+}
