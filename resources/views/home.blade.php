@@ -1,4 +1,4 @@
-@extends('user.layouts.app')
+@extends('layouts.app')
 
 @section('content')
     <div class="align d-lg-none d-md-none d-sm-none"></div>

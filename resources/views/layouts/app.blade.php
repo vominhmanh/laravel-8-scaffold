@@ -24,9 +24,9 @@
 <body>
     <div id="app">
         @include('utilities.alert')
-        @include('user.layouts.header')
+        @include('layouts.header')
         @yield('content')
-        @include('user.layouts.footer')
+        @include('layouts.footer')
     </div>
 </body>
 
