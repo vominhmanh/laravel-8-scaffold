@@ -15,17 +15,17 @@ $fa-font-path: "../webfonts";
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
 //custom
-@import "_1_header";
-@import "_2_banner";
-@import "_3_outstanding_courses";
-@import "_4_other_courses";
-@import "_5_why_hapolearn";
-@import "_6_feedback";
-@import "_7_become_a_member";
-@import "_8_statistic";
-@import "_9_footer";
-@import "_10_login_register";
-@import "_12_popup_alert";
+@import "_header";
+@import "_banner";
+@import "_outstanding_courses";
+@import "_other_courses";
+@import "_why_hapolearn";
+@import "_feedback";
+@import "_become_a_member";
+@import "_statistic";
+@import "_footer";
+@import "_login_register";
+@import "_popup_alert";
 
 //slick
 @import "~slick-carousel/slick/slick";
