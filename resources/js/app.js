@@ -1,5 +1,5 @@
 require('./bootstrap');
-require('./script');
+require('./main');
 import "slick-carousel/slick/slick.min.js";
 
 import $ from "jquery";

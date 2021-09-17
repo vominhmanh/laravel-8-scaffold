@@ -9,12 +9,12 @@
 
                 <ul class="nav nav-tabs p-0 login-register-bar" id="myTab" role="tablist">
                     <li class="nav-item w-50">
-                        <a class="nav-link active login-nav-tab @if ($errors->login->any()) show-tab @endif" id="login-nav-tab"
+                        <a class="nav-link active login-nav-tab @if ($errors->login->any()) show-tab @endif" id="loginNavTab"
                             data-toggle="tab" href="#login-tab" role="tab" aria-controls="home"
                             aria-selected="true">LOGIN</a>
                     </li>
                     <li class="nav-item w-50">
-                        <a class="nav-link register-nav-tab @if ($errors->register->any()) show-tab @endif" id="register-nav-tab"
+                        <a class="nav-link register-nav-tab @if ($errors->register->any()) show-tab @endif" id="registerNavTab"
                             data-toggle="tab" href="#register-tab" role="tab" aria-controls="profile"
                             aria-selected="false">REGISTER</a>
                     </li>

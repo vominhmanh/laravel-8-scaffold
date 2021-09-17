@@ -1,11 +1,11 @@
-$('.navbarButton').click(() => {
-  if ($('.navbarButton').attr('aria-expanded') == "false")
-    $('.navbarButton span').addClass('expanding');
+$('.navbar-btn').on('click', () => {
+  if ($('.navbar-btn').attr('aria-expanded') == "false")
+    $('.navbar-btn span').addClass('expanding');
   else
-    $('.navbarButton span').removeClass('expanding');
+    $('.navbar-btn span').removeClass('expanding');
 });
 
-$(document).ready(function() {
+$(function() {
   $('.feedback-list').slick({
     dots: true,
     infinite: true,
@@ -30,11 +30,11 @@ $(document).ready(function() {
     $('#loginModal').modal('show');
   }
 
-  if ($('#login-nav-tab').hasClass('show-tab')) {
-    $('#login-nav-tab').tab('show');
+  if ($('#loginNavTab').hasClass('show-tab')) {
+    $('#loginNavTab').tab('show');
   }
 
-  if ($('#register-nav-tab').hasClass('show-tab')) {
-    $('#register-nav-tab').tab('show');
+  if ($('#registerNavTab').hasClass('show-tab')) {
+    $('#registerNavTab').tab('show');
   }
 });
