@@ -1,10 +1,3 @@
-$('.navbar-btn').on('click', () => {
-  if ($('.navbar-btn').attr('aria-expanded') == "false")
-    $('.navbar-btn span').addClass('expanding');
-  else
-    $('.navbar-btn span').removeClass('expanding');
-});
-
 $(function() {
   $('.feedback-list').slick({
     dots: true,
@@ -37,4 +30,15 @@ $(function() {
   if ($('#registerNavTab').hasClass('show-tab')) {
     $('#registerNavTab').tab('show');
   }
+
+  $('.navbar-btn').on('click', () => {
+    if ($('.navbar-btn').attr('aria-expanded') == "false")
+      $('.navbar-btn span').addClass('expanding');
+    else
+      $('.navbar-btn span').removeClass('expanding');
+  });
+  
+  setTimeout(function() {
+    $("#successAlert").alert('close');
+  }, 5000);
 });
