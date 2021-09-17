@@ -1,4 +1,4 @@
-<div class="modal fade login-register-modal" id="loginModal" tabindex="-1" role="dialog"
+<div class="modal fade login-register-modal @if ($errors->login->any() || $errors->register->any()) show-modal @endif " id="loginModal" tabindex="-1" role="dialog"
     aria-labelledby="loginModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content border-modal-custom">
@@ -9,12 +9,14 @@
 
                 <ul class="nav nav-tabs p-0 login-register-bar" id="myTab" role="tablist">
                     <li class="nav-item w-50">
-                        <a class="nav-link active login-nav-tab" id="login-nav-tab" data-toggle="tab" href="#login-tab"
-                            role="tab" aria-controls="home" aria-selected="true">LOGIN</a>
+                        <a class="nav-link active login-nav-tab @if ($errors->login->any()) show-tab @endif" id="login-nav-tab"
+                            data-toggle="tab" href="#login-tab" role="tab" aria-controls="home"
+                            aria-selected="true">LOGIN</a>
                     </li>
                     <li class="nav-item w-50">
-                        <a class="nav-link register-nav-tab" id="register-nav-tab" data-toggle="tab"
-                            href="#register-tab" role="tab" aria-controls="profile" aria-selected="false">REGISTER</a>
+                        <a class="nav-link register-nav-tab @if ($errors->register->any()) show-tab @endif" id="register-nav-tab"
+                            data-toggle="tab" href="#register-tab" role="tab" aria-controls="profile"
+                            aria-selected="false">REGISTER</a>
                     </li>
                 </ul>
 

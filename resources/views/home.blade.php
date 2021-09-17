@@ -369,19 +369,6 @@
     <!--Login Modal -->
     @guest
         @include('login_modal');
-        @if ($errors->login->any())
-            <script>
-                $('#loginModal').modal('show');
-                $('#login-nav-tab').tab('show');
-            </script>
-        @endif
-
-        @if ($errors->register->any())
-            <script>
-                $('#loginModal').modal('show');
-                $('#register-nav-tab').tab('show');
-            </script>
-        @endif
     @endguest
 
 @endsection

@@ -25,4 +25,16 @@ $(document).ready(function() {
       }
     }, ]
   });
+
+  if ($('#loginModal').hasClass('show-modal')) {
+    $('#loginModal').modal('show');
+  }
+
+  if ($('#login-nav-tab').hasClass('show-tab')) {
+    $('#login-nav-tab').tab('show');
+  }
+
+  if ($('#register-nav-tab').hasClass('show-tab')) {
+    $('#register-nav-tab').tab('show');
+  }
 });
