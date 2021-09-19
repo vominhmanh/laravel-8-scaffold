@@ -365,10 +365,4 @@
         </div>
     </div>
 
-
-    <!--Login Modal -->
-    @guest
-        @include('login_modal');
-    @endguest
-
 @endsection
