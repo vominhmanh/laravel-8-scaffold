@@ -8,11 +8,11 @@
                     <img src="images/hapo_learn.png" alt="Hapolearn Banner">
                 </div>
             </a>
-            <button class="navbarButton navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            <button class="navbar-btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="navbarButton collapse navbar-collapse navbar-menu-div" id="navbarNav" class="navbar-toggler"
+            <div class="navbar-btn collapse navbar-collapse navbar-menu-div" id="navbarNav" class="navbar-toggler"
                 type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
                 aria-expanded="false" aria-label="Toggle navigation">
                 <ul class="navbar-nav">

@@ -10,12 +10,8 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -24,10 +20,13 @@
 <body>
     <div id="app">
         @include('utilities.alert')
-        @include('user.layouts.header')
+        @include('layouts.header')
         @yield('content')
-        @include('user.layouts.footer')
+        @include('layouts.footer')
     </div>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 
 </html>

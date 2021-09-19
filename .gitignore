@@ -13,7 +13,7 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
-/css
+.jsbeautifyrc
 /public/css
 /public/js
 /public/img
