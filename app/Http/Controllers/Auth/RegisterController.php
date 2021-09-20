@@ -47,12 +47,6 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    /**
-     * Handle a registration request for the application.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
-     */
     public function register(RegisterRequest $request)
     {
 
@@ -67,13 +61,6 @@ class RegisterController extends Controller
         return $request->wantsJson() ? new JsonResponse([], 201) : redirect($this->redirectPath());
     }
 
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
-     */
     protected function create(array $data)
     {
         return User::create([

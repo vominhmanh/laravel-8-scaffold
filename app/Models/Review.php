@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-
 class Review extends Model
 {
     use HasFactory, SoftDeletes;
@@ -18,7 +17,7 @@ class Review extends Model
         'user_id',
     ];
 
-    public function course() 
+    public function course()
     {
         return $this->belongsTo(Course::class);
     }

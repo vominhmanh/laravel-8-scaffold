@@ -13,7 +13,7 @@ use \Illuminate\Http\Request;
 class LoginController extends Controller
 {
     /*
-    |------------------------ --------------------------------------------------
+    |--------------------------------------------------------------------------
     | Login Controller
     |--------------------------------------------------------------------------
     |
@@ -25,18 +25,8 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
     protected $redirectTo = '/';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
@@ -45,45 +35,24 @@ class LoginController extends Controller
     public function login(LoginRequest $request)
     {
         if ($this->attemptLogin($request)) {
-            return $this->authenticated($request, $this->guard()->user());
+            return $this->authenticated($request);
         }
 
         return $this->sendFailedLoginResponse($request);
     }
 
-    /**
-     * The user has been authenticated.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  mixed  $user
-     * @return \Illuminate\Http\Response
-     */
-    protected function authenticated(Request $request, $user)
+    protected function authenticated(Request $request)
     {
         return redirect($this->redirectTo)
             ->with('success', trans('auth.loggedin'));
     }
 
-    /**
-     * The user has logged out of the application.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return mixed
-     */
     protected function loggedOut(Request $request)
     {
         return redirect($this->redirectTo)
             ->with('success', trans('auth.loggedout'));
     }
 
-    /**
-     * Get the failed login response instance.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
     protected function sendFailedLoginResponse(Request $request)
     {
         throw ValidationException::withMessages([

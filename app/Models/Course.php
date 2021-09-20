@@ -19,17 +19,17 @@ class Course extends Model
         'teacher_name',
     ];
 
-    public function users() 
+    public function users()
     {
         return $this->belongsToMany(User::class);
     }
 
-    public function reviews() 
+    public function reviews()
     {
         return $this->hasMany(Review::class);
     }
 
-    public function tags() 
+    public function tags()
     {
         return $this->hasMany(Tag::class);
     }
