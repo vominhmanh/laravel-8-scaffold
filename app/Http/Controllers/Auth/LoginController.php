@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
-
 
 class LoginController extends Controller
 {
@@ -41,12 +41,23 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'email' => ['required', 'string'],
+            'password' => ['required', 'string'],
+        ]);
+    }
+
     protected function validateLogin(Request $request)
     {
-        $request->validateWithBag('login', [
-            $this->username() => 'required',
-            'password' => 'required|string|min:8|max:32',
-        ]);
+        $this->validator($request->all())->validateWithBag('login');
     }
 
     /**

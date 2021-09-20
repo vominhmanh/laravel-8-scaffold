@@ -1,4 +1,4 @@
-<div class="modal fade login-register-modal @if ($errors->login->any() || $errors->register->any() ) show-modal @endif " id="loginModal" tabindex="-1" role="dialog"
+<div class="modal fade login-register-modal @if ($errors->login->any() || $errors->register->any()) show-modal @endif " id="loginModal" tabindex="-1" role="dialog"
     aria-labelledby="loginModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content border-modal-custom">

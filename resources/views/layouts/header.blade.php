@@ -36,7 +36,6 @@
                             <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal"
                                 id="login-btn">LOGIN/REGISTER</a>
                         </li>
-                        @include('login_modal')
                     @else
                         <li class="nav-item">
                             <a class="nav-link" href="#"><i class="fas fa-user" style="font-size: 20px"></i>
@@ -60,7 +59,6 @@
 </header>
 
 <div class="align d-lg-none d-md-none d-sm-none"></div>
-
 @guest
-    @include('login_modal');
+    @include('login_modal')
 @endguest
