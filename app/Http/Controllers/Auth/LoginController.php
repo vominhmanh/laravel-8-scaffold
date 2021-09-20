@@ -42,30 +42,11 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    /**
-     * Handle a login request to the application.
-     *
-     * @param  \App\Http\Requests\LoginRequest  $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Http\JsonResponse
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
     public function login(LoginRequest $request)
     {
-        if (
-            method_exists($this, 'hasTooManyLoginAttempts') &&
-            $this->hasTooManyLoginAttempts($request)
-        ) {
-            $this->fireLockoutEvent($request);
-
-            return $this->sendLockoutResponse($request);
-        }
-
         if ($this->attemptLogin($request)) {
-            return $this->sendLoginResponse($request);
+            return $this->authenticated($request, $this->guard()->user());
         }
-
-        $this->incrementLoginAttempts($request);
 
         return $this->sendFailedLoginResponse($request);
     }
