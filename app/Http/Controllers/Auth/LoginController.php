@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Http\Requests\LoginRequest;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
+use \Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -21,20 +25,38 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function login(LoginRequest $request)
+    {
+        if ($this->attemptLogin($request)) {
+            return $this->authenticated($request);
+        }
+
+        return $this->sendFailedLoginResponse($request);
+    }
+
+    protected function authenticated(Request $request)
+    {
+        return redirect($this->redirectTo)
+            ->with('success', trans('auth.loggedin'));
+    }
+
+    protected function loggedOut(Request $request)
+    {
+        return redirect($this->redirectTo)
+            ->with('success', trans('auth.loggedout'));
+    }
+
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        throw ValidationException::withMessages([
+            $this->username() => [trans('auth.failed')],
+        ])->errorBag('login');
     }
 }

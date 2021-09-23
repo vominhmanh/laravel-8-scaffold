@@ -16,7 +16,7 @@ class Comment extends Model
         'user_id',
     ];
 
-    public function lessons() 
+    public function lessons()
     {
         return $this->belongsTo(Lesson::class);
     }

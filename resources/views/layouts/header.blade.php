@@ -43,8 +43,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link danger-link" onclick="logoutform.submit()" href="#">LOGOUT</a>
-                            <form action="{{ route('logout') }}" name="logoutform" class="hidden"
-                                method="post">
+                            <form action="{{ route('logout') }}" name="logoutform" class="hidden" method="post">
                                 @csrf
                                 <input type="submit" class="nav-link .text-danger" href="#" value='LOGOUT'>
                             </form>
@@ -58,3 +57,8 @@
         </nav>
     </div>
 </header>
+
+<div class="align d-lg-none d-md-none d-sm-none"></div>
+@guest
+    @include('login_modal')
+@endguest
