@@ -50,15 +50,9 @@ class RegisterController extends Controller
     public function register(RegisterRequest $request)
     {
 
-        event(new Registered($user = $this->create($request->all())));
+        $this->create($request->all());
 
-        $this->guard()->login($user);
-
-        if ($response = $this->registered($request, $user)) {
-            return $response;
-        }
-
-        return $request->wantsJson() ? new JsonResponse([], 201) : redirect($this->redirectPath());
+        return redirect($this->redirectPath());
     }
 
     protected function create(array $data)
