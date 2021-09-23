@@ -49,9 +49,7 @@ class RegisterController extends Controller
 
     public function register(RegisterRequest $request)
     {
-
         $this->create($request->all());
-
         return redirect($this->redirectPath());
     }
 
