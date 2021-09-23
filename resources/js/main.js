@@ -37,8 +37,31 @@ $(function() {
     else
       $('.navbar-btn span').removeClass('expanding');
   });
-  
+
   setTimeout(function() {
     $("#successAlert").alert('close');
   }, 5000);
+
 });
+
+function loadCourses(url) {
+  var formData = {
+    search_input: $('input[name=search_input]').val() ?? null,
+    // teacher: $('input[name=teacher]').val(),
+    // learner: $('input[name=learner]').val(),
+    // time: $('input[name=time]').val(),
+    // lesson: $('input[name=lesson]').val(),
+    // tag: $('input[name=tag]').val(),
+    // review: $('input[name=review]').val(),
+  }
+
+  console.log(formData);
+
+  // $.ajax({
+  //   type: 'get',
+  //   url: url,
+  //   success: (data) => {
+  //     $("courses").html(data);
+  //   }
+  // })
+}

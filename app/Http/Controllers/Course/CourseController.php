@@ -85,8 +85,10 @@ class CourseController extends Controller
         //
     }
 
-    public function filter()
+    public function filter(Request $request)
     {
-        
+        // $courses = Course::where('teacher',$request->teacher)->get();
+        // $courses = $courses->where('tag', $request->tag)->get();
+        // return view('courses._course')->with('courses', $courses)->render();
     }
 }

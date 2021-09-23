@@ -20,3 +20,4 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 Route::get('/courses', [Course\CourseController::class, 'index'])->name('course');
+Route::post('/courses', [Course\CourseController::class, 'filter'])->name('course.filter');

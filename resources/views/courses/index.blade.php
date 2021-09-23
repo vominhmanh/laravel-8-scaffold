@@ -4,7 +4,7 @@
     <div class="all-courses">
         <!-- toolbar -->
         <div class="container">
-            <form method="get" action="" class="search-form">
+            <form method="get" action="" onsubmit="loadCourses({{ route('course.filter') }})" class="search-form">
                 <div class="d-flex">
                     <a class="filter-button" id="filter-button" data-toggle="collapse" href="#filter-collapse"
                         role="button">
@@ -12,7 +12,7 @@
                         <span class="filter-txt">Filter</span>
                     </a>
 
-                    <input type="text" name="search_form_input" id="search-form-input" placeholder="Search..."
+                    <input type="text" name="search_input" id="search-form-input" placeholder="Search..."
                         class="search-form-input">
                     <div class="search-form-img"><i class="fas fa-search"></i></div>
 
@@ -41,7 +41,7 @@
 
                                 <div class="form-group">
                                     <select class="form-control select-number-of-learner" id="select-number-of-learner"
-                                        name="number_of_learner">
+                                        name="learner">
                                         <option value="">Số người học</option>
                                         <option value="">Tăng dần</option>
                                         <option value="">Giảm dần</option>
@@ -49,8 +49,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <select class="form-control select-learn-time" id="select-learn-time" name="learn_time"
-                                        style="width: 100%">
+                                    <select class="form-control select-learn-time" id="select-learn-time" name="time"
+                                        >
                                         <option value="">Thời gian học</option>
                                         <option value="">Tăng dần</option>
                                         <option value="">Giảm dần</option>
@@ -58,8 +58,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <select class="form-control select-number-of-lesson" id="select-number-of-lesson"
-                                        name="number_of_lesson" style="width: 100%">
+                                    <select class="form-control select-number-of-lesson" id="lesson"
+                                        name="number_of_lesson">
                                         <option value="">Số bài học</option>
                                         <option value="">Tăng dần</option>
                                         <option value="">Giảm dần</option>
@@ -67,13 +67,13 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <select class="form-control select-tag" id="select-tag" name="tag" style="width: 100%">
+                                    <select class="form-control select-tag" id="select-tag" name="tag">
+                                        <option value="">Tags</option>
                                         <option value="">Tags</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <select class="form-control select-review" id="select-review" name="review"
-                                        style="width: 100%">
+                                    <select class="form-control select-review" id="select-review" name="review">
                                         <option value="">Review</option>
                                         <option value="">Tăng dần</option>
                                         <option value="">Giảm dần</option>
@@ -88,7 +88,7 @@
         </div>
 
         <!-- list course -->
-        <div class="container">
+        <div class="courses container">
             @include('courses._course')
         </div>
 
