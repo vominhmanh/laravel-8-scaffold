@@ -19,12 +19,12 @@ class CourseController extends Controller
         $courses = Course::paginate(14);
         $teachers = Course::select('teacher_name')->distinct()->get();
         $tags = Tag::has('courses')->get();
-        return view('course.index')->with('courses', $courses)->with('teachers', $teachers)->with('tags',$tags);
+        return view('course.index')->with('courses', $courses)->with('teachers', $teachers)->with('tags', $tags);
     }
 
     public function filter(Request $request)
     {
-        $request_tag = $request->tag;
+        $requestTag = $request->tag;
         $courses = Course::query();
 
         if ($request->teacher != null) {
@@ -32,13 +32,13 @@ class CourseController extends Controller
         }
 
         if ($request->tag != null) {
-            $courses = $courses->whereHas('tags', function ($q) use ($request_tag) {
-                $q->where('name', $request_tag);
+            $courses = $courses->whereHas('tags', function ($q) use ($requestTag) {
+                $q->where('name', $requestTag);
             });
         }
 
-        if ($request->created_at != null) {
-            $courses->orderBy('created_at', $request->created_at);
+        if ($request->createdAt != null) {
+            $courses->orderBy('created_at', $request->createdAt);
         }
 
         if ($request->learners != null) {

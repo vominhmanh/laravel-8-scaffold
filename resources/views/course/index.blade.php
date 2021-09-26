@@ -25,11 +25,11 @@
                             <div class="col-lg-1 text-center text-nowrap">Lọc theo</div>
                             <div class="col-lg-11 form-inline align-items-baseline filter-ingredients">
                                 <div class="latest-oldest-radio" id="latest-oldest-radio">
-                                    <input type="radio" id="radio-asc" name="created_at" value="asc"
-                                        {{ request('created_at') == 'asc' || null ? 'checked' : null }}>
+                                    <input type="radio" id="radio-asc" name="createdAt" value="asc"
+                                        {{ request('createdAt') == 'asc' || null ? 'checked' : null }}>
                                     <label class="p-0" for="radio-asc">Mới nhất</label>
-                                    <input type="radio" id="radio-desc" name="created_at" value="desc"
-                                        {{ request('created_at') == 'desc' ? 'checked' : null }}>
+                                    <input type="radio" id="radio-desc" name="createdAt" value="desc"
+                                        {{ request('createdAt') == 'desc' ? 'checked' : null }}>
                                     <label class='p-0' for="radio-desc">Cũ nhất</label>
                                 </div>
 
