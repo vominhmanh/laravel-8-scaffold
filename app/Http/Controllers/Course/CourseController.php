@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Course;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -16,79 +17,49 @@ class CourseController extends Controller
     public function index()
     {
         $courses = Course::paginate(14);
-        return view('courses.index')->with('courses', $courses);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Course  $course
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Course $course)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Course  $course
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Course $course)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Course  $course
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Course $course)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Course  $course
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Course $course)
-    {
-        //
+        $teachers = Course::select('teacher_name')->distinct()->get();
+        $tags = Tag::has('courses')->get();
+        return view('course.index')->with('courses', $courses)->with('teachers', $teachers)->with('tags',$tags);
     }
 
     public function filter(Request $request)
     {
-        // $courses = Course::where('teacher',$request->teacher)->get();
-        // $courses = $courses->where('tag', $request->tag)->get();
-        // return view('courses._course')->with('courses', $courses)->render();
+        $request_tag = $request->tag;
+        $courses = Course::query();
+
+        if ($request->teacher != null) {
+            $courses->where('teacher_name', $request->teacher);
+        }
+
+        if ($request->tag != null) {
+            $courses = $courses->whereHas('tags', function ($q) use ($request_tag) {
+                $q->where('name', $request_tag);
+            });
+        }
+
+        if ($request->created_at != null) {
+            $courses->orderBy('created_at', $request->created_at);
+        }
+
+        if ($request->learners != null) {
+            $courses->orderBy('learners', $request->learners);
+        }
+
+        if ($request->duration != null) {
+            $courses->orderBy('duration', $request->duration);
+        }
+
+        if ($request->lessons != null) {
+            $courses->orderBy('lessons', $request->lessons);
+        }
+
+        if ($request->ratings != null) {
+            $courses->orderBy('reviews', $request->ratings);
+        }
+
+        $courses = $courses->get();
+
+        $teachers = Course::select('teacher_name')->distinct()->get();
+        return view('course.index')->with('courses', $courses)->with('teachers', $teachers);
     }
 }

@@ -198,7 +198,7 @@
   }
 }
 
-.newest-oldest-radio input[type="radio"] {
+.latest-oldest-radio input[type="radio"] {
   opacity: 0;
   position: fixed;
   width: 0;
@@ -211,7 +211,7 @@
   }
 }
 
-.newest-oldest-radio label {
+.latest-oldest-radio label {
   background-color: $light-gray;
   font-size: 14px;
   border-radius: 2px;
@@ -221,11 +221,11 @@
   cursor: pointer;
 }
 
-.newest-oldest-radio label:hover {
+.latest-oldest-radio label:hover {
   color: $light-green;
 }
 
-.newest-oldest-radio input[type="radio"]:checked+label {
+.latest-oldest-radio input[type="radio"]:checked+label {
   background-color: $light-green;
   color: white;
 }
@@ -257,15 +257,15 @@
   margin-left: 5px;
 }
 
-.newest-oldest-radio input[type="radio"] {
+.latest-oldest-radio input[type="radio"] {
   opacity: 0;
   position: fixed;
   width: 0;
 }
 
-.newest-oldest-radio label {
+.latest-oldest-radio label {
   display: inline-block;
-  //background-color: $button_oldest_newest;
+  //background-color: $button_oldest_latest;
   font-size: 14px;
   border-radius: 2px;
   font-weight: bold;
@@ -273,15 +273,6 @@
   padding: 7px 5px 7px 5px;
   text-align: center;
   cursor: pointer;
-}
-
-.newest-oldest-radio label:hover {
-  color: $light-green;
-}
-
-.newest-oldest-radio input[type="radio"]:checked+label {
-  background-color: $light-green;
-  color: white;
 }
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {
@@ -311,15 +302,15 @@
   margin-left: 5px;
 }
 
-.newest-oldest-radio input[type="radio"] {
+.latest-oldest-radio input[type="radio"] {
   opacity: 0;
   position: fixed;
   width: 0;
 }
 
-.newest-oldest-radio label {
+.latest-oldest-radio label {
   display: inline-block;
-  //background-color: $button_oldest_newest;
+  //background-color: $button_oldest_latest;
   font-size: 14px;
   border-radius: 2px;
   font-weight: bold;
@@ -327,15 +318,6 @@
   padding: 7px 5px 7px 5px;
   text-align: center;
   cursor: pointer;
-}
-
-.newest-oldest-radio label:hover {
-  color: $light-green;
-}
-
-.newest-oldest-radio input[type="radio"]:checked+label {
-  background-color: $light-green;
-  color: white;
 }
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {

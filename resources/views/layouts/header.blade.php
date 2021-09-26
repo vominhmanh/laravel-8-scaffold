@@ -5,7 +5,7 @@
         <nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm navbar-light">
             <a class="navbar-brand" href="#">
                 <div class="img-logo">
-                    <img src="images/hapo_learn.png" alt="Hapolearn Banner">
+                    <img src="{{ asset('images/hapo_learn.png') }}" alt="Hapolearn Banner">
                 </div>
             </a>
             <button class="navbar-btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"

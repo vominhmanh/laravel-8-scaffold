@@ -19,6 +19,7 @@
 
 <body>
     <div id="app">
+        @include('layouts.header')
         @include('utilities.alert')
         @yield('content')
         @include('layouts.footer')
