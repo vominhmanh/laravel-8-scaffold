@@ -30,4 +30,9 @@ class CourseController extends Controller
         $tags = Tag::all();
         return view('courses.index', compact(['courses', 'teachers', 'tags']));
     }
+
+    public function detail(Course $course)
+    {
+        return view('course.detail')->with('course', $course);
+    }
 }
