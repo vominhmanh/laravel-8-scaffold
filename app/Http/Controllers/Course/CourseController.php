@@ -63,4 +63,9 @@ class CourseController extends Controller
         $tags = Tag::has('courses')->get();
         return view('course.index')->with('courses', $courses)->with('teachers', $teachers)->with('tags', $tags);
     }
+
+    public function detail(Course $course)
+    {
+        return view('course.detail')->with('course', $course);
+    }
 }
