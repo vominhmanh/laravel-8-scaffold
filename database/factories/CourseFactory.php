@@ -25,11 +25,11 @@ class CourseFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'price' => $this->faker->numberBetween(100, 999) * 1000,
-            'start_date' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
-            'finish_date' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
-            'description' => $this->faker->paragraph($nbSentences = 3, $variableNbSentences = true) ,
+            'start_date' => $this->faker->date('Y-m-d', 'now'),
+            'finish_date' => $this->faker->date('Y-m-d', 'now'),
+            'description' => $this->faker->paragraph(3,  true),
             'teacher_name' => $this->faker->name(),
-            'logo' => $this->faker->imageUrl($width = 90, $height = 90),
+            'logo' => $this->faker->imageUrl(90, 90),
         ];
     }
 }
