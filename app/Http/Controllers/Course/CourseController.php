@@ -58,9 +58,9 @@ class CourseController extends Controller
             $courses->orderBy('reviews', $request->ratings);
         }
 
-        $courses = $courses->get();
-
+        $courses = $courses->paginate(14);
         $teachers = Course::select('teacher_name')->distinct()->get();
-        return view('course.index')->with('courses', $courses)->with('teachers', $teachers);
+        $tags = Tag::has('courses')->get();
+        return view('course.index')->with('courses', $courses)->with('teachers', $teachers)->with('tags', $tags);
     }
 }

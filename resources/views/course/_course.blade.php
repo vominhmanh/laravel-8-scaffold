@@ -35,5 +35,5 @@
     @endforeach
 </div>
 <div class="container mt-5 d-flex justify-content-end">
-    {{ $courses->onEachSide(1)->links() }}
+    {{ $courses->appends(request()->all())->onEachSide(1)->links() }}
 </div>
