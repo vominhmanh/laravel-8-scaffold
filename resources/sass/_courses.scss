@@ -6,90 +6,6 @@
   @media only screen and (max-width: 575.98px) {
     line-height: 34px;
   }
-
-  .pagging {
-    height: 120px;
-    padding-right: 26px;
-  }
-
-  .pagination-custom {
-    height: 100px;
-    padding-right: 26px;
-  }
-
-  .pagination {
-    .pagination-arrow-button {
-      width: 60px;
-      border: 1px solid $light-green;
-      box-sizing: border-box;
-      border-radius: 3px;
-      height: 40px;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 18px;
-      line-height: 25px;
-      letter-spacing: -0.05em;
-      color: $light-green;
-      text-decoration: none;
-      margin: 0px 3px;
-    }
-
-    .pagination-arrow-button-hover:hover {
-      background-color: $light-green;
-      color: white;
-    }
-
-    .page-button {
-      border: 1px solid $light-green;
-      box-sizing: border-box;
-      border-radius: 3px;
-      width: 40px;
-      height: 40px;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 18px;
-      line-height: 25px;
-      letter-spacing: -0.05em;
-      color: $light-green;
-      text-decoration: none;
-      margin: 0px 3px;
-
-      &:hover {
-        background-color: $light-green;
-        color: white;
-      }
-    }
-
-    .page-button-active {
-      background: $light-green;
-      border: 1px solid $light-green;
-      box-sizing: border-box;
-      border-radius: 3px;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 18px;
-      line-height: 25px;
-      letter-spacing: -0.05em;
-      color: white;
-      text-decoration: none;
-      margin: 0px 3px;
-      width: 40px;
-      height: 40px;
-    }
-
-    .fa-ellipsis-h {
-      color: $light-green;
-    }
-
-    .disabled {
-      cursor: not-allowed;
-
-      &:hover {
-        background-color: $light-gray !important;
-        color: $light-green !important;
-      }
-    }
-  }
 }
 
 .search-form {
@@ -198,12 +114,6 @@
   }
 }
 
-.latest-oldest-radio input[type="radio"] {
-  opacity: 0;
-  position: fixed;
-  width: 0;
-}
-
 .filter-ingredients {
   >* {
     margin-right: 10px;
@@ -214,15 +124,17 @@
 .latest-oldest-radio label {
   background-color: $light-gray;
   font-size: 14px;
+  margin-bottom: 0;
   border-radius: 2px;
   font-weight: bold;
-  padding: 7px 5px;
   text-align: center;
   cursor: pointer;
-}
+  display: inline-block;
+  width: 83px;
 
-.latest-oldest-radio label:hover {
-  color: $light-green;
+  &:hover {
+    color: $light-green;
+  }
 }
 
 .latest-oldest-radio input[type="radio"]:checked+label {
@@ -230,121 +142,10 @@
   color: white;
 }
 
-.select2-container--default .select2-selection--single .select2-selection__rendered {
-  line-height: 34px;
-  font-size: 14px;
-}
-
-.select2-container .select2-selection--single {
-  height: 34px !important;
-}
-
-.select2-selection__arrow {
-  height: 34px !important;
-}
-
-.select2-container--default .select2-selection--single .select2-selection__arrow b {
-  //background-image: url(../assets/img/dropdown_arrow.png);
-  background-repeat: no-repeat;
-  background-color: transparent;
-  background-size: contain;
-  border: none;
-  height: 10px;
-  width: 12px;
-  top: auto;
-  left: auto;
-  margin-top: 13px;
-  margin-left: 5px;
-}
-
 .latest-oldest-radio input[type="radio"] {
   opacity: 0;
   position: fixed;
   width: 0;
-}
-
-.latest-oldest-radio label {
-  display: inline-block;
-  //background-color: $button_oldest_latest;
-  font-size: 14px;
-  border-radius: 2px;
-  font-weight: bold;
-  width: 83px;
-  padding: 7px 5px 7px 5px;
-  text-align: center;
-  cursor: pointer;
-}
-
-.select2-container--default .select2-selection--single .select2-selection__rendered {
-  line-height: 34px;
-  font-size: 14px;
-}
-
-.select2-container .select2-selection--single {
-  height: 34px !important;
-}
-
-.select2-selection__arrow {
-  height: 34px !important;
-}
-
-.select2-container--default .select2-selection--single .select2-selection__arrow b {
-  //background-image: url(../assets/img/dropdown_arrow.png);
-  background-repeat: no-repeat;
-  background-color: transparent;
-  background-size: contain;
-  border: none;
-  height: 10px;
-  width: 12px;
-  top: auto;
-  left: auto;
-  margin-top: 13px;
-  margin-left: 5px;
-}
-
-.latest-oldest-radio input[type="radio"] {
-  opacity: 0;
-  position: fixed;
-  width: 0;
-}
-
-.latest-oldest-radio label {
-  display: inline-block;
-  //background-color: $button_oldest_latest;
-  font-size: 14px;
-  border-radius: 2px;
-  font-weight: bold;
-  width: 83px;
-  padding: 7px 5px 7px 5px;
-  text-align: center;
-  cursor: pointer;
-}
-
-.select2-container--default .select2-selection--single .select2-selection__rendered {
-  line-height: 34px;
-  font-size: 14px;
-}
-
-.select2-container .select2-selection--single {
-  height: 34px !important;
-}
-
-.select2-selection__arrow {
-  height: 34px !important;
-}
-
-.select2-container--default .select2-selection--single .select2-selection__arrow b {
-  //background-image: url(../assets/img/dropdown_arrow.png);
-  background-repeat: no-repeat;
-  background-color: transparent;
-  background-size: contain;
-  border: none;
-  height: 10px;
-  width: 12px;
-  top: auto;
-  left: auto;
-  margin-top: 13px;
-  margin-left: 5px;
 }
 
 .list-courses {
@@ -423,33 +224,6 @@
 }
 
 @media only screen and (max-width: 767.98px) {
-  .all-courses {
-    .pagination {
-      .pagination-arrow-button {
-        width: 46px;
-        height: 30px;
-        font-size: 16px;
-      }
-
-      .pagination-arrow-button-hover:hover {
-        background-color: $light-green;
-        color: white;
-      }
-
-      .page-button {
-        width: 30px;
-        height: 30px;
-        font-size: 16px;
-      }
-
-      .page-button-active {
-        width: 30px;
-        height: 30px;
-        font-size: 16px;
-      }
-    }
-  }
-
   .search-form {
     .filter-collapse {
       padding-bottom: 16px;
@@ -489,37 +263,6 @@
 }
 
 @media only screen and (max-width: 575.98px) {
-  .all-courses {
-    .pagination {
-      .pagination-arrow-button {
-        width: 29px;
-        height: 19px;
-        font-size: 13px;
-      }
-
-      .pagination-arrow-button-hover:hover {
-        background-color: $light-green;
-        color: white;
-      }
-
-      .page-button {
-        width: 19px;
-        height: 19px;
-        font-size: 12px;
-        margin-right: 2px;
-        margin-left: 2px;
-      }
-
-      .page-button-active {
-        width: 19px;
-        height: 19px;
-        font-size: 12px;
-        margin-right: 2px;
-        margin-left: 2px;
-      }
-    }
-  }
-
   .search-form {
     .filter-collapse {
       padding-bottom: 16px;
@@ -540,8 +283,6 @@
         font-size: 12px;
       }
     }
-
-
 
     .search-form-img {
       width: 29px;

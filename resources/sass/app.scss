@@ -25,8 +25,11 @@ $fa-font-path: "../webfonts";
 @import "_statistic";
 @import "_footer";
 @import "_login_register";
-@import "_popup_alert";
 @import "_courses";
+
+//utilities
+@import "_popup_alert";
+@import "_paginator";
 
 //slick
 @import "~slick-carousel/slick/slick";
