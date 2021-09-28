@@ -97,7 +97,8 @@ class Course extends Model
         return $query;
     }
 
-    public function scopeFilter($query, $request) {
+    public function scopeFilter($query, $request)
+    {
         return $query->keyword($request->keyword)
         ->teacher($request->teacher)
         ->tag($request->tag)
@@ -106,6 +107,7 @@ class Course extends Model
         ->duration($request->duration)
         ->lessons($request->lessons)
         ->ratings($request->ratings)
-        ->paginate(14);;
+        ->paginate(14);
+        ;
     }
 }

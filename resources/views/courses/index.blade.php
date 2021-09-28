@@ -27,10 +27,10 @@
                                 <div class="latest-oldest-radio" id="latest-oldest-radio">
                                     <input type="radio" id="radio-asc" name="createdAt" value="asc"
                                         {{ request('createdAt') == 'asc' || null ? 'checked' : null }}>
-                                    <label class="p-0" for="radio-asc">Mới nhất</label>
+                                    <label class="p-0" for="radio-asc">Lastest</label>
                                     <input type="radio" id="radio-desc" name="createdAt" value="desc"
                                         {{ request('createdAt') == 'desc' ? 'checked' : null }}>
-                                    <label class='p-0' for="radio-desc">Cũ nhất</label>
+                                    <label class='p-0' for="radio-desc">Oldest</label>
                                 </div>
 
                                 <div class="form-group">

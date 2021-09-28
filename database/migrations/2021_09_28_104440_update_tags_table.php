@@ -26,7 +26,7 @@ class UpdateTagsTable extends Migration
     public function down()
     {
         Schema::table('tags', function (Blueprint $table) {
-            $table->dropColumn('course_id'); 
+            $table->dropColumn('course_id');
         });
     }
 }
