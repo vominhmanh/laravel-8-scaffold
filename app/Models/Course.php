@@ -41,7 +41,7 @@ class Course extends Model
 
     public function scopeTeacher($query, $teacher)
     {
-        if ($teacher != null) {
+        if (isset($teacher)) {
             return $query->where('teacher_name', $teacher);
         }
         return $query;
@@ -49,7 +49,7 @@ class Course extends Model
 
     public function scopeTag($query, $tag)
     {
-        if ($tag != null) {
+        if (isset($tag)) {
             return $query->whereHas('tags', function ($q) use ($tag) {
                 $q->where('name', $tag);
             });
@@ -59,7 +59,7 @@ class Course extends Model
 
     public function scopeCreatedAt($query, $createdAt)
     {
-        if ($createdAt != null) {
+        if (isset($createdAt)) {
             return $query->orderBy('created_at', $createdAt);
         }
         return $query;
@@ -67,7 +67,7 @@ class Course extends Model
 
     public function scopeLearners($query, $learners)
     {
-        if ($learners != null) {
+        if (isset($learners)) {
             return $query->orderBy('learners', $learners);
         }
         return $query;
@@ -75,7 +75,7 @@ class Course extends Model
 
     public function scopeDuration($query, $duration)
     {
-        if ($duration != null) {
+        if (isset($duration)) {
             return $query->orderBy('duration', $duration);
         }
         return $query;
@@ -83,7 +83,7 @@ class Course extends Model
 
     public function scopeLessons($query, $lessons)
     {
-        if ($lessons != null) {
+        if (isset($lessons)) {
             return $query->orderBy('lessons', $lessons);
         }
         return $query;
@@ -91,9 +91,21 @@ class Course extends Model
 
     public function scopeRatings($query, $ratings)
     {
-        if ($ratings != null) {
+        if (isset($ratings)) {
             return $query->orderBy('reviews', $ratings);
         }
         return $query;
+    }
+
+    public function scopeFilter($query, $request) {
+        return $query->keyword($request->keyword)
+        ->teacher($request->teacher)
+        ->tag($request->tag)
+        ->createdat($request->createdAt)
+        ->learners($request->learners)
+        ->duration($request->duration)
+        ->lessons($request->lessons)
+        ->ratings($request->ratings)
+        ->paginate(14);;
     }
 }

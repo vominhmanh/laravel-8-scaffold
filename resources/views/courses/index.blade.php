@@ -103,7 +103,7 @@
 
         <!-- list course -->
         <div class="courses container">
-            @include('course._course')
+            @include('courses._course')
         </div>        
     </div>
 
