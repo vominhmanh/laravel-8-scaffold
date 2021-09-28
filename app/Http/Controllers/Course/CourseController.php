@@ -25,40 +25,16 @@ class CourseController extends Controller
 
     public function filter(Request $request)
     {
-        $requestTag = $request->tag;
-        $courses = Course::query();
+        $courses = Course::keyword($request->keyword)
+            ->teacher($request->teacher)
+            ->tag($request->tag)
+            ->createdat($request->createdAt)
+            ->learners($request->learners)
+            ->duration($request->duration)
+            ->lessons($request->lessons)
+            ->ratings($request->ratings)
+            ->paginate(14);
 
-        if ($request->teacher != null) {
-            $courses->where('teacher_name', $request->teacher);
-        }
-
-        if ($request->tag != null) {
-            $courses = $courses->whereHas('tags', function ($q) use ($requestTag) {
-                $q->where('name', $requestTag);
-            });
-        }
-
-        if ($request->createdAt != null) {
-            $courses->orderBy('created_at', $request->createdAt);
-        }
-
-        if ($request->learners != null) {
-            $courses->orderBy('learners', $request->learners);
-        }
-
-        if ($request->duration != null) {
-            $courses->orderBy('duration', $request->duration);
-        }
-
-        if ($request->lessons != null) {
-            $courses->orderBy('lessons', $request->lessons);
-        }
-
-        if ($request->ratings != null) {
-            $courses->orderBy('reviews', $request->ratings);
-        }
-
-        $courses = $courses->paginate(14);
         $teachers = Course::select('teacher_name')->distinct()->get();
         $tags = Tag::has('courses')->get();
         return view('course.index')->with('courses', $courses)->with('teachers', $teachers)->with('tags', $tags);

@@ -12,7 +12,7 @@
                         <span class="filter-txt">Filter</span>
                     </a>
 
-                    <input type="text" name="search_input" id="search-form-input" placeholder="Search..."
+                    <input type="text" name="keyword" id="search-form-input" placeholder="Search..."
                         class="search-form-input">
                     <div class="search-form-img"><i class="fas fa-search"></i></div>
 
@@ -85,11 +85,11 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <select class="form-control" id="select-review" name="reviews">
+                                    <select class="form-control" id="select-review" name="ratings">
                                         <option value="">Ratings</option>
-                                        <option value="asc" {{ request('reviews') == 'asc' ? 'selected' : null }}>
+                                        <option value="asc" {{ request('ratings') == 'asc' ? 'selected' : null }}>
                                             Ascending</option>
-                                        <option value="desc" {{ request('reviews') == 'desc' ? 'selected' : null }}>
+                                        <option value="desc" {{ request('ratings') == 'desc' ? 'selected' : null }}>
                                             Descending</option>
                                     </select>
                                 </div>
