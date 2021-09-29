@@ -16,7 +16,7 @@ class Course extends Model
         'start_date',
         'finish_date',
         'description',
-        'teacher_id',
+        'teacher',
     ];
 
     public function users()
@@ -49,10 +49,10 @@ class Course extends Model
         return $query->where('name', 'like', '%' . $keyword . '%')->orWhere('description', 'like', '%' . $keyword . '%');
     }
 
-    public function scopeTeacher($query, $teacher_id)
+    public function scopeTeacher($query, $teacher)
     {
-        if (isset($teacher_id)) {
-            return $query->where('teacher_id', $teacher_id);
+        if (isset($teacher)) {
+            return $query->where('teacher_id', $teacher);
         }
         return $query;
     }
@@ -110,7 +110,7 @@ class Course extends Model
     public function scopeFilter($query, $request)
     {
         return $query->keyword($request->keyword)
-            ->teacher($request->teacher_id)
+            ->teacher($request->teacher)
             ->tag($request->tag)
             ->createdat($request->createdAt)
             ->learners($request->learners)

@@ -34,10 +34,10 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <select class="form-control" id="select-teacher" name="teacher_id">
+                                    <select class="form-control" id="select-teacher" name="teacher">
                                         <option value="">Teacher</option>
                                         @foreach ($teachers as $teacher)
-                                            <option value="{{ $teacher->id }}" @if ($teacher->id == request('teacher_id')) selected @endif>
+                                            <option value="{{ $teacher->id }}" @if ($teacher->id == request('teacher')) selected @endif>
                                                 {{ $teacher->name }}
                                             </option>
                                         @endforeach
