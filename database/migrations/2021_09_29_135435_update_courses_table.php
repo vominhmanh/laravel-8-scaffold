@@ -15,11 +15,6 @@ class UpdateCoursesTable extends Migration
     {
         Schema::table('courses', function (Blueprint $table) {
             $table->string('logo')->nullable();
-            $table->integer('learners')->nullable();
-            $table->integer('lessons')->nullable();
-            $table->integer('quizzes')->nullable();
-            $table->integer('duration')->nullable();
-            $table->integer('rating_point')->nullable();
         });
     }
 
@@ -31,7 +26,7 @@ class UpdateCoursesTable extends Migration
     public function down()
     {
         Schema::table('courses', function (Blueprint $table) {
-            $table->dropColumn(['learners', 'lessons', 'quizzes', 'duration', 'rating_point']);
+            $table->dropColumn(['logo']);
         });
     }
 }

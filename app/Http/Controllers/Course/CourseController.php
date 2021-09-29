@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Course;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Pagination\LengthAwarePaginator;
 
 class CourseController extends Controller
 {
@@ -17,51 +17,18 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::paginate(14);
-        $teachers = Course::select('teacher_name')->distinct()->get();
-        $tags = Tag::has('courses')->get();
-        return view('course.index')->with('courses', $courses)->with('teachers', $teachers)->with('tags', $tags);
+        $courses = Course::aggregating()->paginate(config('variables.pagination'));
+        $teachers = User::select(['id','name'])->where('role', config('variables.teacher'))->get();
+        $tags = Tag::all();
+        return view('courses.index', compact(['courses', 'teachers', 'tags']));
     }
 
     public function filter(Request $request)
     {
-        $requestTag = $request->tag;
-        $courses = Course::query();
-
-        if ($request->teacher != null) {
-            $courses->where('teacher_name', $request->teacher);
-        }
-
-        if ($request->tag != null) {
-            $courses = $courses->whereHas('tags', function ($q) use ($requestTag) {
-                $q->where('name', $requestTag);
-            });
-        }
-
-        if ($request->createdAt != null) {
-            $courses->orderBy('created_at', $request->createdAt);
-        }
-
-        if ($request->learners != null) {
-            $courses->orderBy('learners', $request->learners);
-        }
-
-        if ($request->duration != null) {
-            $courses->orderBy('duration', $request->duration);
-        }
-
-        if ($request->lessons != null) {
-            $courses->orderBy('lessons', $request->lessons);
-        }
-
-        if ($request->ratings != null) {
-            $courses->orderBy('reviews', $request->ratings);
-        }
-
-        $courses = $courses->paginate(14);
-        $teachers = Course::select('teacher_name')->distinct()->get();
-        $tags = Tag::has('courses')->get();
-        return view('course.index')->with('courses', $courses)->with('teachers', $teachers)->with('tags', $tags);
+        $courses = Course::aggregating()->filter($request)->paginate(config('variables.pagination'));
+        $teachers = User::select(['id', 'name'])->where('role', config('variables.teacher'))->get();
+        $tags = Tag::all();
+        return view('courses.index', compact(['courses', 'teachers', 'tags']));
     }
 
     public function detail(Course $course)

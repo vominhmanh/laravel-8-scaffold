@@ -28,7 +28,7 @@ class CourseFactory extends Factory
             'start_date' => $this->faker->date('Y-m-d', 'now'),
             'finish_date' => $this->faker->date('Y-m-d', 'now'),
             'description' => $this->faker->paragraph(3, true),
-            'teacher_name' => $this->faker->name(),
+            'teacher_id' => $this->faker->numberBetween(1, 10),
             'logo' => $this->faker->imageUrl(90, 90),
         ];
     }
