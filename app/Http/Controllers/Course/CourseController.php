@@ -17,17 +17,16 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::paginate(14);
-        $teachers = User::select('name')->where('role', 1)->get();
+        $courses = Course::aggregating()->paginate(config('variables.pagination'));
+        $teachers = User::select(['id','name'])->where('role', config('variables.teacher'))->get();
         $tags = Tag::all();
         return view('courses.index', compact(['courses', 'teachers', 'tags']));
     }
 
     public function filter(Request $request)
     {
-        $courses = Course::filter($request)->paginate(14);
-
-        $teachers = User::select('name')->where('role', 1)->get();
+        $courses = Course::aggregating()->filter($request)->paginate(config('variables.pagination'));
+        $teachers = User::select(['id', 'name'])->where('role', config('variables.teacher'))->get();
         $tags = Tag::all();
         return view('courses.index', compact(['courses', 'teachers', 'tags']));
     }
