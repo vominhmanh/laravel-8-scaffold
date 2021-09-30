@@ -27,8 +27,8 @@ class UpdateReviewsTable extends Migration
     public function down()
     {
         Schema::table('reviews', function (Blueprint $table) {
-            $table->dropColumn('course_id');
-            $table->string('lesson_id');
+            $table->renameColumn('course_id', 'lesson_id');
+            $table->string('lesson_id')->change();
         });
     }
 }

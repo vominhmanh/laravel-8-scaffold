@@ -27,8 +27,8 @@ class RenameTeacherColumnOnCoursesTable extends Migration
     public function down()
     {
         Schema::table('courses', function (Blueprint $table) {
-            $table->dropColumn('teacher_id');
-            $table->string('teacher_name');
+            $table->renameColumn('teacher_id', 'teacher_name');
+            $table->string('teacher_name')->change();
         });
     }
 }
