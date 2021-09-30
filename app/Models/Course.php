@@ -44,19 +44,23 @@ class Course extends Model
         return $this->hasMany(Lesson::class);
     }
 
-    public function getLessonsCountAttribute() {
+    public function getLessonsCountAttribute()
+    {
         return $this->lessons()->count();
     }
 
-    public function getLearnersCountAttribute() {
+    public function getLearnersCountAttribute()
+    {
         return $this->users()->count();
     }
 
-    public function getLessonsSumDurationAttribute() {
+    public function getLessonsSumDurationAttribute()
+    {
         return $this->lessons()->sum('duration');
     }
 
-    public function getReviewsAvgRatingPointAttribute() {
+    public function getReviewsAvgRatingPointAttribute()
+    {
         return $this->reviews()->avg('rating_point');
     }
 
@@ -68,8 +72,9 @@ class Course extends Model
     public function scopeTeacher($query, $teacher)
     {
         if (isset($teacher)) {
-            return $query->where('teacher_id', $teacher);
+            $query->where('teacher_id', $teacher);
         }
+        return $query;
     }
 
     public function scopeTag($query, $tag)
@@ -92,7 +97,6 @@ class Course extends Model
 
     public function scopeLearners($query, $learners)
     {
-        $query->withCount('users');
         if (isset($learners)) {
             $query->orderBy('users_count', $learners);
         }
@@ -101,7 +105,6 @@ class Course extends Model
 
     public function scopeDuration($query, $duration)
     {
-        $query->withSum('lessons', 'duration');
         if (isset($duration)) {
             $query->orderBy('lessons_sum_duration', $duration);
         }
@@ -110,7 +113,6 @@ class Course extends Model
 
     public function scopeLessons($query, $lessons)
     {
-        $query->withCount('lessons');
         if (isset($lessons)) {
             $query->orderBy('lessons_count', $lessons);
         }
@@ -119,7 +121,6 @@ class Course extends Model
 
     public function scopeRatings($query, $ratings)
     {
-        $query->withAvg('reviews', 'rating_point');
         if (isset($ratings)) {
             $query->orderBy('reviews_avg_rating_point', $ratings);
         }
