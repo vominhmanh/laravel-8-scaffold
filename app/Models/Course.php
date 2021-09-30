@@ -16,7 +16,7 @@ class Course extends Model
         'start_date',
         'finish_date',
         'description',
-        'teacher',
+        'teacher_id',
     ];
 
     public function users()

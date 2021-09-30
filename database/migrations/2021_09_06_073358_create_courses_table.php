@@ -20,7 +20,7 @@ class CreateCoursesTable extends Migration
             $table->date('start_date')->nullable();
             $table->date('finish_date')->nullable();
             $table->text('description')->nullable();
-            $table->string('teacher_id')->nullable();
+            $table->string('teacher_name')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
