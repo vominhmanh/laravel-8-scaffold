@@ -74,6 +74,7 @@ class Course extends Model
 
     public function scopeLearners($query, $learners)
     {
+        $query->withCount('users');
         if (isset($learners)) {
             return $query->orderBy('users_count', $learners);
         }
@@ -81,6 +82,7 @@ class Course extends Model
 
     public function scopeDuration($query, $duration)
     {
+        $query->withSum('lessons', 'duration');
         if (isset($duration)) {
             return $query->orderBy('lessons_sum_duration', $duration);
         }
@@ -88,6 +90,7 @@ class Course extends Model
 
     public function scopeLessons($query, $lessons)
     {
+        $query->withCount('lessons');
         if (isset($lessons)) {
             return $query->orderBy('lessons_count', $lessons);
         }
@@ -95,6 +98,7 @@ class Course extends Model
 
     public function scopeRatings($query, $ratings)
     {
+        $query->withAvg('reviews', 'rating_point');
         if (isset($ratings)) {
             return $query->orderBy('reviews_avg_rating_point', $ratings);
         }

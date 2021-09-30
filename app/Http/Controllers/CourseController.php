@@ -25,7 +25,7 @@ class CourseController extends Controller
 
     public function filter(Request $request)
     {
-        $courses = Course::aggregating()->filter($request)->paginate(config('variables.pagination'));
+        $courses = Course::filter($request)->paginate(config('variables.pagination'));
         $teachers = User::where('role', config('variables.teacher'))->get();
         $tags = Tag::all();
         return view('courses.index', compact(['courses', 'teachers', 'tags']));
