@@ -46,20 +46,20 @@ class Course extends Model
 
     public function scopeKeyWord($query, $keyword)
     {
-        $query->where('name', 'like', '%' . $keyword . '%')->orWhere('description', 'like', '%' . $keyword . '%');
+        return $query->where('name', 'like', '%' . $keyword . '%')->orWhere('description', 'like', '%' . $keyword . '%');
     }
 
     public function scopeTeacher($query, $teacher)
     {
         if (isset($teacher)) {
-            $query->where('teacher_id', $teacher);
+            return $query->where('teacher_id', $teacher);
         }
     }
 
     public function scopeTag($query, $tag)
     {
         if (isset($tag)) {
-            $query->whereHas('tags', function ($q) use ($tag) {
+            return $query->whereHas('tags', function ($q) use ($tag) {
                 $q->where('name', $tag);
             });
         }
@@ -68,41 +68,41 @@ class Course extends Model
     public function scopeCreatedAt($query, $createdAt)
     {
         if (isset($createdAt)) {
-            $query->orderBy('created_at', $createdAt);
+            return $query->orderBy('created_at', $createdAt);
         }
     }
 
     public function scopeLearners($query, $learners)
     {
         if (isset($learners)) {
-            $query->orderBy('users_count', $learners);
+            return $query->orderBy('users_count', $learners);
         }
     }
 
     public function scopeDuration($query, $duration)
     {
         if (isset($duration)) {
-            $query->orderBy('lessons_sum_duration', $duration);
+            return $query->orderBy('lessons_sum_duration', $duration);
         }
     }
 
     public function scopeLessons($query, $lessons)
     {
         if (isset($lessons)) {
-            $query->orderBy('lessons_count', $lessons);
+            return $query->orderBy('lessons_count', $lessons);
         }
     }
 
     public function scopeRatings($query, $ratings)
     {
         if (isset($ratings)) {
-            $query->orderBy('reviews_avg_rating_point', $ratings);
+            return $query->orderBy('reviews_avg_rating_point', $ratings);
         }
     }
 
     public function scopeFilter($query, $request)
     {
-        $query->keyword($request->keyword)
+        return $query->keyword($request->keyword)
             ->teacher($request->teacher)
             ->tag($request->tag)
             ->createdat($request->createdAt)
@@ -120,7 +120,7 @@ class Course extends Model
      */
     public function scopeAggregating($query)
     {
-        $query->withAvg('reviews', 'rating_point')
+        return $query->withAvg('reviews', 'rating_point')
             ->withCount('lessons')
             ->withCount('users')
             ->withSum('lessons', 'duration');

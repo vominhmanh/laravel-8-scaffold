@@ -20,7 +20,7 @@
                         <a class="nav-link @if (Route::is('home')) active @endif " href="{{ route('home') }}">HOME<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @if (Route::is('course.*')) active @endif" href="{{ route('course') }}">ALL COURSES</a>
+                        <a class="nav-link @if (Route::is('course*')) active @endif" href="{{ route('course') }}">ALL COURSES</a>
                     </li>
                     <li class="nav-item d-xl-none ">
                         <a class="nav-link" href="#">LIST LESSON</a>
