@@ -54,7 +54,6 @@ class Course extends Model
         if (isset($teacher)) {
             $query->where('teacher_id', $teacher);
         }
-        $query;
     }
 
     public function scopeTag($query, $tag)
@@ -64,7 +63,6 @@ class Course extends Model
                 $q->where('name', $tag);
             });
         }
-        $query;
     }
 
     public function scopeCreatedAt($query, $createdAt)
@@ -72,7 +70,6 @@ class Course extends Model
         if (isset($createdAt)) {
             $query->orderBy('created_at', $createdAt);
         }
-        $query;
     }
 
     public function scopeLearners($query, $learners)
@@ -80,7 +77,6 @@ class Course extends Model
         if (isset($learners)) {
             $query->orderBy('users_count', $learners);
         }
-        $query;
     }
 
     public function scopeDuration($query, $duration)
@@ -88,7 +84,6 @@ class Course extends Model
         if (isset($duration)) {
             $query->orderBy('lessons_sum_duration', $duration);
         }
-        $query;
     }
 
     public function scopeLessons($query, $lessons)
@@ -96,7 +91,6 @@ class Course extends Model
         if (isset($lessons)) {
             $query->orderBy('lessons_count', $lessons);
         }
-        $query;
     }
 
     public function scopeRatings($query, $ratings)
@@ -104,7 +98,6 @@ class Course extends Model
         if (isset($ratings)) {
             $query->orderBy('reviews_avg_rating_point', $ratings);
         }
-        $query;
     }
 
     public function scopeFilter($query, $request)
