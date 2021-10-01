@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Course;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
@@ -17,16 +17,16 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::aggregating()->paginate(config('variables.pagination'));
-        $teachers = User::select(['id','name'])->where('role', config('variables.teacher'))->get();
+        $courses = Course::paginate(config('variables.pagination'));
+        $teachers = User::teacher()->get();
         $tags = Tag::all();
         return view('courses.index', compact(['courses', 'teachers', 'tags']));
     }
 
     public function filter(Request $request)
     {
-        $courses = Course::aggregating()->filter($request)->paginate(config('variables.pagination'));
-        $teachers = User::select(['id', 'name'])->where('role', config('variables.teacher'))->get();
+        $courses = Course::filter($request->all())->paginate(config('variables.pagination'));
+        $teachers = User::teacher()->get();
         $tags = Tag::all();
         return view('courses.index', compact(['courses', 'teachers', 'tags']));
     }

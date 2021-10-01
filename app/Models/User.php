@@ -54,4 +54,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Course::class);
     }
+
+    public function scopeTeacher($query)
+    {
+        $query->where('role', config('variables.teacher'));
+    }
 }

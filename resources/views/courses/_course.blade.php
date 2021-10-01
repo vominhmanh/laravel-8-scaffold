@@ -5,10 +5,10 @@
                 <img src="{{ $course->logo }}" alt="course img" class="course-card-top-img">
                 <div class="course-card-top-content w-100">
                     <a href="#" class="course-card-top-content-title">{{ $course->name }}</a>
-                    <div><b>Teacher: {{ $course->teacher->name }}</b>  </div>
+                    <div><b>Teacher: {{ $course->teacher->name }}</b> </div>
                     <div class="course-card-top-content-description">{{ $course->description }}</div>
                     <div class="text-right">
-                        
+
                         <a href="#" class="green-btn hover-green-btn small-inset-shadow detail-link-a">More</a>
                     </div>
                 </div>
@@ -25,7 +25,8 @@
                     </div>
                     <div class="d-flex flex-column justify-content-center align-items-center">
                         <span class="course-card-bottom-subtitle">Ratings</span>
-                        <span class="course-card-bottom-number">{{ round($course->reviews_avg_rating_point, 2) ? : '-' }}</span>
+                        <span
+                            class="course-card-bottom-number">{{ round($course->reviews_avg_rating_point, 2) ?: '-' }}</span>
                     </div>
                 </div>
             </div>

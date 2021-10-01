@@ -16,7 +16,7 @@ class Course extends Model
         'start_date',
         'finish_date',
         'description',
-        'teacher',
+        'teacher_id',
     ];
 
     public function users()
@@ -44,6 +44,26 @@ class Course extends Model
         return $this->hasMany(Lesson::class);
     }
 
+    public function getLessonsCountAttribute()
+    {
+        return $this->lessons()->count();
+    }
+
+    public function getUsersCountAttribute()
+    {
+        return $this->users()->count();
+    }
+
+    public function getLessonsSumDurationAttribute()
+    {
+        return $this->lessons()->sum('duration');
+    }
+
+    public function getReviewsAvgRatingPointAttribute()
+    {
+        return $this->reviews()->avg('rating_point');
+    }
+
     public function scopeKeyWord($query, $keyword)
     {
         return $query->where('name', 'like', '%' . $keyword . '%')->orWhere('description', 'like', '%' . $keyword . '%');
@@ -52,7 +72,7 @@ class Course extends Model
     public function scopeTeacher($query, $teacher)
     {
         if (isset($teacher)) {
-            return $query->where('teacher_id', $teacher);
+            $query->where('teacher_id', $teacher);
         }
         return $query;
     }
@@ -60,8 +80,8 @@ class Course extends Model
     public function scopeTag($query, $tag)
     {
         if (isset($tag)) {
-            return $query->whereHas('tags', function ($q) use ($tag) {
-                $q->where('name', $tag);
+            $query->whereHas('tags', function ($q) use ($tag) {
+                $q->where('id', $tag);
             });
         }
         return $query;
@@ -70,7 +90,7 @@ class Course extends Model
     public function scopeCreatedAt($query, $createdAt)
     {
         if (isset($createdAt)) {
-            return $query->orderBy('created_at', $createdAt);
+            $query->orderBy('created_at', $createdAt);
         }
         return $query;
     }
@@ -78,7 +98,7 @@ class Course extends Model
     public function scopeLearners($query, $learners)
     {
         if (isset($learners)) {
-            return $query->orderBy('users_count', $learners);
+            $query->orderBy('users_count', $learners);
         }
         return $query;
     }
@@ -86,7 +106,7 @@ class Course extends Model
     public function scopeDuration($query, $duration)
     {
         if (isset($duration)) {
-            return $query->orderBy('lessons_sum_duration', $duration);
+            $query->orderBy('lessons_sum_duration', $duration);
         }
         return $query;
     }
@@ -94,7 +114,7 @@ class Course extends Model
     public function scopeLessons($query, $lessons)
     {
         if (isset($lessons)) {
-            return $query->orderBy('lessons_count', $lessons);
+            $query->orderBy('lessons_count', $lessons);
         }
         return $query;
     }
@@ -102,7 +122,7 @@ class Course extends Model
     public function scopeRatings($query, $ratings)
     {
         if (isset($ratings)) {
-            return $query->orderBy('reviews_avg_rating_point', $ratings);
+            $query->orderBy('reviews_avg_rating_point', $ratings);
         }
         return $query;
     }
@@ -117,19 +137,5 @@ class Course extends Model
             ->duration($request->duration)
             ->lessons($request->lessons)
             ->ratings($request->ratings);
-    }
-
-    /**
-     *
-     * This function creates some Aggregrating values for query: count, sum, average.
-     * These above methods will place a {relation}_{function}_{column} attribute on your resulting models.
-     *
-     */
-    public function scopeAggregating($query)
-    {
-        return $query->withAvg('reviews', 'rating_point')
-            ->withCount('lessons')
-            ->withCount('users')
-            ->withSum('lessons', 'duration');
     }
 }

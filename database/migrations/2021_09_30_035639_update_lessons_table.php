@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLessonsTable extends Migration
+class UpdateLessonsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class CreateLessonsTable extends Migration
      */
     public function up()
     {
-        Schema::create('lessons', function (Blueprint $table) {
-            $table->id();
-            $table->string('name')->nullable();
-            $table->string('video_link')->nullable();
-            $table->integer('duration')->nullable();
+        Schema::table('lessons', function (Blueprint $table) {
+            $table->integer('duration')->change()->nullable();
             $table->integer('course_id')->nullable();
-            $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -31,6 +26,8 @@ class CreateLessonsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lessons');
+        Schema::table('lessons', function (Blueprint $table) {
+            $table->dropColumn(['duration', 'course_id']);
+        });
     }
 }
