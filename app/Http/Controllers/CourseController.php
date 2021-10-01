@@ -17,7 +17,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course->paginate(config('variables.pagination'));
+        $courses = Course::paginate(config('variables.pagination'));
         $teachers = User::teacher()->get();
         $tags = Tag::all();
         return view('courses.index', compact(['courses', 'teachers', 'tags']));
@@ -25,7 +25,7 @@ class CourseController extends Controller
 
     public function filter(Request $request)
     {
-        $courses = Course::filter($request)->paginate(config('variables.pagination'));
+        $courses = Course::filter($request->all())->paginate(config('variables.pagination'));
         $teachers = User::teacher()->get();
         $tags = Tag::all();
         return view('courses.index', compact(['courses', 'teachers', 'tags']));

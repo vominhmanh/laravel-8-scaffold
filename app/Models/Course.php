@@ -49,7 +49,7 @@ class Course extends Model
         return $this->lessons()->count();
     }
 
-    public function getLearnersCountAttribute()
+    public function getUsersCountAttribute()
     {
         return $this->users()->count();
     }
