@@ -1,71 +1,58 @@
 .course-detail {
-  background-color: $background_color_input;
-  font-family: $font_UTM_BryantLG;
   padding-top: 27px;
+  line-height: 40px;
+
+  @media only screen and (max-width: 575.98px) {
+    line-height: 34px;
+  }
 
   .logo-course {
-    height: 439px;
-    width: 100%;
-    background: $frontend_course_color;
+    height: 440px;
+
+    @media only screen and (max-width: 767.98px) {
+      height: auto;
+    }
+
+    background: gray;
     border-radius: 10px;
-    object-fit: fill;
-  }
 
-  .descriptions-course {
-    background: white;
-    border: 1px solid $d1d1d1;
-    box-sizing: border-box;
-    width: 100%;
-    height: 439px;
-    padding: 18px;
+    &-img {
+      @media only screen and (min-width: 768px) {
+        height: 100%;
+      }
 
-    .title-of-descriptions-course {
-      font-weight: bold;
-      font-size: 25px;
-      line-height: 31px;
-      letter-spacing: -0.02em;
-      color: $text_color;
-      border-bottom: 1px solid $title_color;
-      padding-bottom: 17px;
-      margin-bottom: 4px;
-      -webkit-text-stroke-width: 1px;
-    }
-
-    .content-of-descriptions-course {
-      overflow: auto;
-      font-weight: bold;
-      font-size: 18px;
-      line-height: 26px;
-      text-align: justify;
-      letter-spacing: -0.02em;
-      color: $icon_arrow_feedback_color;
-      height: 350px;
+      @media only screen and (max-width: 767.98px) {
+        width: 100%;
+      }
     }
   }
 
-  .lessons-teacher-reviews {
+  .info {
     background: white;
     border-radius: 10px;
     padding: 18px;
     margin-bottom: 35px;
 
-    .lessons-teacher-reviews-nav-tabs {
-      border-bottom: 2px solid $nav_tab;
+    &-nav-tabs {
+      border-bottom: 2px solid $whitesmoke;
       transform: rotate(-0.08deg);
+    }
+
+    .nav-item { 
+        margin-right: 10%;
     }
   }
 
   .nav-tabs .nav-link.active,
   .nav-tabs .nav-item.show .nav-link {
-    color: $title_color;
+    color: $light-green;
     background-color: white;
     border: none;
-    border-bottom: 2px solid $button_color;
+    border-bottom: 2px solid $light-green;
     border-radius: 0px;
     font-weight: bold;
     font-size: 20px;
     line-height: 25px;
-    letter-spacing: -0.02em;
   }
 
   .nav-tabs .nav-link {
@@ -74,300 +61,34 @@
     font-weight: bold;
     font-size: 20px;
     line-height: 25px;
-    letter-spacing: -0.02em;
-    color: $text_color;
+    color: $dark;
     padding-left: 0;
     padding-right: 0;
     padding-bottom: 14px;
-  }
 
-  .search-form {
-    font-family: $font_UTM_BryantLG;
-
-    .search-form-input {
-      width: 240px;
-      height: 40px;
-      background: white;
-      border: 1px solid $arrow_color;
-      font-weight: normal;
-      font-size: 16px;
-      padding-left: 10px;
-      border-radius: 5px;
-      padding-right: 47px;
-
-      &:focus {
-        border: 2px solid $button_color;
-        outline: none;
-      }
-    }
-
-    .search-form-img {
-      width: 35px;
-      height: 35px;
-      background: white;
-      font-size: 20px;
-      color: $text_color;
-      border: none;
-      margin-left: -45px;
-      position: relative;
-      top: 2px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .search-button {
-      width: 77px;
-      height: 40px;
-      background: $button_color;
-      border: 1px solid $button_color;
-      border-radius: 5px;
-      -webkit-text-stroke-width: 0.5px;
-      font-size: 15px;
-      line-height: 20px;
-      color: white;
-      margin-left: 15px;
-
-      &:hover {
-        color: $text_color;
-      }
-    }
-  }
-
-  .join-course {
-    background: $title_color;
-    box-shadow: inset 0px 1.5px 2px $main_courses_box_shadow;
-    border-radius: 22px;
-    width: 200px;
-    height: 42px;
-    outline: none;
-    border: none;
-    -webkit-text-stroke-width: 1px;
-    font-size: 18px;
-    line-height: 22px;
-    letter-spacing: -0.05em;
-    color: white;
-
-    &:hover {
-      color: $text_color;
-    }
-  }
-
-  .joined-course {
-    background: $title_color;
-    border-radius: 22px;
-    width: 200px;
-    height: 42px;
-    outline: none;
-    border: none;
-    -webkit-text-stroke-width: 1px;
-    font-size: 18px;
-    letter-spacing: -0.05em;
-    color: white;
-    text-align: center;
-    line-height: 36px;
-  }
-
-  .list-of-lesson-item {
-    border-top: 1px solid $lesson_item;
-
-    .lesson-title {
-      width: 100%;
-      height: 100%;
-      line-height: 34px;
-      padding-left: 5px;
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-line-clamp: 1;
-      -webkit-box-orient: vertical;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      text-decoration: none;
-      font-size: 18px;
-      letter-spacing: -0.02em;
-      color: $text_color;
-      -webkit-text-stroke-width: 0.5px;
-
-      &:hover {
-        color: $title_color;
-      }
-    }
-
-    .button-learn-lesson {
-      background: $title_color;
-      box-shadow: inset 0px 1.5px 2px $main_courses_box_shadow;
-      border-radius: 22px;
-      width: 80px;
-      height: 34px;
-      font-weight: bold;
-      font-size: 18px;
-      letter-spacing: -0.05em;
-      color: white;
-      text-decoration: none;
-      text-align: center;
-      line-height: 31px;
-      display: block;
-      margin-top: 10px;
-      margin-bottom: 10px;
-
-      &:hover {
-        color: $text_color;
-      }
-    }
-  }
-
-  .pagination-custom {
-    height: 100px;
-  }
-
-  .pagination {
-    .pagination-arrow-button {
-      width: 45px;
-      border: 1px solid $button_color;
-      box-sizing: border-box;
-      border-radius: 3px;
-      height: 30px;
-      font-family: var(--font_Open_Sans);
-      font-style: normal;
-      font-weight: bold;
-      font-size: 18px;
-      line-height: 25px;
-      letter-spacing: -0.05em;
-      color: $button_color;
-      text-decoration: none;
-      margin: 0px 3px;
-    }
-
-    .pagination-arrow-button-hover:hover {
-      background-color: $button_color;
-      color: white;
-    }
-
-    .page-button {
-      border: 1px solid $button_color;
-      box-sizing: border-box;
-      border-radius: 3px;
-      width: 30px;
-      height: 30px;
-      font-family: var(--font_Open_Sans);
-      font-style: normal;
-      font-weight: bold;
-      font-size: 18px;
-      line-height: 25px;
-      letter-spacing: -0.05em;
-      color: $button_color;
-      text-decoration: none;
-      margin: 0px 3px;
-
-      &:hover {
-        background-color: $button_color;
-        color: white;
-      }
-    }
-
-    .page-button-active {
-      background: $button_color;
-      border: 1px solid $button_color;
-      box-sizing: border-box;
-      border-radius: 3px;
-      font-family: var(--font_Open_Sans);
-      font-style: normal;
-      font-weight: bold;
-      font-size: 18px;
-      line-height: 25px;
-      letter-spacing: -0.05em;
-      color: white;
-      text-decoration: none;
-      margin: 0px 3px;
-      width: 30px;
-      height: 30px;
-    }
-
-    .fa-ellipsis-h {
-      color: $button_color;
-    }
-
-    .disabled {
-      cursor: not-allowed;
-
-      &:hover {
-        background-color: $background_color_input !important;
-        color: $button_color !important;
-      }
-    }
   }
 
   .teacher-tab-title {
     font-weight: bold;
     font-size: 25px;
     line-height: 31px;
-    letter-spacing: -0.02em;
-    color: $text_color;
+    color: $dark;
     -webkit-text-stroke-width: 1px;
-  }
-
-  .information {
-    width: 100%;
-    background: white;
-    border: 1px solid $d1d1d1;
-    box-sizing: border-box;
-    padding: 4px;
-
-    .learners,
-    .lessons,
-    .times,
-    .tags {
-      border-bottom: 1px solid $d1d1d1;
-      height: 80px;
-      display: flex;
-      align-items: center;
-      padding-left: 14px;
-    }
-
-    .price {
-      height: 80px;
-      display: flex;
-      align-items: center;
-      padding-left: 14px;
-    }
-
-    .img-information {
-      width: 35px;
-      height: 37px;
-      object-fit: contain;
-    }
-
-    .sub-title {
-      font-size: 20px;
-      line-height: 31px;
-      letter-spacing: -0.02em;
-      color: $text_color;
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-line-clamp: 1;
-      -webkit-box-orient: vertical;
-    }
-
-    .sub-title-value {
-      -webkit-text-stroke-width: 0.5px;
-    }
   }
 }
 
-.other-course-suggest {
+.other-courses {
   background: white;
-  border: 1px solid $DEDEDE;
+  border: 1px solid $whitesmoke;
   box-sizing: border-box;
   width: 100%;
-  font-family: $font_UTM_BryantLG;
 
-  .other-course-title {
-    background: $button_color;
-    border: 1px solid $DEDEDE;
+  &-title {
+    background: $light-green;
+    border: 1px solid $whitesmoke;
     box-sizing: border-box;
     font-size: 25px;
     line-height: 52px;
-    letter-spacing: -0.05em;
     color: white;
     -webkit-text-stroke-width: 1px;
     height: 60px;
@@ -380,126 +101,172 @@
     padding-right: 14px;
 
     .a-course {
-      border-bottom: 1px solid $lesson_item;
+      border-bottom: 1px solid $whitesmoke;
       padding-top: 14px;
       padding-bottom: 14px;
       display: block;
       text-decoration: none;
       font-size: 16px;
       line-height: 20px;
-      letter-spacing: -0.02em;
-      color: $text_color;
+      color: $dark;
       -webkit-text-stroke-width: 0.5px;
 
       &:hover {
-        color: $title_color;
+        color: $light-green;
       }
     }
   }
+}
 
-  .view-all-our-course {
-    background: $button_color;
-    box-shadow: inset 0px 1.5px 2px $main_courses_box_shadow;
-    border-radius: 22px;
-    width: 200px;
-    height: 42px;
-    font-size: 18px;
-    line-height: 38px;
-    letter-spacing: -0.05em;
-    color: white;
-    display: block;
-    text-align: center;
-    text-decoration: none;
+.join-course-btn {
+  width: 100%;
+}
+
+.course-description {
+  background: white;
+  border: 1px solid $simplewhite;
+  box-sizing: border-box;
+  padding: 18px;
+
+  &-title {
+    font-weight: bold;
+    font-size: 25px;
+    color: $dark;
+    border-bottom: 1px solid $light-green;
+    padding-bottom: 17px;
     -webkit-text-stroke-width: 1px;
-    margin-top: 10px;
-    margin-bottom: 25px;
+  }
 
-    &:hover {
-      color: $text_color;
+  &-content {
+    overflow: auto;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 26px;
+    color: gray;
+  }
+}
+
+.list-of-lessons {
+  border-top: 1px solid $whitesmoke;
+
+  .lesson {
+    border-bottom: 1px solid $whitesmoke;
+
+    &-title {
+      padding-left: 5px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      text-decoration: none;
+      font-size: 18px;
+      color: $dark;
+      -webkit-text-stroke-width: 0.5px;
+
+      &:hover {
+        color: $light-green;
+      }
+    }
+
+    &-btn {
+      width: 100%;
     }
   }
 }
 
-@media only screen and (max-width: 769px) {
-  .course-detail {
-    .pagination {
-      .pagination-arrow-button {
-        width: 46px;
-        height: 30px;
-        font-size: 16px;
-      }
+.course-info {
+  background: white;
+  border: 1px solid $simplewhite;
+  box-sizing: border-box;
 
-      .pagination-arrow-button-hover:hover {
-        background-color: $button_color;
-        color: white;
-      }
+  &-item {
+    border-bottom: 1px solid $simplewhite;
+    padding: 25px 10px;
+  }
 
-      .page-button {
-        width: 30px;
-        height: 30px;
-        font-size: 16px;
-      }
+  img {
+    margin-right: 5px;
+    width: 35px;
+  }
 
-      .page-button-active {
-        width: 30px;
-        height: 30px;
-        font-size: 16px;
-      }
-    }
+  .sub-title {
+    font-size: 20px;
+    line-height: 31px;
+    color: $dark;
+    overflow: hidden;
+  }
+
+  .sub-title-value {
+    -webkit-text-stroke-width: 0.5px;
   }
 }
 
-@media only screen and (max-width: 415px) {
-  .course-detail {
-    .pagination {
-      .pagination-arrow-button {
-        width: 29px;
-        height: 19px;
-        font-size: 13px;
-      }
-
-      .pagination-arrow-button-hover:hover {
-        background-color: $button_color;
-        color: white;
-      }
-
-      .page-button {
-        width: 15px;
-        height: 15px;
-        font-size: 11px;
-        margin-right: 2px;
-        margin-left: 2px;
-      }
-
-      .page-button-active {
-        width: 19px;
-        height: 19px;
-        font-size: 12px;
-        margin-right: 2px;
-        margin-left: 2px;
-      }
+.teacher {
+  
+    .img-teacher {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
     }
-  }
-
-  .search-form {
-    .search-form-input {
-      width: 220px;
-      height: 34px;
+  
+    .teacher-name {
+      font-weight: bold;
+      font-size: 18px;
+      color: $dark;
+      -webkit-text-stroke-width: 0.5px;
+    }
+  
+    .teacher-experience {
+      font-weight: normal;
       font-size: 14px;
+      line-height: 17px;
+      color: $teacher_experience;
     }
-
-    .search-form-img {
-      width: 29px;
-      height: 29px;
-      font-size: 15px;
-      margin-left: -33px;
+  
+    .teacher-contact {
+      display: flex;
+      margin-top: 5px;
+  
+      .icon-google,
+      .icon-facebook,
+      .icon-slack {
+        width: 20px;
+        height: 20px;
+        box-sizing: border-box;
+        border-radius: 50%;
+        display: block;
+        text-decoration: none;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: auto;
+      }
+  
+      .icon-google {
+        border: 0.5px solid $icon_google;
+        background-image: url(../assets/img/google_icon.png);
+      }
+  
+      .icon-facebook {
+        border: 0.5px solid $icon_facebook;
+        background-image: url(../assets/img/facebook_icon.png);
+      }
+  
+      .icon-slack {
+        border: 0.5px solid $icon_slack;
+        background-image: url(../assets/img/slack_icon.png);
+      }
     }
-
-    .search-button {
-      width: 74px;
-      height: 34px;
-      margin-left: 8px;
-      font-size: 13px;
+  
+    .teacher-info {
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 26px;
+      color: $icon_arrow_feedback_color;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
     }
   }
-}
