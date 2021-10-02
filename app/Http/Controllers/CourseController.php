@@ -7,6 +7,7 @@ use App\Models\Course;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
@@ -33,6 +34,11 @@ class CourseController extends Controller
 
     public function detail(Course $course)
     {
-        return view('course.detail')->with('course', $course);
+        return view('courses.detail')->with('course', $course);
+    }
+
+    public function join(Course $course) { 
+        $user = User::find(Auth::user()->id);
+        $user->courses()->attach($course->id);
     }
 }
