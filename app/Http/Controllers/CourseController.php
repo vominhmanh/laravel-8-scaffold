@@ -8,6 +8,7 @@ use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class CourseController extends Controller
 {
@@ -40,7 +41,7 @@ class CourseController extends Controller
 
     public function join(Course $course)
     {
-        $user = User::find(Auth::user()->id);
-        $user->courses()->attach($course->id);
+        $course->users()->attach([Auth::user()->id ?? false]);
+        return back();
     }
 }

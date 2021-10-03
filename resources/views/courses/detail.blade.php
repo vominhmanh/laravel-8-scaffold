@@ -44,13 +44,13 @@
                                             </div>
                                         </form>
                                         @if ($course->users->contains(Auth::user()->id ?? false))
-                                            <span class=" gray-btn small-inset-shadow detail-link-a" id="joined-course">
+                                            <span class=" gray-btn small-inset-shadow detail-link-input" id="joined-course">
                                                 Joined</span>
                                         @else
                                             <form method="post" action="{{ route('course.join', [$course->id]) }}">
                                                 @csrf
                                                 <input type="submit"
-                                                    class="green-btn hover-green-btn small-inset-shadow detail-link-a"
+                                                    class="green-btn hover-green-btn small-inset-shadow detail-link-input"
                                                     id="join-course" value="Join this course">
                                             </form>
                                         @endif
@@ -58,19 +58,29 @@
                                 </div>
                                 <div class="list-of-lessons my-3">
                                     @foreach ($course->lessons as $key => $lesson)
-                                        <div class="row lesson">
+                                        <div class="row lesson align-items-baseline">
                                             <div class="col-lg-10">
                                                 <a href="#" class="lesson-title">
                                                     <span>Lesson {{ $key + 1 }}: </span>{{ $lesson->name }}</a>
                                             </div>
-                                            <div class="col-lg-2">
-                                                <form method="post" action="{{ route('course.join', [$course->id]) }}">
-                                                    @csrf
-                                                    <input type="submit"
-                                                        class="green-btn hover-green-btn small-inset-shadow lesson-btn"
-                                                        id="join-course" value="Learn">
-                                                </form>
-                                            </div>
+                                            @if ($course->users->contains(Auth::user()->id ?? false))
+                                                <div class="col-lg-2">
+                                                    <form method="post"
+                                                        action="{{ route('course.join', [$course->id]) }}">
+                                                        @csrf
+                                                        {{-- @if ($lesson->users->contains([Auth::user() ?? false])) --}}
+                                                        @if (false)
+                                                            <input type="submit"
+                                                                class="gray-btn small-inset-shadow lesson-btn"
+                                                                id="join-course" value="Learned">
+                                                        @else
+                                                            <input type="submit"
+                                                                class="green-btn hover-green-btn small-inset-shadow lesson-btn"
+                                                                id="join-course" value="Learn">
+                                                        @endif
+                                                    </form>
+                                                </div>
+                                            @endif
                                         </div>
                                     @endforeach
                                 </div>
@@ -167,12 +177,13 @@
                             </div>
 
                             <div class="text-center">
-                                <button href="#" class="green-btn hover-green-btn small-inset-shadow detail-link-a">View other
-                                    courses</button>
+                                <a href="#" class="green-btn hover-green-btn small-inset-shadow detail-link-a">View other
+                                    courses</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection
