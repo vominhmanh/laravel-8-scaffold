@@ -9,7 +9,7 @@
                     <div class="course-card-top-content-description">{{ $course->description }}</div>
                     <div class="text-right">
 
-                        <button href="#" class="green-btn hover-green-btn small-inset-shadow detail-link-a">More</button>
+                        <a href="#" class="green-btn hover-green-btn small-inset-shadow detail-link-a">More</a>
                     </div>
                 </div>
             </div>
