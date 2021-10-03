@@ -129,14 +129,14 @@ class Course extends Model
 
     public function scopeFilter($query, $request)
     {
-        return $query->keyword($request->keyword)
-            ->teacher($request->teacher)
-            ->tag($request->tag)
-            ->createdat($request->createdAt)
-            ->learners($request->learners)
-            ->duration($request->duration)
-            ->lessons($request->lessons)
-            ->ratings($request->ratings);
+        return $query->keyword($request['keyword'])
+            ->teacher($request['teacher'])
+            ->tag($request['tag'])
+            ->createdat($request['createdAt'] ?? 'desc')
+            ->learners($request['learners'])
+            ->duration($request['duration'])
+            ->lessons($request['lessons'])
+            ->ratings($request['ratings']);
     }
 
     public function scopeSuggestion($query, $request = null)
