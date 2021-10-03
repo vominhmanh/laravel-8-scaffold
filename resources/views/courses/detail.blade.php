@@ -34,34 +34,26 @@
                             <div class="tab-pane fade show active" id="lessons" role="tabpanel"
                                 aria-labelledby="lessons-tab">
                                 <div class="lessons-toolbar mb-4">
-                                    <div class="row">
-                                        <div class="col-lg-7 col-md-12">
-                                            <form method="get" action="" class="search-form">
-                                                <div class="d-flex">
-                                                    <input type="text" name="keyword" id="search-form-input"
-                                                        placeholder="Search..." class="search-form-input">
-                                                    <div class="search-form-img"><i class="fas fa-search"></i></div>
-
-                                                    <input type="submit" class="search-button" value="Search">
-                                                </div>
+                                    <div class="d-flex justify-content-between">
+                                        <form method="get" action="" class="search-form">
+                                            <div class="d-flex">
+                                                <input type="text" name="keyword" id="search-form-input"
+                                                    placeholder="Search..." class="search-form-input">
+                                                <div class="search-form-img"><i class="fas fa-search"></i></div>
+                                                <input type="submit" class="search-button" value="Search">
+                                            </div>
+                                        </form>
+                                        @if ($course->users->contains(Auth::user()->id ?? false))
+                                            <span class=" gray-btn small-inset-shadow detail-link-a" id="joined-course">
+                                                Joined</span>
+                                        @else
+                                            <form method="post" action="{{ route('course.join', [$course->id]) }}">
+                                                @csrf
+                                                <input type="submit"
+                                                    class="green-btn hover-green-btn small-inset-shadow detail-link-a"
+                                                    id="join-course" value="Join this course">
                                             </form>
-                                        </div>
-
-                                        <div class="col-lg-1 col-md-12"></div>
-
-                                        <div class="col-lg-4 col-md-12 mt-lg-0 mt-md-3">
-                                            @if (isset($isJoinedCourse) && $isJoinedCourse)
-                                                <div class="green-btn hover-green-btn small-inset-shadow join-course-btn"
-                                                    id="joined-course">Joined</div>
-                                            @else
-                                                <form method="post" action="{{ route('course.join', [$course->id]) }}">
-                                                    @csrf
-                                                    <input type="submit"
-                                                        class="green-btn hover-green-btn small-inset-shadow join-course-btn"
-                                                        id="join-course" value="Join this course">
-                                                </form>
-                                            @endif
-                                        </div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="list-of-lessons my-3">
@@ -127,7 +119,7 @@
                         <div class="course-info mt-3">
                             <div class="course-info-item">
                                 <img src="{{ asset('images/course.png') }}" alt="learners">
-                                <span class="sub-title">Learners: <span class="sub-title-value">
+                                <span class="sub-title">Course: <span class="sub-title-value">
                                         {{ $course->name }}</span></span>
                             </div>
                             <div class="course-info-item">
@@ -162,21 +154,21 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="other-courses my-3">
-                            <div class="other-courses-title">Other Courses</div>
+                        <div class="other-courses-suggestion my-3">
+                            <div class="other-courses-suggestion-title">Other Courses</div>
                             <div class="list-of-lessons">
                                 @foreach ($otherCourses as $key => $otherCourse)
                                     <div class="lesson">
                                         <a href="#" class="lesson-title">
-                                            {{ $key + 1 }}. {{ $otherCourse->title }}
+                                            {{ $key + 1 }}. {{ $otherCourse->name }}
                                         </a>
                                     </div>
                                 @endforeach
                             </div>
 
                             <div class="text-center">
-                                <a href="#" class="green-btn hover-green-btn small-inset-shadow detail-link-a">View other
-                                    courses</a>
+                                <button href="#" class="green-btn hover-green-btn small-inset-shadow detail-link-a">View other
+                                    courses</button>
                             </div>
                         </div>
                     </div>

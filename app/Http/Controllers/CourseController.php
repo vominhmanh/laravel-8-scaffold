@@ -34,7 +34,7 @@ class CourseController extends Controller
 
     public function detail(Course $course)
     {
-        $otherCourse = Course::suggestion()->get();
+        $otherCourses = Course::suggestion()->get();
         return view('courses.detail', compact(['course', 'otherCourses']));
     }
 
