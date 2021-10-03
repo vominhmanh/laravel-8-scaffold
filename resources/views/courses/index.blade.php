@@ -28,11 +28,11 @@
                                     <input type="radio" id="radio-asc" name="createdAt"
                                         value="{{ config('variables.asc') }}"
                                         {{ request('createdAt') == config('variables.asc') || null ? 'checked' : '' }}>
-                                    <label class="p-0" for="radio-asc">Lastest</label>
+                                    <label class="p-0" for="radio-asc">Oldest</label>
                                     <input type="radio" id="radio-desc" name="createdAt"
                                         value="{{ config('variables.desc') }}"
-                                        {{ request('createdAt') == config('variables.desc') ? 'checked' : '' }}>
-                                    <label class='p-0' for="radio-desc">Oldest</label>
+                                        {{ request('createdAt') == config('variables.desc') ? 'checked' : '' }} checked>
+                                    <label class='p-0' for="radio-desc">Latest</label>
                                 </div>
 
                                 <div class="form-group">
@@ -50,10 +50,10 @@
                                     <select class="form-control" id="learner" name="learners">
                                         <option value="">Number of participants</option>
                                         <option value={{ config('variables.asc') }}
-                                            {{ request('learners') == config('variables.asc') ? 'selected' : "" }}>
+                                            {{ request('learners') == config('variables.asc') ? 'selected' : '' }}>
                                             Ascending</option>
                                         <option value={{ config('variables.desc') }}
-                                            {{ request('learners') == config('variables.asc') ? 'selected' : "" }}>
+                                            {{ request('learners') == config('variables.asc') ? 'selected' : '' }}>
                                             Descending</option>
                                     </select>
                                 </div>
@@ -62,10 +62,10 @@
                                     <select class="form-control" id="select-learn-time" name="duration">
                                         <option value="">Duration</option>
                                         <option value={{ config('variables.asc') }}
-                                            {{ request('duration') == config('variables.asc') ? 'selected' : "" }}>
+                                            {{ request('duration') == config('variables.asc') ? 'selected' : '' }}>
                                             Ascending</option>
                                         <option value={{ config('variables.desc') }}
-                                            {{ request('duration') == config('variables.asc') ? 'selected' : "" }}>
+                                            {{ request('duration') == config('variables.asc') ? 'selected' : '' }}>
                                             Descending</option>
                                     </select>
                                 </div>
@@ -74,10 +74,10 @@
                                     <select class="form-control" id="lessons" name="lessons">
                                         <option value="">Number of lessons</option>
                                         <option value={{ config('variables.asc') }}
-                                            {{ request('lessons') == config('variables.asc') ? 'selected' : "" }}>
+                                            {{ request('lessons') == config('variables.asc') ? 'selected' : '' }}>
                                             Ascending</option>
                                         <option value={{ config('variables.desc') }}
-                                            {{ request('lessons') == config('variables.asc') ? 'selected' : "" }}>
+                                            {{ request('lessons') == config('variables.asc') ? 'selected' : '' }}>
                                             Descending</option>
                                     </select>
                                 </div>
@@ -96,10 +96,10 @@
                                     <select class="form-control" id="select-review" name="ratings">
                                         <option value="">Ratings</option>
                                         <option value={{ config('variables.asc') }}
-                                            {{ request('ratings') == config('variables.asc') ? 'selected' : "" }}>
+                                            {{ request('ratings') == config('variables.asc') ? 'selected' : '' }}>
                                             Ascending</option>
                                         <option value={{ config('variables.desc') }}
-                                            {{ request('ratings') == config('variables.asc') ? 'selected' : "" }}>
+                                            {{ request('ratings') == config('variables.asc') ? 'selected' : '' }}>
                                             Descending</option>
                                     </select>
                                 </div>
