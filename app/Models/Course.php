@@ -138,4 +138,9 @@ class Course extends Model
             ->lessons($request->lessons)
             ->ratings($request->ratings);
     }
+
+    public function scopeSuggestion($query, $request = null)
+    {
+        return $query->ratings('desc')->limit(5);
+    }
 }

@@ -34,10 +34,12 @@ class CourseController extends Controller
 
     public function detail(Course $course)
     {
-        return view('courses.detail')->with('course', $course);
+        $otherCourse = Course::suggestion()->get();
+        return view('courses.detail', compact(['course', 'otherCourses']));
     }
 
-    public function join(Course $course) { 
+    public function join(Course $course)
+    {
         $user = User::find(Auth::user()->id);
         $user->courses()->attach($course->id);
     }
