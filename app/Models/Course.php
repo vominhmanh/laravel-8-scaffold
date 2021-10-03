@@ -139,4 +139,9 @@ class Course extends Model
             ->ratings(request('ratings'))
             ->createdat(request('created_at'));
     }
+
+    public function scopeSuggestion($query, $request = null)
+    {
+        return $query->ratings('desc')->limit(5);
+    }
 }
