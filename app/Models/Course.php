@@ -81,7 +81,7 @@ class Course extends Model
     {
         if (isset($tag)) {
             $query->whereHas('tags', function ($q) use ($tag) {
-                $q->where('id', $tag);
+                $q->where('tags.id', $tag);
             });
         }
         return $query;
@@ -129,13 +129,13 @@ class Course extends Model
 
     public function scopeFilter($query, $request)
     {
-        return $query->keyword($request['keyword'])
-            ->teacher($request['teacher'])
-            ->tag($request['tag'])
-            ->createdat($request['created_at'] ?? 'desc')
-            ->learners($request['learners'])
-            ->duration($request['duration'])
-            ->lessons($request['lessons'])
-            ->ratings($request['ratings']);
+        return $query->keyword(request('keyword'))
+            ->teacher(request('teacher'))
+            ->tag(request('tag'))
+            ->learners(request('learners'))
+            ->duration(request('duration'))
+            ->lessons(request('lessons'))
+            ->ratings(request('ratings'))
+            ->createdat(request('created_at'));
     }
 }
