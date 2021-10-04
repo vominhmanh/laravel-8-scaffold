@@ -94,33 +94,33 @@ class Course extends Model
         }
         return $query;
     }
-
     public function scopeLearners($query, $learners)
     {
+        $query->withCount('users');
         if (isset($learners)) {
             $query->orderBy('users_count', $learners);
         }
         return $query;
     }
-
     public function scopeDuration($query, $duration)
     {
+        $query->withSum('lessons', 'duration');
         if (isset($duration)) {
             $query->orderBy('lessons_sum_duration', $duration);
         }
         return $query;
     }
-
     public function scopeLessons($query, $lessons)
     {
+        $query->withCount('lessons');
         if (isset($lessons)) {
             $query->orderBy('lessons_count', $lessons);
         }
         return $query;
     }
-
     public function scopeRatings($query, $ratings)
     {
+        $query->withAvg('reviews', 'rating_point');
         if (isset($ratings)) {
             $query->orderBy('reviews_avg_rating_point', $ratings);
         }
@@ -132,7 +132,7 @@ class Course extends Model
         return $query->keyword($request['keyword'])
             ->teacher($request['teacher'])
             ->tag($request['tag'])
-            ->createdat($request['createdAt'] ?? 'desc')
+            ->createdat($request['created_at'] ?? 'desc')
             ->learners($request['learners'])
             ->duration($request['duration'])
             ->lessons($request['lessons'])
