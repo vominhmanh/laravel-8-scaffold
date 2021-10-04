@@ -176,6 +176,22 @@
   }
 }
 
+@media only screen and (max-width: 991.98px) {
+  .lessons-toolbar {
+    justify-content: center;
+
+    .search-form {
+      order: 2;
+    }
+
+    .join-input {
+      order: 1;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+
 .course-info {
   background: white;
   border: 1px solid $simplewhite;
