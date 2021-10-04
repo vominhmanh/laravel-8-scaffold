@@ -44,6 +44,11 @@ class Course extends Model
         return $this->hasMany(Lesson::class);
     }
 
+    public function getPriceAttribute($price)
+    {
+        return number_format($price);
+    }
+
     public function getLessonsCountAttribute()
     {
         return $this->lessons()->count();
