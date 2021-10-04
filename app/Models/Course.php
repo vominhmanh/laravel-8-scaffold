@@ -36,12 +36,17 @@ class Course extends Model
 
     public function tags()
     {
-        return $this->hasMany(Tag::class);
+        return $this->belongsToMany(Tag::class);
     }
 
     public function lessons()
     {
         return $this->hasMany(Lesson::class);
+    }
+
+    public function getPriceAttribute($price)
+    {
+        return number_format($price);
     }
 
     public function getLessonsCountAttribute()
@@ -81,7 +86,7 @@ class Course extends Model
     {
         if (isset($tag)) {
             $query->whereHas('tags', function ($q) use ($tag) {
-                $q->where('id', $tag);
+                $q->where('tags.id', $tag);
             });
         }
         return $query;
@@ -129,14 +134,14 @@ class Course extends Model
 
     public function scopeFilter($query, $request)
     {
-        return $query->keyword($request['keyword'])
-            ->teacher($request['teacher'])
-            ->tag($request['tag'])
-            ->learners($request['learners'])
-            ->duration($request['duration'])
-            ->lessons($request['lessons'])
-            ->ratings($request['ratings'])
-            ->createdat($request['created_at'] ?? 'desc');
+        return $query->keyword(request('keyword'))
+            ->teacher(request('teacher'))
+            ->tag(request('tag'))
+            ->learners(request('learners'))
+            ->duration(request('duration'))
+            ->lessons(request('lessons'))
+            ->ratings(request('ratings'))
+            ->createdat(request('created_at'));
     }
 
     public function scopeSuggestion($query, $request = null)

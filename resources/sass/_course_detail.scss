@@ -207,15 +207,22 @@
     width: 35px;
   }
 
-  .sub-title {
+  .subtitle {
     font-size: 20px;
     line-height: 31px;
     color: $dark;
     overflow: hidden;
   }
 
-  .sub-title-value {
+  .subtitle-value {
     -webkit-text-stroke-width: 0.5px;
+  }
+
+  .subtitle-tag {
+    background: $light-gray;
+    border-radius: 2px;
+    padding: 2px 5px;
+    text-decoration: none;
   }
 }
 

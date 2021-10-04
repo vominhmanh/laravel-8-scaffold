@@ -136,38 +136,38 @@
                     <div class="course-info mt-3">
                         <div class="course-info-item">
                             <img src="{{ asset('images/course.png') }}" alt="learners">
-                            <span class="sub-title">Course: <span class="sub-title-value">
+                            <span class="subtitle">Course: <span class="subtitle-value">
                                     {{ $course->name }}</span></span>
                         </div>
                         <div class="course-info-item">
                             <img src="{{ asset('images/learners.png') }}" alt="learners">
-                            <span class="sub-title">Learners: <span class="sub-title-value">
+                            <span class="subtitle">Learners: <span class="subtitle-value">
                                     {{ $course->users_count }}</span></span>
                         </div>
                         <div class="course-info-item">
                             <img src="{{ asset('images/lessons.png') }}" alt="lessons">
-                            <span class="sub-title">Lessons: <span class="sub-title-value">
+                            <span class="subtitle">Lessons: <span class="subtitle-value">
                                     {{ $course->lessons_count }} lessons</span></span>
                         </div>
                         <div class="course-info-item">
                             <img src="{{ asset('images/time.png') }}" alt="times">
-                            <span class="sub-title">Times: <span class="sub-title-value">
+                            <span class="subtitle">Times: <span class="subtitle-value">
                                     {{ floor($course->lessons_sum_duration / 60) }}
                                     hours {{ $course->lessons_sum_duration % 60 }} minutes</span></span>
                         </div>
                         <div class="course-info-item">
                             <img src="{{ asset('images/tags.png') }}" alt="tags">
-                            <span class="sub-title">Tags:
+                            <span class="subtitle">Tags:
                                 @foreach ($course->tags as $tag)
-                                    <a href="#" class="sub-title-value"> #{{ $tag->name }}</a>
+                                    <a href="{{ route('course.filter', ['tag' => $tag]) }}" class="subtitle-value subtitle-tag"> #{{ $tag->name }}</a>
                                 @endforeach
                             </span>
 
                         </div>
                         <div class="course-info-item">
                             <img src="{{ asset('images/price.png') }}" alt="price">
-                            <span class="sub-title">Price:
-                                <span class="sub-title-value">{{ $course->price ?? Free}} đ</span>
+                            <span class="subtitle">Price:
+                                <span class="subtitle-value">{{ $course->price ?? Free}} đ</span>
                             </span>
                         </div>
                     </div>
