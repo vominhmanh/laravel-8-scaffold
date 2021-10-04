@@ -11,7 +11,7 @@
         <div class="container">
             <div class="row p-0">
                 <div class="col-md-8">
-                    <div class="logo-course">
+                    <div class="logo-course text-center">
                         <img src="{{ $course->logo }}" alt="logo-course" class="logo-course-img">
                     </div>
                     <div class="info mt-3">
@@ -34,7 +34,7 @@
                             <div class="tab-pane fade show active" id="lessons" role="tabpanel"
                                 aria-labelledby="lessons-tab">
                                 <div class="lessons-toolbar mb-4">
-                                    <div class="d-flex justify-content-between">
+                                    <div class="d-flex justify-content-between flex-wrap">
                                         <form method="get" action="" class="search-form">
                                             <div class="d-flex">
                                                 <input type="text" name="keyword" id="search-form-input"
@@ -44,13 +44,13 @@
                                             </div>
                                         </form>
                                         @if ($course->users->contains(Auth::user()->id ?? false))
-                                            <span class=" gray-btn small-inset-shadow detail-link-input" id="joined-course">
+                                            <span class=" gray-btn small-inset-shadow detail-link-input order-1" id="joined-course">
                                                 Joined</span>
                                         @else
-                                            <form method="post" action="{{ route('course.join', [$course->id]) }}">
+                                            <form class="" method="post" action="{{ route('course.join', [$course->id]) }}">
                                                 @csrf
                                                 <input type="submit"
-                                                    class="green-btn hover-green-btn small-inset-shadow detail-link-input"
+                                                    class="green-btn hover-green-btn small-inset-shadow detail-link-input join-input"
                                                     id="join-course" value="Join this course">
                                             </form>
                                         @endif
