@@ -45,6 +45,4 @@ class CourseController extends Controller
         $course->users()->attach([Auth::user()->id ?? false]);
         return back();
     }
-
-    
 }
