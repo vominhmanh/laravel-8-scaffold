@@ -7,7 +7,6 @@ use Illuminate\Auth\Middleware\Authenticate as Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
-
 class Authenticate extends Middleware
 {
     /**

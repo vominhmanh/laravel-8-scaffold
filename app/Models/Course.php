@@ -132,16 +132,15 @@ class Course extends Model
         return $query->keyword($request['keyword'])
             ->teacher($request['teacher'])
             ->tag($request['tag'])
-            ->createdat($request['created_at'] ?? 'desc')
             ->learners($request['learners'])
             ->duration($request['duration'])
             ->lessons($request['lessons'])
-            ->ratings($request['ratings']);
+            ->ratings($request['ratings'])
+            ->createdat($request['created_at'] ?? 'desc');
     }
 
     public function scopeSuggestion($query, $request = null)
     {
-        //return $query->ratings('desc')->limit(5);
-        return $query->limit(5);
+        return $query->ratings('desc')->limit(5);
     }
 }

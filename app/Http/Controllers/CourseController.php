@@ -36,7 +36,8 @@ class CourseController extends Controller
     public function detail(Course $course)
     {
         $otherCourses = Course::suggestion()->get();
-        return view('courses.detail', compact(['course', 'otherCourses']));
+        $lessons = $course->lessons()->paginate(20);
+        return view('courses.detail', compact(['course', 'lessons', 'otherCourses']));
     }
 
     public function join(Course $course)
@@ -44,4 +45,6 @@ class CourseController extends Controller
         $course->users()->attach([Auth::user()->id ?? false]);
         return back();
     }
+
+    
 }
