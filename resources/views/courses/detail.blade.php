@@ -118,7 +118,7 @@
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <div class="teacher-info">{{ $course->teacher->description }}</div>
+                                            <div class="teacher-info">{{ $course->teacher->introduction }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -159,7 +159,8 @@
                             <img src="{{ asset('images/tags.png') }}" alt="tags">
                             <span class="subtitle">Tags:
                                 @foreach ($course->tags as $tag)
-                                    <a href="{{ route('course.filter', ['tag' => $tag]) }}" class="subtitle-value subtitle-tag"> #{{ $tag->name }}</a>
+                                    <a href="{{ route('course.filter', ['tag' => $tag]) }}"
+                                        class="subtitle-value subtitle-tag"> #{{ $tag->name }}</a>
                                 @endforeach
                             </span>
 
@@ -167,7 +168,7 @@
                         <div class="course-info-item">
                             <img src="{{ asset('images/price.png') }}" alt="price">
                             <span class="subtitle">Price:
-                                <span class="subtitle-value">{{ $course->price ?? Free}} đ</span>
+                                <span class="subtitle-value">{{ $course->price ?? Free }} đ</span>
                             </span>
                         </div>
                     </div>
