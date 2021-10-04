@@ -25,7 +25,7 @@
                             <div class="col-lg-1 text-center text-nowrap">Filter by</div>
                             <div class="col-lg-11 form-inline align-items-baseline filter-ingredients">
                                 <div class="latest-oldest-radio" id="latest-oldest-radio">
-                                    <input type="radio" id="radio-asc" name="createdAt"
+                                    <input type="radio" id="radio-asc" name="created_at"
                                         value="{{ config('variables.asc') }}"
                                         {{ request('createdAt') == config('variables.asc') || null ? 'checked' : '' }}>
                                     <label class="p-0" for="radio-asc">Oldest</label>
