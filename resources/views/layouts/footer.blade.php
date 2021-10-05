@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="logo-col col-md-5 col-7 d-flex flex-column">
                     <span class="hapolearn-logo d-flex align-items-center">
-                        <img src="./images/hapo_learn_white.png" alt="hapo_learn">
+                        <img src="{{ asset('images/hapo_learn_white.png') }}" alt="hapo_learn">
                     </span>
                     <span class="hapolearn-slogan">Interactive lessons, "on-the-go"
                         practice, peer support.</span>
@@ -26,15 +26,15 @@
                 </div>
                 <div class="contact-col col-md-3 col-5 d-flex justify-content-between">
                     <a href="https://facebook.com/tuyen.dung.haposoft" class="icon fb-icon">
-                        <span><img src="./images/fb_logo.png" alt="FB"></span>
+                        <span><img src="{{ asset('images/fb_logo.png') }}" alt="FB"></span>
                         <span>fb.com/hapolearn</span>
                     </a>
                     <a href="tel:(+84)24.3123.3456" class="icon phone-icon">
-                        <span><img src="./images/phone_logo.png" alt="C"></span>
+                        <span><img src="{{ asset('images/phone_logo.png') }}" alt="C"></span>
                         <span>(+84)24.3123.3456</span>
                     </a>
                     <a href="mail:info@haposoft.com" class="icon mail-icon">
-                        <span><img src="./images/mail_logo.png" alt="M"></span>
+                        <span><img src="{{ asset('images/mail_logo.png') }}" alt="M"></span>
                         <span>info@hapolearn.com</span>
                     </a>
                 </div>

@@ -37,8 +37,9 @@ $(function() {
     else
       $('.navbar-btn span').removeClass('expanding');
   });
-  
+
   setTimeout(function() {
     $("#successAlert").alert('close');
   }, 5000);
+
 });

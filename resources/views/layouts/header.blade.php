@@ -5,7 +5,7 @@
         <nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm navbar-light">
             <a class="navbar-brand" href="#">
                 <div class="img-logo">
-                    <img src="images/hapo_learn.png" alt="Hapolearn Banner">
+                    <img src="{{ asset('images/hapo_learn.png') }}" alt="Hapolearn Banner">
                 </div>
             </a>
             <button class="navbar-btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -17,10 +17,10 @@
                 aria-expanded="false" aria-label="Toggle navigation">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">HOME<span class="sr-only">(current)</span></a>
+                        <a class="nav-link @if (Route::is('home')) active @endif " href="{{ route('home') }}">HOME<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">ALL COURSES</a>
+                        <a class="nav-link @if (Route::is('course*')) active @endif" href="{{ route('course') }}">ALL COURSES</a>
                     </li>
                     <li class="nav-item d-xl-none ">
                         <a class="nav-link" href="#">LIST LESSON</a>
