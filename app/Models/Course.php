@@ -99,6 +99,7 @@ class Course extends Model
         }
         return $query;
     }
+
     public function scopeLearners($query, $learners)
     {
         if (isset($learners)) {
@@ -106,6 +107,7 @@ class Course extends Model
         }
         return $query;
     }
+
     public function scopeDuration($query, $duration)
     {
         if (isset($duration)) {
@@ -114,6 +116,7 @@ class Course extends Model
         }
         return $query;
     }
+
     public function scopeLessons($query, $lessons)
     {
         if (isset($lessons)) {
@@ -121,6 +124,7 @@ class Course extends Model
         }
         return $query;
     }
+    
     public function scopeRatings($query, $ratings)
     {
         if (isset($ratings)) {
