@@ -2,9 +2,9 @@
 
 @section('content')
     @include('utilities.breadcrumb', ['breadcrumbitems' => [
-    'Home' => route('home'),
-    'All courses' => route('course'),
-    $course->name => '#',
+        'Home' => route('home'),
+        'All courses' => route('course'),
+        $course->name => '#',
     ]])
 
     <div class="course-detail">
@@ -43,12 +43,12 @@
                                                 <input type="submit" class="search-button" value="Search">
                                             </div>
                                         </form>
-                                        @if ($course->users->contains(Auth::user()->id ?? false))
+                                        @if ($course->isJoined))
                                             <span class=" gray-btn small-inset-shadow detail-link-input order-1"
                                                 id="joined-course">
                                                 Joined</span>
                                         @else
-                                            <form class="" method=" post"
+                                            <form class="" method="post"
                                                 action="{{ route('course.join', [$course->id]) }}">
                                                 @csrf
                                                 <input type="submit"
@@ -69,12 +69,11 @@
                                                     {{ $lesson->name }}
                                                 </a>
                                             </div>
-                                            @if ($course->users->contains(Auth::user()->id ?? false))
+                                            @if ($course->isJoined)
                                                 <div class="col-lg-2">
                                                     <form method="post"
                                                         action="{{ route('course.join', [$course->id]) }}">
                                                         @csrf
-                                                        {{-- @if ($lesson->users->contains([Auth::user() ?? false])) --}}
                                                         @if (false)
                                                             <input type="submit"
                                                                 class="gray-btn small-inset-shadow lesson-btn"
@@ -135,7 +134,7 @@
                     </div>
                     <div class="course-info mt-3">
                         <div class="course-info-item">
-                            <img src="{{ asset('images/course.png') }}" alt="learners">
+                            <img src="{{ asset('images/course.png') }}" alt="course">
                             <span class="subtitle">Course: <span class="subtitle-value">
                                     {{ $course->name }}</span></span>
                         </div>
@@ -152,8 +151,7 @@
                         <div class="course-info-item">
                             <img src="{{ asset('images/time.png') }}" alt="times">
                             <span class="subtitle">Times: <span class="subtitle-value">
-                                    {{ floor($course->lessons_sum_duration / 60) }}
-                                    hours {{ $course->lessons_sum_duration % 60 }} minutes</span></span>
+                                    {{ $course->hours }} hours {{ $course->minutes }} minutes</span></span>
                         </div>
                         <div class="course-info-item">
                             <img src="{{ asset('images/tags.png') }}" alt="tags">

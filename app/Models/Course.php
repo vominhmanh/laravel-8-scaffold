@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class Course extends Model
 {
@@ -47,6 +48,18 @@ class Course extends Model
     public function getPriceAttribute($price)
     {
         return number_format($price);
+    }
+
+    public function getHoursAttribute() {
+        return floor($this->lessons_sum_duration / 60);
+    }
+
+    public function getMinutesAttribute() {
+        return $this->lessons_sum_duration % 60;
+    }
+
+    public function getIsJoinedAttribute() {
+        return $this->users->contains(Auth::user()->id ?? false);
     }
 
     public function getLessonsCountAttribute()

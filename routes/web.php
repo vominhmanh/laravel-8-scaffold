@@ -22,4 +22,7 @@ Auth::routes();
 Route::get('/courses', [CourseController::class, 'index'])->name('course');
 Route::get('/courses/filter', [CourseController::class, 'filter'])->name('course.filter');
 Route::get('/course/{course}', [CourseController::class, 'show'])->name('course.show');
-Route::post('/course/{course}', [CourseController::class, 'join'])->name('course.join')->middleware('auth');
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('/course/{course}', [CourseController::class, 'join'])->name('course.join');
+});
