@@ -33,11 +33,11 @@ class CourseController extends Controller
         return view('courses.index', compact(['courses', 'teachers', 'tags']));
     }
 
-    public function detail(Course $course)
+    public function show(Course $course)
     {
         $otherCourses = Course::suggestion()->get();
-        $lessons = $course->lessons()->paginate(20);
-        return view('courses.detail', compact(['course', 'lessons', 'otherCourses']));
+        $lessons = $course->lessons()->paginate('variables.lesson_pagination');
+        return view('courses.show', compact(['course', 'lessons', 'otherCourses']));
     }
 
     public function join(Course $course)
