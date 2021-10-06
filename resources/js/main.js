@@ -42,4 +42,8 @@ $(function() {
     $("#successAlert").alert('close');
   }, 5000);
 
+  setTimeout(function() {
+    $("#dangerAlert").alert('close');
+  }, 5000);
+
 });

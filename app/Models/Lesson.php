@@ -30,4 +30,9 @@ class Lesson extends Model
     {
         return $this->belongsTo(Course::class);
     }
+
+    public function scopeKeyWord($query)
+    {
+        return $query->where('name', 'like', '%' . request('keyword') . '%');
+    }
 }

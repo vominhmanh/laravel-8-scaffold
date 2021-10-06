@@ -4,7 +4,8 @@
     @include('utilities.breadcrumb', ['breadcrumbitems' => [
     'Home' => route('home'),
     'All courses' => route('course'),
-    $course->name => '#',
+    $lesson->course->name => route('course.detail', [$lesson->course->id]),
+    $lesson->name => '#'
     ]])
 
     <div class="course-detail">
@@ -12,17 +13,21 @@
             <div class="row p-0">
                 <div class="col-md-8">
                     <div class="logo-course text-center">
-                        <img src="{{ $course->logo }}" alt="logo-course" class="logo-course-img">
+                        <img src="{{ $lesson->course->logo }}" alt="logo-course" class="logo-course-img">
                     </div>
                     <div class="info mt-3">
                         <ul class="nav nav-tabs info-nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="lessons-tab" data-toggle="tab" href="#lessons" role="tab"
-                                    aria-controls="Lessons" aria-selected="true">Lessons</a>
+                                <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description"
+                                    role="tab" aria-controls="Lessons" aria-selected="true">Description</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="teacher-tab" data-toggle="tab" href="#teacher" role="tab"
                                     aria-controls="teacher" aria-selected="false">Teacher</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="programs-tab" data-toggle="tab" href="#programs" role="tab"
+                                    aria-controls="Programs" aria-selected="true">Programs</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab"
@@ -31,38 +36,30 @@
                         </ul>
 
                         <div class="tab-content mt-4" id="lessons-teacher-reviews-contents">
-                            <div class="tab-pane fade show active" id="lessons" role="tabpanel"
-                                aria-labelledby="lessons-tab">
+                            <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                                <div class="teacher-tab-title mb-3">
+                                    Description
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="programs" role="tabpanel"
+                                aria-labelledby="programs-tab">
                                 <div class="lessons-toolbar mb-4">
                                     <div class="d-flex justify-content-between flex-wrap">
-                                        <form method="get" action="{{ route('course.detail', [$course->id]) }}" class="search-form">
+                                        <form method="get" action="" class="search-form">
                                             <div class="d-flex">
-                                                <input type="text" name="keyword" value="{{ old('keyword') }}" id="search-form-input"
+                                                <input type="text" name="keyword" id="search-form-input"
                                                     placeholder="Search..." class="search-form-input">
                                                 <div class="search-form-img"><i class="fas fa-search"></i></div>
                                                 <input type="submit" class="search-button" value="Search">
                                             </div>
                                         </form>
-                                        @if ($course->users->contains(Auth::user()->id ?? false))
-                                            <span class=" gray-btn small-inset-shadow detail-link-input order-1"
-                                                id="joined-course">
-                                                Joined</span>
-                                        @else
-                                            <form class="" method="post"
-                                                action="{{ route('course.join', [$course->id]) }}">
-                                                @csrf
-                                                <input type="submit"
-                                                    class="green-btn hover-green-btn small-inset-shadow detail-link-input join-input"
-                                                    id="join-course" value="Join this course">
-                                            </form>
-                                        @endif
                                     </div>
                                 </div>
-                                <div class="list-of-lessons my-3">
+                                {{-- <div class="list-of-lessons my-3">
                                     @foreach ($lessons as $key => $lesson)
                                         <div class="row lesson align-items-baseline">
                                             <div class="col-lg-10">
-                                                <a href="{{ route('lesson.detail', [$lesson->id]) }}" class="lesson-title">
+                                                <a href="#" class="lesson-title">
                                                     <span>Lesson
                                                         {{ ($lessons->currentPage() - 1) * config('variables.lesson_pagination') + $key + 1 }}:
                                                     </span>
@@ -71,9 +68,11 @@
                                             </div>
                                             @if ($course->users->contains(Auth::user()->id ?? false))
                                                 <div class="col-lg-2">
-                                                    <form method="get"
-                                                        action="{{ route('lesson.detail', [$lesson->id]) }}">
-                                                        @if ($lesson->users->contains(Auth::user()->id ?? false))
+                                                    <form method="post"
+                                                        action="{{ route('course.join', [$course->id]) }}">
+                                                        @csrf
+                                                        //@if ($lesson->users->contains([Auth::user() ?? false])) 
+                                                        @if (false)
                                                             <input type="submit"
                                                                 class="gray-btn small-inset-shadow lesson-btn"
                                                                 id="join-course" value="Learned">
@@ -87,9 +86,9 @@
                                             @endif
                                         </div>
                                     @endforeach
-                                </div>
+                                </div> --}}
                                 <div class="mt-5 d-flex justify-content-end">
-                                    {{ $lessons->appends(request()->all())->links() }}
+                                    {{-- {{ $lessons->links() }} --}}
                                 </div>
                             </div>
                             <div class="
@@ -101,12 +100,12 @@
                                 <div class="teacher">
                                     <div class="row">
                                         <div class="col-2 pr-0">
-                                            <img src="{{ $course->teacher->avatar }}" class="img-teacher"
+                                            <img src="{{ $lesson->course->teacher->avatar }}" class="img-teacher"
                                                 alt="img-teacher">
                                         </div>
                                         <div class="col-9">
                                             <div class="d-flex h-100 flex-column justify-content-center">
-                                                <div class="teacher-name">{{ $course->teacher->name }}</div>
+                                                <div class="teacher-name">{{ $lesson->course->teacher->name }}</div>
                                                 <div class="teacher-experience">Second Year Teacher</div>
                                                 <div class="teacher-contact">
                                                     <a href="#" class="mr-1 icon-google"></a>
@@ -116,67 +115,58 @@
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <div class="teacher-info">{{ $course->teacher->introduction }}</div>
+                                            <div class="teacher-info">{{ $lesson->course->teacher->introduction }}</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">...
                             </div>
+
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="course-description">
-                        <div class="course-description-title">Course description</div>
-                        <div class="course-description-content">{{ $course->description }}</div>
-                    </div>
-                    <div class="course-info mt-3">
+                    <div class="course-info">
+                        <div class="course-info-item">
+                            <img src="{{ asset('images/lessons.png') }}" alt="lessons">
+                            <span class="subtitle">Lesson: <span class="subtitle-value">
+                                    {{ $lesson->name }}</span></span>
+                        </div>
                         <div class="course-info-item">
                             <img src="{{ asset('images/course.png') }}" alt="learners">
                             <span class="subtitle">Course: <span class="subtitle-value">
-                                    {{ $course->name }}</span></span>
+                                    {{ $lesson->course->name }}</span></span>
                         </div>
                         <div class="course-info-item">
                             <img src="{{ asset('images/learners.png') }}" alt="learners">
                             <span class="subtitle">Learners: <span class="subtitle-value">
-                                    {{ $course->users_count }}</span></span>
-                        </div>
-                        <div class="course-info-item">
-                            <img src="{{ asset('images/lessons.png') }}" alt="lessons">
-                            <span class="subtitle">Lessons: <span class="subtitle-value">
-                                    {{ $course->lessons_count }} lessons</span></span>
+                                    {{ $lesson->course->users_count }}</span></span>
                         </div>
                         <div class="course-info-item">
                             <img src="{{ asset('images/time.png') }}" alt="times">
-                            <span class="subtitle">Times: <span class="subtitle-value">
-                                    {{ floor($course->lessons_sum_duration / 60) }}
-                                    hours {{ $course->lessons_sum_duration % 60 }} minutes</span></span>
+                            <span class="subtitle">Duration: <span class="subtitle-value">
+                                    {{ floor($lesson->duration / 60) }}
+                                    hours {{ $lesson->duration % 60 }} minutes</span></span>
                         </div>
                         <div class="course-info-item">
                             <img src="{{ asset('images/tags.png') }}" alt="tags">
                             <span class="subtitle">Tags:
-                                @foreach ($course->tags as $tag)
+                                @foreach ($lesson->course->tags as $tag)
                                     <a href="{{ route('course.filter', ['tag' => $tag]) }}"
                                         class="subtitle-value subtitle-tag"> #{{ $tag->name }}</a>
                                 @endforeach
                             </span>
 
                         </div>
-                        <div class="course-info-item">
-                            <img src="{{ asset('images/price.png') }}" alt="price">
-                            <span class="subtitle">Price:
-                                <span class="subtitle-value">{{ $course->price ?? Free }} đ</span>
-                            </span>
-                        </div>
                     </div>
                     <div class="other-courses-suggestion my-3">
-                        <div class="other-courses-suggestion-title">Other Courses</div>
+                        <div class="other-courses-suggestion-title">Other Lessons</div>
                         <div class="list-of-lessons">
-                            @foreach ($otherCourses as $key => $otherCourse)
+                            @foreach ($lesson->course->lessons as $key => $otherLesson)
                                 <div class="lesson">
-                                    <a href="{{ route('course.detail', [$otherCourse->id]) }}" class="lesson-title">
-                                        {{ $key + 1 }}. {{ $otherCourse->name }}
+                                    <a href="#" class="lesson-title">
+                                        {{ $key + 1 }}. {{ $otherLesson->name }}
                                     </a>
                                 </div>
                             @endforeach

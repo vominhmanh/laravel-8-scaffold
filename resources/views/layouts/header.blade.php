@@ -22,13 +22,13 @@
                     <li class="nav-item">
                         <a class="nav-link @if (Route::is('course*')) active @endif" href="{{ route('course') }}">ALL COURSES</a>
                     </li>
-                    <li class="nav-item d-xl-none ">
+                    <li class="nav-item d-xl-none">
                         <a class="nav-link" href="#">LIST LESSON</a>
                     </li>
-                    <li class="nav-item d-xl-none ">
-                        <a class="nav-link" href="#">LESSON DETAILS</a>
-                    </li>
                     <li class="nav-item">
+                        <a class="nav-link @if (Route::is('lesson*')) active @endif" href="{{ route('lesson') }}">LESSON DETAILS</a>
+                    </li>
+                    <li class="nav-item d-xl-none">
                         <a class="nav-link" href="#">CONTACT</a>
                     </li>
                     @guest
@@ -45,7 +45,7 @@
                             <a class="nav-link danger-link" onclick="logoutform.submit()" href="#">LOGOUT</a>
                             <form action="{{ route('logout') }}" name="logoutform" class="hidden" method="post">
                                 @csrf
-                                <input type="submit" class="nav-link .text-danger" href="#" value='LOGOUT'>
+                                <input type="submit" class="nav-link text-danger" href="#" value='LOGOUT'>
                             </form>
                         </li>
                     @endguest
