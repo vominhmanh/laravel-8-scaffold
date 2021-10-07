@@ -72,7 +72,7 @@
                                             @if ($course->isJoined)
                                                 <div class="col-lg-2">
                                                     <form method="post"
-                                                        action="{{ route('course.join', [$course->id]) }}">
+                                                        action="{{ route('course.join', $course) }}">
                                                         @csrf
                                                         @if (false)
                                                             <input type="submit"
