@@ -35,4 +35,9 @@ class Lesson extends Model
     {
         return $query->where('name', 'like', '%' . request('keyword') . '%');
     }
+
+    public function programs()
+    {
+        return $this->hasMany(Program::class);
+    }
 }

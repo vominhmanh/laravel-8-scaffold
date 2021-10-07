@@ -42,7 +42,7 @@ class CourseController extends Controller
 
     public function join(Course $course)
     {
-        $course->users()->attach([Auth::user()->id ?? false]);
+        $course->users()->syncWithoutDetaching([Auth::user()->id ?? false]);
         return back();
     }
 }

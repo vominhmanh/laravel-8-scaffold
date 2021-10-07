@@ -62,7 +62,7 @@
                                     @foreach ($lessons as $key => $lesson)
                                         <div class="row lesson align-items-baseline">
                                             <div class="col-lg-10">
-                                                <a href="#" class="lesson-title">
+                                                <a href="{{ route('lesson.show', $lesson) }}" class="lesson-title">
                                                     <span>Lesson
                                                         {{ ($lessons->currentPage() - 1) * config('variables.lesson_pagination') + $key + 1 }}:
                                                     </span>
@@ -71,10 +71,9 @@
                                             </div>
                                             @if ($course->isJoined)
                                                 <div class="col-lg-2">
-                                                    <form method="post"
-                                                        action="{{ route('course.join', $course) }}">
-                                                        @csrf
-                                                        @if (false)
+                                                    <form method="get"
+                                                        action="{{ route('lesson.show', $lesson) }}">
+                                                        @if ($lesson->users->contains(Auth::user()->id))
                                                             <input type="submit"
                                                                 class="gray-btn small-inset-shadow lesson-btn"
                                                                 id="join-course" value="Learned">

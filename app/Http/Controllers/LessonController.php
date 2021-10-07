@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lesson;
+use App\Models\Program;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -45,10 +46,10 @@ class LessonController extends Controller
      * @param  \App\Models\Lesson  $lesson
      * @return \Illuminate\Http\Response
      */
-    public function detail(Lesson $lesson)
+    public function show(Lesson $lesson)
     {
         $lesson->users()->syncWithoutDetaching(Auth::user()->id);
-        return view('lessons.detail', compact('lesson'));
+        return view('lessons.show', compact('lesson'));
     }
 
     /**
@@ -85,7 +86,8 @@ class LessonController extends Controller
         //
     }
 
-    public function study(Lesson $lesson) {
-        
+    public function download(Lesson $lesson, Program $program)
+    {
+        return response()->download(storage_path('app/programs/' . $program->path));
     }
 }

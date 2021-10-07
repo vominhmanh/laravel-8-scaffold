@@ -21,6 +21,6 @@ class PreventStudyingIfNotJoinCourse
         if ($lesson->course->users->contains(Auth::user()->id)) {
             return $next($request);
         }
-        return redirect()->route('course.detail', [$lesson->course->id])->with('danger', 'Please join this course before studying.');
+        return redirect()->route('course.show', [$lesson->course->id])->with('danger', 'Please join this course before studying.');
     }
 }

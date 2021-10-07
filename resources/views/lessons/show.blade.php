@@ -4,7 +4,7 @@
     @include('utilities.breadcrumb', ['breadcrumbitems' => [
     'Home' => route('home'),
     'All courses' => route('course'),
-    $lesson->course->name => route('course.detail', [$lesson->course->id]),
+    $lesson->course->name => route('course.show', [$lesson->course]),
     $lesson->name => '#'
     ]])
 
@@ -31,62 +31,41 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab"
-                                    aria-controls="Reviews" aria-selected="false">Reviews</a>
+                                    aria-controls="Reviews" aria-selected="false">Comments</a>
                             </li>
                         </ul>
 
                         <div class="tab-content mt-4" id="lessons-teacher-reviews-contents">
-                            <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                            <div class="tab-pane fade show active" id="description" role="tabpanel"
+                                aria-labelledby="description-tab">
                                 <div class="teacher-tab-title mb-3">
                                     Description
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="programs" role="tabpanel"
-                                aria-labelledby="programs-tab">
-                                <div class="lessons-toolbar mb-4">
-                                    <div class="d-flex justify-content-between flex-wrap">
-                                        <form method="get" action="" class="search-form">
-                                            <div class="d-flex">
-                                                <input type="text" name="keyword" id="search-form-input"
-                                                    placeholder="Search..." class="search-form-input">
-                                                <div class="search-form-img"><i class="fas fa-search"></i></div>
-                                                <input type="submit" class="search-button" value="Search">
-                                            </div>
-                                        </form>
-                                    </div>
+                            <div class="tab-pane fade" id="programs" role="tabpanel" aria-labelledby="programs-tab">
+                                <div class="teacher-tab-title mb-3">
+                                    Programs
                                 </div>
-                                {{-- <div class="list-of-lessons my-3">
-                                    @foreach ($lessons as $key => $lesson)
+                                <div class="list-of-lessons my-3">
+                                    @foreach ($lesson->programs as $key => $program)
                                         <div class="row lesson align-items-baseline">
                                             <div class="col-lg-10">
-                                                <a href="#" class="lesson-title">
-                                                    <span>Lesson
-                                                        {{ ($lessons->currentPage() - 1) * config('variables.lesson_pagination') + $key + 1 }}:
-                                                    </span>
-                                                    {{ $lesson->name }}
+                                                <a href="{{ route('lesson.download', ['lesson' => $lesson, 'program' => $program]) }}"
+                                                    class="lesson-title">
+                                                    {{ $program->name }}
                                                 </a>
                                             </div>
-                                            @if ($course->users->contains(Auth::user()->id ?? false))
-                                                <div class="col-lg-2">
-                                                    <form method="post"
-                                                        action="{{ route('course.join', [$course->id]) }}">
-                                                        @csrf
-                                                        //@if ($lesson->users->contains([Auth::user() ?? false])) 
-                                                        @if (false)
-                                                            <input type="submit"
-                                                                class="gray-btn small-inset-shadow lesson-btn"
-                                                                id="join-course" value="Learned">
-                                                        @else
-                                                            <input type="submit"
-                                                                class="green-btn hover-green-btn small-inset-shadow lesson-btn"
-                                                                id="join-course" value="Learn">
-                                                        @endif
-                                                    </form>
-                                                </div>
-                                            @endif
+                                            <div class="col-lg-2">
+                                                <form method="get"
+                                                    action="{{ route('lesson.download', ['lesson' => $lesson, 'program' => $program]) }}">
+                                                    <input type="submit"
+                                                        class="green-btn hover-green-btn small-inset-shadow lesson-btn"
+                                                        id="join-course" value="Download">
+                                                </form>
+                                            </div>
                                         </div>
                                     @endforeach
-                                </div> --}}
+                                </div>
                                 <div class="mt-5 d-flex justify-content-end">
                                     {{-- {{ $lessons->links() }} --}}
                                 </div>

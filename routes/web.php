@@ -27,5 +27,6 @@ Route::get('/course/{course}', [CourseController::class, 'show'])->name('course.
 Route::middleware(['auth'])->group(function () {
     Route::post('/course/{course}', [CourseController::class, 'join'])->name('course.join');
     Route::get('/lessons', [LessonController::class, 'index'])->name('lesson');
-    Route::get('/lesson/{lesson}', [LessonController::class, 'detail'])->name('lesson.detail')->middleware('joined');
+    Route::get('/lesson/{lesson}', [LessonController::class, 'show'])->name('lesson.show')->middleware('joined');
+    Route::get('/lesson/{lesson}/program/{program}', [LessonController::class, 'download'])->name('lesson.download')->middleware('joined');
 });

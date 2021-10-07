@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         //Review::factory(300)->create();
         //Lesson::factory(100)->create();
         //$this->call(CoursesAndPivotTableSeeder::class);
-        $this->call(TagsTableSeeder::class);
+        //$this->call(TagsTableSeeder::class);
+        $this->call(ProgramsTableSeeder::class);
     }
 }
