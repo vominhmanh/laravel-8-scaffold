@@ -1,7 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
     "/js/popper.js": "/js/popper.js",
-    "/css/app.css": "/css/app.css",
     "/images/avatar.png": "/images/avatar.png",
     "/images/avatar_hapolearn.jpg": "/images/avatar_hapolearn.jpg",
     "/images/course.png": "/images/course.png",
@@ -28,5 +27,6 @@
     "/images/times-solid.svg": "/images/times-solid.svg",
     "/images/whyhapo_background.png": "/images/whyhapo_background.png",
     "/fonts/UTM BryantLG.ttf": "/fonts/UTM BryantLG.ttf",
-    "/fonts/UTM BryantLG_B.ttf": "/fonts/UTM BryantLG_B.ttf"
+    "/fonts/UTM BryantLG_B.ttf": "/fonts/UTM BryantLG_B.ttf",
+    "/css/app.css": "/css/app.css"
 }

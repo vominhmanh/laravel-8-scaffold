@@ -6,4 +6,5 @@ return [
     'student' => 0,
     'asc' => 'asc',
     'desc' => 'desc',
+    'limit_suggestion' => 5,
 ];
