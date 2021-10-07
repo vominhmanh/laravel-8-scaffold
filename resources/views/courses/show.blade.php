@@ -49,7 +49,7 @@
                                                 Joined</span>
                                         @else
                                             <form class="" method="post"
-                                                action="{{ route('course.join', [$course->id]) }}">
+                                                action="{{ route('course.join', [$course]) }}">
                                                 @csrf
                                                 <input type="submit"
                                                     class="green-btn hover-green-btn small-inset-shadow detail-link-input join-input"
