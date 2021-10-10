@@ -2,9 +2,9 @@
 
 @section('content')
     @include('utilities.breadcrumb', ['breadcrumbitems' => [
-        'Home' => route('home'),
-        'All courses' => route('course'),
-        $course->name => '#',
+    'Home' => route('home'),
+    'All courses' => route('course'),
+    $course->name => '#',
     ]])
 
     <div class="course-detail">
@@ -48,7 +48,7 @@
                                                 id="joined-course">
                                                 Joined</span>
                                         @else
-                                            <form class="" method="post"
+                                            <form class="" method=" post"
                                                 action="{{ route('course.join', [$course]) }}">
                                                 @csrf
                                                 <input type="submit"
@@ -71,8 +71,7 @@
                                             </div>
                                             @if ($course->isJoined)
                                                 <div class="col-lg-2">
-                                                    <form method="get"
-                                                        action="{{ route('lesson.show', $lesson) }}">
+                                                    <form method="get" action="{{ route('lesson.show', $lesson) }}">
                                                         @if ($lesson->users->contains(Auth::user()->id))
                                                             <input type="submit"
                                                                 class="gray-btn small-inset-shadow lesson-btn"
@@ -89,12 +88,10 @@
                                     @endforeach
                                 </div>
                                 <div class="mt-5 d-flex justify-content-end">
-                                    {{ $lessons->links() }}
+                                    {{ $lessons->appends(array_except(Request::query(), 'page'))->links() }}
                                 </div>
                             </div>
-                            <div class="
-                                    tab-pane fade" id="teacher" role="tabpanel"
-                                aria-labelledby="teacher-tab">
+                            <div class="tab-pane fade" id="teacher" role="tabpanel" aria-labelledby="teacher-tab">
                                 <div class="teacher-tab-title mb-3">
                                     Main Teachers
                                 </div>
@@ -121,8 +118,37 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">...
+                            <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                                <div class="teacher-tab-title my-3">
+                                    {{ $course->reviews->count() }} Reviews
+                                </div>
+
+                                @include('reviews.summary')
+                                <div class="review-posts">
+                                    @foreach ($reviews->where('user_id', '<>', Auth::user()->id ?? false) as $review)
+                                        @include('reviews.post', ['review' => $review])
+                                    @endforeach
+
+                                    <div class="mt-5 d-flex justify-content-end">
+                                        {{ $reviews->appends(array_except(Request::query(), 'review_page'))->links() }}
+                                    </div>
+                                </div>
+
+
+                                @if ($course->reviews->contains('user_id', Auth::user()->id ?? false))
+                                    <div class="teacher-tab-title my-3">
+                                        My review
+                                    </div>
+                                    @include('reviews.post', ['review' => $course->reviews->where('user_id',
+                                    Auth::user()->id)->first() ])
+                                @else
+                                    <div class="teacher-tab-title my-3">
+                                        Leave a review
+                                    </div>
+                                    @include('reviews.leave_a_comment')
+                                @endif
                             </div>
+
                         </div>
                     </div>
                 </div>

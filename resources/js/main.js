@@ -45,5 +45,4 @@ $(function() {
   setTimeout(function() {
     $("#dangerAlert").alert('close');
   }, 5000);
-
 });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Review;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -37,12 +38,25 @@ class CourseController extends Controller
     {
         $otherCourses = Course::suggestion()->get();
         $lessons = $course->lessons()->paginate(config('variables.lesson_pagination'));
-        return view('courses.show', compact(['course', 'lessons', 'otherCourses']));
+        $reviews = $course->reviews()->paginate(config('variables.review_pagination'));
+        $reviews->setPageName('review_page');
+        return view('courses.show', compact(['course', 'lessons', 'reviews', 'otherCourses']));
     }
 
     public function join(Course $course)
     {
         $course->users()->syncWithoutDetaching([Auth::user()->id ?? false]);
+        return back();
+    }
+
+    public function review(Course $course, Request $request)
+    {
+        $review = new Review();
+        $review->rating_point = $request->rating_point;
+        $review->comment = $request->comment;
+        $review->course_id = $request->course->id;
+        $review->user_id = Auth::user()->id;
+        $review->save();
         return back();
     }
 }
