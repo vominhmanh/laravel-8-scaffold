@@ -52,12 +52,12 @@ class Course extends Model
 
     public function getHoursAttribute()
     {
-        return floor($this->lessons_sum_duration / 60);
+        return floor($this->getLessonsSumDurationAttribute() / 60);
     }
 
     public function getMinutesAttribute()
     {
-        return $this->lessons_sum_duration % 60;
+        return $this->getLessonsSumDurationAttribute() % 60;
     }
 
     public function getIsJoinedAttribute()
