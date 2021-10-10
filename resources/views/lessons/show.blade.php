@@ -70,9 +70,7 @@
                                     {{-- {{ $lessons->links() }} --}}
                                 </div>
                             </div>
-                            <div class="
-                                    tab-pane fade" id="teacher" role="tabpanel"
-                                aria-labelledby="teacher-tab">
+                            <div class="tab-pane fade" id="teacher" role="tabpanel" aria-labelledby="teacher-tab">
                                 <div class="teacher-tab-title mb-3">
                                     Main Teachers
                                 </div>
@@ -99,67 +97,87 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">...
+                            <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                                <div class="teacher-tab-title my-3">
+                                    {{ $lesson->comments->count() }} Comments
+                                </div>
+
+                                <div class="review-posts">
+                                    @foreach ($comments as $comment)
+                                        @include('reviews.post', ['review' => $comment])
+                                    @endforeach
+
+                                    <div class="mt-5 d-flex justify-content-end">
+                                        {{ $comments->appends(request()->all())->links() }}
+                                    </div>
+                                </div>
+
+                                <div class="teacher-tab-title my-3">
+                                    Leave a comment
+                                </div>
+                                <form method="post" action="{{ route('lesson.comment', [$lesson]) }}">
+                                    @csrf
+                                    @include('reviews.leave_a_comment')
+                                </form>
                             </div>
 
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="course-info">
-                        <div class="course-info-item">
-                            <img src="{{ asset('images/lessons.png') }}" alt="lessons">
-                            <span class="subtitle">Lesson: <span class="subtitle-value">
-                                    {{ $lesson->name }}</span></span>
+                    <div class="col-md-4">
+                        <div class="course-info">
+                            <div class="course-info-item">
+                                <img src="{{ asset('images/lessons.png') }}" alt="lessons">
+                                <span class="subtitle">Lesson: <span class="subtitle-value">
+                                        {{ $lesson->name }}</span></span>
+                            </div>
+                            <div class="course-info-item">
+                                <img src="{{ asset('images/course.png') }}" alt="learners">
+                                <span class="subtitle">Course: <span class="subtitle-value">
+                                        {{ $lesson->course->name }}</span></span>
+                            </div>
+                            <div class="course-info-item">
+                                <img src="{{ asset('images/learners.png') }}" alt="learners">
+                                <span class="subtitle">Learners: <span class="subtitle-value">
+                                        {{ $lesson->course->users_count }}</span></span>
+                            </div>
+                            <div class="course-info-item">
+                                <img src="{{ asset('images/time.png') }}" alt="times">
+                                <span class="subtitle">Duration: <span class="subtitle-value">
+                                        {{ floor($lesson->duration / 60) }}
+                                        hours {{ $lesson->duration % 60 }} minutes</span></span>
+                            </div>
+                            <div class="course-info-item">
+                                <img src="{{ asset('images/tags.png') }}" alt="tags">
+                                <span class="subtitle">Tags:
+                                    @foreach ($lesson->course->tags as $tag)
+                                        <a href="{{ route('course.filter', ['tag' => $tag]) }}"
+                                            class="subtitle-value subtitle-tag"> #{{ $tag->name }}</a>
+                                    @endforeach
+                                </span>
+
+                            </div>
                         </div>
-                        <div class="course-info-item">
-                            <img src="{{ asset('images/course.png') }}" alt="learners">
-                            <span class="subtitle">Course: <span class="subtitle-value">
-                                    {{ $lesson->course->name }}</span></span>
-                        </div>
-                        <div class="course-info-item">
-                            <img src="{{ asset('images/learners.png') }}" alt="learners">
-                            <span class="subtitle">Learners: <span class="subtitle-value">
-                                    {{ $lesson->course->users_count }}</span></span>
-                        </div>
-                        <div class="course-info-item">
-                            <img src="{{ asset('images/time.png') }}" alt="times">
-                            <span class="subtitle">Duration: <span class="subtitle-value">
-                                    {{ floor($lesson->duration / 60) }}
-                                    hours {{ $lesson->duration % 60 }} minutes</span></span>
-                        </div>
-                        <div class="course-info-item">
-                            <img src="{{ asset('images/tags.png') }}" alt="tags">
-                            <span class="subtitle">Tags:
-                                @foreach ($lesson->course->tags as $tag)
-                                    <a href="{{ route('course.filter', ['tag' => $tag]) }}"
-                                        class="subtitle-value subtitle-tag"> #{{ $tag->name }}</a>
+                        <div class="other-courses-suggestion my-3">
+                            <div class="other-courses-suggestion-title">Other Lessons</div>
+                            <div class="list-of-lessons">
+                                @foreach ($lesson->course->lessons as $key => $otherLesson)
+                                    <div class="lesson">
+                                        <a href="#" class="lesson-title">
+                                            {{ $key + 1 }}. {{ $otherLesson->name }}
+                                        </a>
+                                    </div>
                                 @endforeach
-                            </span>
+                            </div>
 
-                        </div>
-                    </div>
-                    <div class="other-courses-suggestion my-3">
-                        <div class="other-courses-suggestion-title">Other Lessons</div>
-                        <div class="list-of-lessons">
-                            @foreach ($lesson->course->lessons as $key => $otherLesson)
-                                <div class="lesson">
-                                    <a href="#" class="lesson-title">
-                                        {{ $key + 1 }}. {{ $otherLesson->name }}
-                                    </a>
-                                </div>
-                            @endforeach
-                        </div>
-
-                        <div class="text-center">
-                            <a href="{{ route('course') }}"
-                                class="green-btn hover-green-btn small-inset-shadow detail-link-a">View other
-                                courses</a>
+                            <div class="text-center">
+                                <a href="{{ route('course') }}"
+                                    class="green-btn hover-green-btn small-inset-shadow detail-link-a">View other
+                                    courses</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 @endsection

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Lesson;
 use App\Models\Program;
 use Illuminate\Http\Request;
@@ -49,7 +50,9 @@ class LessonController extends Controller
     public function show(Lesson $lesson)
     {
         $lesson->users()->syncWithoutDetaching(Auth::user()->id);
-        return view('lessons.show', compact('lesson'));
+        $comments = $lesson->comments()->paginate(config('variables.review_pagination'));
+        $comments->setPageName('comment_page');
+        return view('lessons.show', compact('lesson', 'comments'));
     }
 
     /**
@@ -89,5 +92,15 @@ class LessonController extends Controller
     public function download(Lesson $lesson, Program $program)
     {
         return response()->download(storage_path('app/programs/' . $program->path));
+    }
+
+    public function comment(Lesson $lesson, Request $request)
+    {
+        $comment = new Comment();
+        $comment->comment = $request->comment;
+        $comment->lesson_id = $request->lesson->id;
+        $comment->user_id = Auth::user()->id;
+        $comment->save();
+        return back();
     }
 }

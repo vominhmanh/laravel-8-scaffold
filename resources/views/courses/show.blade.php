@@ -48,8 +48,7 @@
                                                 id="joined-course">
                                                 Joined</span>
                                         @else
-                                            <form class="" method=" post"
-                                                action="{{ route('course.join', [$course]) }}">
+                                            <form class="" method="post" action="{{ route('course.join', [$course]) }}">
                                                 @csrf
                                                 <input type="submit"
                                                     class="green-btn hover-green-btn small-inset-shadow detail-link-input join-input"
@@ -88,7 +87,7 @@
                                     @endforeach
                                 </div>
                                 <div class="mt-5 d-flex justify-content-end">
-                                    {{ $lessons->appends(array_except(Request::query(), 'page'))->links() }}
+                                    {{ $lessons->appends(request()->all())->links() }}
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="teacher" role="tabpanel" aria-labelledby="teacher-tab">
@@ -130,7 +129,7 @@
                                     @endforeach
 
                                     <div class="mt-5 d-flex justify-content-end">
-                                        {{ $reviews->appends(array_except(Request::query(), 'review_page'))->links() }}
+                                        {{ $reviews->appends(request()->all())->links() }}
                                     </div>
                                 </div>
 
@@ -145,7 +144,10 @@
                                     <div class="teacher-tab-title my-3">
                                         Leave a review
                                     </div>
-                                    @include('reviews.leave_a_comment')
+                                    <form method="post" action="{{ route('course.review', [$course]) }}">
+                                        @csrf
+                                        @include('reviews.leave_a_comment')
+                                    </form>
                                 @endif
                             </div>
 

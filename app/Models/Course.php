@@ -85,6 +85,11 @@ class Course extends Model
         return $this->reviews()->avg('rating_point');
     }
 
+    public function getReviewsCountAttribute() {
+        return $this->reviews()->count() ?: 1;
+    }
+    
+
     public function scopeKeyWord($query, $keyword)
     {
         return $query->where('name', 'like', '%' . $keyword . '%')->orWhere('description', 'like', '%' . $keyword . '%');

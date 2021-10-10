@@ -29,5 +29,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/course/{course}/review', [CourseController::class, 'review'])->name('course.review');
     Route::get('/lessons', [LessonController::class, 'index'])->name('lesson');
     Route::get('/lesson/{lesson}', [LessonController::class, 'show'])->name('lesson.show')->middleware('joined');
+    Route::post('/lesson/{lesson}/comment', [LessonController::class, 'comment'])->name('lesson.comment')->middleware('joined');
     Route::get('/lesson/{lesson}/program/{program}', [LessonController::class, 'download'])->name('lesson.download')->middleware('joined');
 });
