@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Models\Lesson;
 use App\Models\Program;
+use App\Models\Reply;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -101,6 +102,16 @@ class LessonController extends Controller
         $comment->lesson_id = $request->lesson->id;
         $comment->user_id = Auth::user()->id;
         $comment->save();
+        return back();
+    }
+
+    public function reply(Lesson $lesson, Comment $comment, Request $request)
+    {
+        $reply = new Reply();
+        $reply->comment = $request->comment;
+        $reply->comment_id = $comment->id;
+        $reply->user_id = Auth::user()->id;
+        $reply->save();
         return back();
     }
 }

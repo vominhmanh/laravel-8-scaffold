@@ -56,8 +56,7 @@
                                                 </a>
                                             </div>
                                             <div class="col-lg-2">
-                                                <form method="get"
-                                                    action="{{ route('lesson.download', ['lesson' => $lesson, 'program' => $program]) }}">
+                                                <form method="get" action="{{ route('lesson.download', ['lesson' => $lesson, 'program' => $program]) }}">
                                                     <input type="submit"
                                                         class="green-btn hover-green-btn small-inset-shadow lesson-btn"
                                                         id="join-course" value="Download">
@@ -123,57 +122,57 @@
 
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="course-info">
-                            <div class="course-info-item">
-                                <img src="{{ asset('images/lessons.png') }}" alt="lessons">
-                                <span class="subtitle">Lesson: <span class="subtitle-value">
-                                        {{ $lesson->name }}</span></span>
-                            </div>
-                            <div class="course-info-item">
-                                <img src="{{ asset('images/course.png') }}" alt="learners">
-                                <span class="subtitle">Course: <span class="subtitle-value">
-                                        {{ $lesson->course->name }}</span></span>
-                            </div>
-                            <div class="course-info-item">
-                                <img src="{{ asset('images/learners.png') }}" alt="learners">
-                                <span class="subtitle">Learners: <span class="subtitle-value">
-                                        {{ $lesson->course->users_count }}</span></span>
-                            </div>
-                            <div class="course-info-item">
-                                <img src="{{ asset('images/time.png') }}" alt="times">
-                                <span class="subtitle">Duration: <span class="subtitle-value">
-                                        {{ floor($lesson->duration / 60) }}
-                                        hours {{ $lesson->duration % 60 }} minutes</span></span>
-                            </div>
-                            <div class="course-info-item">
-                                <img src="{{ asset('images/tags.png') }}" alt="tags">
-                                <span class="subtitle">Tags:
-                                    @foreach ($lesson->course->tags as $tag)
-                                        <a href="{{ route('course.filter', ['tag' => $tag]) }}"
-                                            class="subtitle-value subtitle-tag"> #{{ $tag->name }}</a>
-                                    @endforeach
-                                </span>
-
-                            </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="course-info">
+                        <div class="course-info-item">
+                            <img src="{{ asset('images/lessons.png') }}" alt="lessons">
+                            <span class="subtitle">Lesson: <span class="subtitle-value">
+                                    {{ $lesson->name }}</span></span>
                         </div>
-                        <div class="other-courses-suggestion my-3">
-                            <div class="other-courses-suggestion-title">Other Lessons</div>
-                            <div class="list-of-lessons">
-                                @foreach ($lesson->course->lessons as $key => $otherLesson)
-                                    <div class="lesson">
-                                        <a href="#" class="lesson-title">
-                                            {{ $key + 1 }}. {{ $otherLesson->name }}
-                                        </a>
-                                    </div>
+                        <div class="course-info-item">
+                            <img src="{{ asset('images/course.png') }}" alt="learners">
+                            <span class="subtitle">Course: <span class="subtitle-value">
+                                    {{ $lesson->course->name }}</span></span>
+                        </div>
+                        <div class="course-info-item">
+                            <img src="{{ asset('images/learners.png') }}" alt="learners">
+                            <span class="subtitle">Learners: <span class="subtitle-value">
+                                    {{ $lesson->course->users_count }}</span></span>
+                        </div>
+                        <div class="course-info-item">
+                            <img src="{{ asset('images/time.png') }}" alt="times">
+                            <span class="subtitle">Duration: <span class="subtitle-value">
+                                    {{ floor($lesson->duration / 60) }}
+                                    hours {{ $lesson->duration % 60 }} minutes</span></span>
+                        </div>
+                        <div class="course-info-item">
+                            <img src="{{ asset('images/tags.png') }}" alt="tags">
+                            <span class="subtitle">Tags:
+                                @foreach ($lesson->course->tags as $tag)
+                                    <a href="{{ route('course.filter', ['tag' => $tag]) }}"
+                                        class="subtitle-value subtitle-tag"> #{{ $tag->name }}</a>
                                 @endforeach
-                            </div>
+                            </span>
 
-                            <div class="text-center">
-                                <a href="{{ route('course') }}"
-                                    class="green-btn hover-green-btn small-inset-shadow detail-link-a">View other
-                                    courses</a>
-                            </div>
+                        </div>
+                    </div>
+                    <div class="other-courses-suggestion my-3">
+                        <div class="other-courses-suggestion-title">Other Lessons</div>
+                        <div class="list-of-lessons">
+                            @foreach ($lesson->course->lessons as $key => $otherLesson)
+                                <div class="lesson">
+                                    <a href="#" class="lesson-title">
+                                        {{ $key + 1 }}. {{ $otherLesson->name }}
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        <div class="text-center">
+                            <a href="{{ route('course') }}"
+                                class="green-btn hover-green-btn small-inset-shadow detail-link-a">View other
+                                courses</a>
                         </div>
                     </div>
                 </div>
