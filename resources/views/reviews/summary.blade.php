@@ -26,17 +26,17 @@
                         <div class="rating-detail-list-bar">
                             <div class="progress custom-progress">
                                 <div class="progress-bar custom-progress-bar"
-                                    style="width: {{ ($course->reviews->where('rating_point', $i)->count() / $course->reviews_count ) * 100 }}%"
+                                    style="width: {{ ($course->reviews->where('rating_point', $i)->count() / $course->reviews_count) * 100 }}%"
                                     role="progressbar" aria-valuenow="0" aria-valuemin="0"
                                     aria-valuemax="{{ $course->reviews->count() }}"></div>
                             </div>
                         </div>
-                        <span
-                            class="detail-rating-number">{{ $course->reviews->where('rating_point', $i)->count() }}</span>
+                        <span class="detail-rating-number">
+                            {{ $course->reviews->where('rating_point', $i)->count() }}
+                        </span>
                     </li>
                 @endfor
             </ul>
         </div>
     </div>
-
 </div>
