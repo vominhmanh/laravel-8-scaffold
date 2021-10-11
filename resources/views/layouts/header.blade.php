@@ -38,7 +38,7 @@
                         </li>
                     @else
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fas fa-user" style="font-size: 20px"></i>
+                            <a class="nav-link" href="{{ route('profile.show', Auth::user()->id) }}"><i class="fas fa-user" style="font-size: 20px"></i>
                                 {{ Auth::user()->name }}</a>
                         </li>
                         <li class="nav-item">

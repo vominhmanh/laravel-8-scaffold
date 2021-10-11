@@ -45,14 +45,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function getDobAttribute($dob) {
+        return  \Carbon\Carbon::parse($dob)->format('d-m-Y');
+    }
     public function lessons()
     {
-        return $this->hasMany(Lesson::class);
+        return $this->belongsToMany(Lesson::class);
     }
 
     public function courses()
     {
-        return $this->hasMany(Course::class);
+        return $this->belongsToMany(Course::class);
     }
 
     public function scopeTeacher($query)
