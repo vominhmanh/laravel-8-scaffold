@@ -18,48 +18,33 @@
                 </div>
 
             </div>
-
         </div>
     </div>
     <div class="review-post-content">
         {{ $review->comment }}
     </div>
     <div class="review-post-footer">
-        @auth
-            @if (Route::is('lesson*'))
-                <button class="btn-reply" type="button" data-toggle="collapse"
-                    data-target="{{ '#review-' . $review->id }}" aria-expanded="false" aria-controls="collapseExample">
+        @if (Route::is('lesson*') && $review->replies)
+            @auth
+                <button class="btn-reply btn-sm" type="button" data-toggle="collapse"
+                    data-target="#review-{{ $review->id }}" aria-expanded="false" aria-controls="collapseExample">
                     Reply
                 </button>
-            @endif
-        @endauth
-
-        <div class="collapse mt-4">
-            <div class="card card-body">
-                <form method="post">
-                    @csrf
-                    <div class="form-group">
-                        <label for="write-comment" class="title-box-comment">Reply</label>
-                        <textarea class="form-control write-reply" id="{{ 'write-reply-' . $review->id }}"
-                            name="write_reply" rows="5" required></textarea>
-                    </div>
-
-                    <input type="hidden" name="reviewId" class="review-id" value="{{ $review->id }}">
-
-                    <div class="float-right d-flex">
-                        <div class="btn-close-reply" data-review-id="{{ $review->id }}">Close</div>
-                        <input type="submit" data-user-id="{{ Auth::id() }}" data-review-id="{{ $review->id }}"
-                            class="btn-send-reply ml-2" value="Reply">
-                    </div>
-                </form>
+            @endauth
+            <div class="replies-list">
+                @foreach ($review->replies as $reply)
+                    @include('reviews.post', ['review' => $reply])
+                @endforeach
             </div>
-        </div>
+            @auth
+                <div class="collapse mt-4" id="review-{{ $review->id }}">
+                    <form method="post" action="{{ route('lesson.reply', [$lesson, $comment]) }}">
+                        @csrf
+                        @include('reviews.leave_a_comment')
+                    </form>
+                </div>
+            @endauth
+        @endif
     </div>
-    <div class="replies-list">
-        {{-- @if (count($review->replies) > 0)
-                    @foreach ($review->replies as $reply)
-                        @include('reviews.reply', ['reply' => $reply, 'review' => $review])
-                    @endforeach
-                @endif --}}
-    </div>
+
 </div>

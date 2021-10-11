@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/lessons', [LessonController::class, 'index'])->name('lesson');
     Route::get('/lesson/{lesson}', [LessonController::class, 'show'])->name('lesson.show')->middleware('joined');
     Route::post('/lesson/{lesson}/comment', [LessonController::class, 'comment'])->name('lesson.comment')->middleware('joined');
+    Route::post('/lesson/{lesson}/comment/{comment}/reply', [LessonController::class, 'reply'])->name('lesson.reply')->middleware('joined');
     Route::get('/lesson/{lesson}/program/{program}', [LessonController::class, 'download'])->name('lesson.download')->middleware('joined');
     Route::get('/profile/{id}', [UserController::class, 'show'])->name('profile.show');
 });
