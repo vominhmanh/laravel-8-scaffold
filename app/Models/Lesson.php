@@ -16,6 +16,11 @@ class Lesson extends Model
         'duration',
     ];
 
+    public function getVideoLinkAttribute($video_link)
+    {
+        return ('https://www.youtube.com/embed/' . $video_link . '?autoplay=1');
+    }
+    
     public function users()
     {
         return $this->belongsToMany(User::class);

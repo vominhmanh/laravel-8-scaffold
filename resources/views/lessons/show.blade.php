@@ -13,7 +13,7 @@
             <div class="row p-0">
                 <div class="col-md-8">
                     <div class="logo-course text-center">
-                        <img src="{{ $lesson->course->logo }}" alt="logo-course" class="logo-course-img">
+                        <iframe width="100%" height="100%" src="{{ $lesson->video_link}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="info mt-3">
                         <ul class="nav nav-tabs info-nav-tabs" id="myTab" role="tablist">
