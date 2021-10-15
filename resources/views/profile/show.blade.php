@@ -7,7 +7,7 @@
                 <div class="col-lg-3">
                     <div class="profile-top d-flex justify-content-center">
                         <div class="avatar-div">
-                            <img src="{{ asset('images/' . $user->avatar) }}" alt="avatar" id="avatar"
+                            <img src="{{ $user->avatar }}" alt="avatar" id="avatar"
                                 class="avatar">
                             <label for="avatar_upload" class="camera" id="avatar_upload_label">
                                 <i class="fas fa-camera"></i>

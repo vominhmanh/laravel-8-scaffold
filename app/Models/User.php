@@ -53,7 +53,7 @@ class User extends Authenticatable
 
     public function getAvatarAttribute($avatar)
     {
-        if (Storage::exists('app/' . $avatar)) {
+        if (Storage::disk('local')->exists($avatar)) {
             return asset('images/' . $avatar);
         } else {
             return $avatar;
