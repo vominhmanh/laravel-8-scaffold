@@ -30,24 +30,21 @@ class GoogleController extends Controller
         try {
 
             $user = Socialite::driver('google')->user();
-
             $finduser = User::where('google_id', $user->id)->first();
 
             if ($finduser) {
-
                 Auth::login($finduser);
-
                 return back();
             } else {
                 $newUser = User::create([
                     'name' => $user->name,
                     'email' => $user->email,
                     'password' => bcrypt('12345678'),
+                    'avatar' => $user->avatar,
                     'google_id' => $user->id,
                 ]);
 
                 Auth::login($newUser);
-
                 return redirect()->route('profile');
             }
         } catch (Exception $e) {
