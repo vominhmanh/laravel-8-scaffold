@@ -26,6 +26,7 @@ Route::get('/course/{course}', [CourseController::class, 'show'])->name('course.
 
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+
 Route::middleware(['auth'])->group(function () {
     Route::post('/course/{course}', [CourseController::class, 'join'])->name('course.join');
     Route::post('/course/{course}/review', [CourseController::class, 'review'])->name('course.review');

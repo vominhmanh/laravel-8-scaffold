@@ -7,6 +7,7 @@ use Laravel\Socialite\Facades\Socialite;
 use Exception;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class GoogleController extends Controller
 {
@@ -17,6 +18,7 @@ class GoogleController extends Controller
      */
     public function redirectToGoogle()
     {
+        Session::put('url.intended', url()->previous());
         return Socialite::driver('google')->redirect();
     }
 
@@ -28,13 +30,12 @@ class GoogleController extends Controller
     public function handleGoogleCallback()
     {
         try {
-
             $user = Socialite::driver('google')->user();
-            $finduser = User::where('google_id', $user->id)->first();
+            $finduser = User::where('email', $user->email)->first();
 
             if ($finduser) {
                 Auth::login($finduser);
-                return back();
+                return redirect(Session::get('url.intended'))->with('success', 'Login successfully.');
             } else {
                 $newUser = User::create([
                     'name' => $user->name,
@@ -43,7 +44,6 @@ class GoogleController extends Controller
                     'avatar' => $user->avatar,
                     'google_id' => $user->id,
                 ]);
-
                 Auth::login($newUser);
                 return redirect()->route('profile');
             }
