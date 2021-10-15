@@ -85,7 +85,8 @@ class Course extends Model
         return $this->reviews()->avg('rating_point');
     }
 
-    public function getReviewsCountAttribute() {
+    public function getReviewsCountAttribute()
+    {
         return $this->reviews()->count() ?: 1;
     }
     

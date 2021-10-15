@@ -1,246 +1,157 @@
 .profile {
-  background: $hapo_learn_banner_background_color;
-  font-family: $font_UTM_BryantLG;
+  background: $light-gray;
   padding-bottom: 100px;
   padding-top: 40px;
 
   .avatar-div {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
+    position: relative;
+    display: inline-block;
 
-  .avatar {
-    width: 255px;
-    height: 255px;
-    border: 5px solid white;
-    object-fit: fill;
-    border-radius: 50%;
-  }
+    .avatar {
+      width: 255px;
+      height: 255px;
+      border: 5px solid white;
+      object-fit: cover;
+      border-radius: 50%;
+    }
 
-  .camera {
-    color: white;
-    text-align: center;
-    margin-top: -50px;
-    font-size: 28px;
-    cursor: pointer;
+    .cancel-btn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .camera {
+      position: absolute;
+      bottom: 0;
+      left: 45%;
+      color: white;
+      font-size: 28px;
+      cursor: pointer;
+    }
   }
 
   .username {
     font-size: 25px;
-    line-height: 31px;
-    letter-spacing: -0.02em;
-    color: $text_color;
     text-align: center;
     -webkit-text-stroke-width: 1px;
   }
 
   .email {
-    font-size: 18px;
-    line-height: 22px;
-    letter-spacing: -0.02em;
-    color: $text_color;
+    color: $light-black;
     text-align: center;
-    border-bottom: 1px solid $DCDCDC;
-    padding-bottom: 15px;
-    margin-bottom: 25px;
+  }
+
+  .profile-hr {
+    margin: 15px 0;
+  }
+
+  .info-div {
+    >i:first-child {
+      width: 30px;
+    }
+
+    font-size: 16px;
   }
 
   .icon-birthday {
-    font-size: 17px;
-    line-height: 20px;
-    text-transform: uppercase;
-    color: $f26525;
+    color: lightcoral;
   }
 
   .icon-phone {
-    font-size: 18px;
-    line-height: 21px;
-    text-transform: uppercase;
-    color: $button_color;
+    color: $light-green;
   }
 
   .icon-address {
-    font-size: 18px;
-    line-height: 21px;
-    text-transform: uppercase;
-    color: $_662e93;
+    color: plum;
   }
 
-  .birthday-div,
-  .phone-div,
-  .address-div {
-    border-bottom: 1px solid $DCDCDC;
-    padding-bottom: 15px;
-    margin-bottom: 15px;
-    display: flex;
-  }
-
-  .birthday-content,
-  .phone-content,
-  .address-content {
-    font-size: 18px;
-    line-height: 22px;
-    letter-spacing: -0.02em;
-    color: $text_color;
-    margin-left: 20px;
-  }
-
-  .about-me {
+  .introduction {
     font-size: 18px;
     line-height: 26px;
     text-align: justify;
-    letter-spacing: -0.02em;
-    color: $_787b7b;
+    color: $light-black;
   }
 
   .my-course {
-    padding-top: 120px;
+    padding-top: 40px;
 
-    .title {
-      font-size: 38px;
-      line-height: 47px;
-      color: $text_color;
-      -webkit-text-stroke-width: 2px;
-      border-bottom-style: double;
-      border-bottom-color: $title_color;
+    @media only screen and (min-width: 991px) {
+      padding-top: 120px;
     }
   }
 
   .list-courses {
-    padding-top: 20px;
-    padding-bottom: 40px;
     display: flex;
-    width: 100%;
     justify-content: center;
     flex-wrap: wrap;
-  }
 
-  .list-courses-item {
-    width: 66px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-right: 10px;
+    &-item {
+      margin: 5px;
 
-    .img-course {
-      width: 66px;
-      height: 66px;
-      object-fit: fill;
-      border-radius: 50%;
-    }
+      .img-course {
+        width: 66px;
+        height: 66px;
+        object-fit: fill;
+        border-radius: 50%;
+      }
 
-    .course-title {
-      font-size: 14px;
-      line-height: 17px;
-      letter-spacing: -0.02em;
-      color: $text_color;
-      text-align: center;
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-line-clamp: 1;
-      -webkit-box-orient: vertical;
-    }
-  }
+      .add-new-course {
+        width: 66px;
+        height: 66px;
+        background: white;
+        border: 1.5px solid $dark;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-  .add-course-item {
-    width: 66px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-decoration: none;
-
-    .add-course-button {
-      width: 66px;
-      height: 66px;
-      background: white;
-      border: 1.5px solid $title_color;
-      box-sizing: border-box;
-      color: $title_color;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .add-course-title {
-      font-size: 14px;
-      line-height: 17px;
-      letter-spacing: -0.05em;
-      color: $title_color;
-      text-align: center;
-    }
-
-    &:hover {
-      .add-course-title {
-        text-decoration: underline;
+      .course-title {
+        font-size: 14px;
+        white-space: nowrap;
+        width: 66px;
+        text-align: center;
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
     }
   }
 
+
   .edit-profile-title {
     font-size: 38px;
     line-height: 47px;
-    color: $text_color;
+
     -webkit-text-stroke-width: 2px;
     border-bottom-style: double;
-    border-bottom-color: $title_color;
+    border-bottom-color: $dark;
   }
 
   .input-label {
     font-size: 20px;
     line-height: 25px;
-    letter-spacing: -0.02em;
-    color: $text_color;
     -webkit-text-stroke-width: 0.5px;
   }
 
   .input-style {
     height: 50px;
     background: white;
-    border: 1px solid $d6d6d6;
+    border: 1px solid $light-black;
     box-sizing: border-box;
     border-radius: 5px;
   }
 
-  .button-update {
-    background: $button_color;
-    box-shadow: inset 0px 1.5px 2px $main_courses_box_shadow;
-    border-radius: 22px;
-    outline: none;
-    border: none;
-    color: white;
-    padding: 9px 20px 9px 20px;
-    -webkit-text-stroke-width: 1px;
+  .profile-title {
+    font-size: 38px;
+    margin-bottom: 30px;
+    -webkit-text-stroke-width: 2px;
+    border-bottom: 5px double $light-green;
 
-    &:hover {
-      color: $text_color;
+    @media only screen and (max-width: 991px) {
+      text-align: center;
     }
-  }
-
-  .calendar-icon {
-    position: absolute;
-    top: 46px;
-    right: 31px;
-    color: $text_color;
-    cursor: pointer;
-  }
-
-  ::-webkit-input-placeholder {
-    /* Edge */
-    color: $CBCBCB;
-  }
-
-  :-ms-input-placeholder {
-    /* Internet Explorer */
-    color: $CBCBCB;
-  }
-
-  ::placeholder {
-    color: $CBCBCB;
   }
 }
