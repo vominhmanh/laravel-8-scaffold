@@ -60,7 +60,7 @@ class User extends Authenticatable
         if (Storage::disk('local')->exists($avatar)) {
             return asset('images/' . $avatar);
         } else {
-            return $avatar ?? asset('images/avatars/default');
+            return $avatar ?? asset('images/avatars/default.jpg');
         }
     }
 
