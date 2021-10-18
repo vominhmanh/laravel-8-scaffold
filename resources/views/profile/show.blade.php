@@ -19,7 +19,6 @@
                             <form action="{{ route('profile.avatar.update') }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
-                                @method('PUT')
                                 <input type="file" accept="image/*" class="hidden" name="avatar_upload"
                                     id="avatar_upload">
                                 <input type="submit" class="hidden" name="avatar_submit" id="avatar_submit">
@@ -76,7 +75,7 @@
                     </div>
                     <div class="edit-profile">
                         <div class="profile-title">Edit profile</div>
-                        <form action="{{ route('profile.infomation.update') }}" method="post" enctype="multipart/form-data" class="mt-3">
+                        <form action="{{ route('profile.information.update') }}" method="post" enctype="multipart/form-data" class="mt-3">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">

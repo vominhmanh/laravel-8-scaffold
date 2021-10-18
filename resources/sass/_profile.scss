@@ -83,10 +83,11 @@
     }
   }
 
-  .list-courses {
+  .list-courses{
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: auto;
 
     &-item {
       margin: 5px;

@@ -24,7 +24,7 @@ class AvatarUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'avatar_update' => ['required'],
+            'avatar_upload' => ['required'],
         ];
     }
 

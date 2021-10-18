@@ -26,6 +26,7 @@ class InfomationUpdateRequest extends FormRequest
         return [
             'name' => ['required', 'min:5', 'max:30'],
             'dob' => ['required', "date"],
+            'phone_number' => ['required', 'min: 10', "max:12"],
             'address' => ['required'],
             'introduction' => [],
         ];
