@@ -43,7 +43,7 @@
                                                 <input type="submit" class="search-button" value="Search">
                                             </div>
                                         </form>
-                                        @if ($course->isJoined))
+                                        @if ($course->isJoined)
                                             <span class=" gray-btn small-inset-shadow detail-link-input order-1"
                                                 id="joined-course">
                                                 Joined</span>
