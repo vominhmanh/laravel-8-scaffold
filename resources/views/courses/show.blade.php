@@ -14,6 +14,23 @@
                     <div class="logo-course text-center">
                         <img src="{{ $course->logo }}" alt="logo-course" class="logo-course-img">
                     </div>
+                    @auth
+                        <div class="rating-detail-list justify-content-between align-items-baseline">
+                        <div class="rating-detail-list-title">Progress </div>
+                        <div class="rating-detail-list-bar">
+                            <div class="progress custom-progress">
+                                <div class="progress-bar custom-progress-bar"
+                                    style="width: {{ ($course->studied_lessons_count / $course->lessons_count) * 100 }}%"
+                                    role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                                    aria-valuemax="{{ $course->lessons->count() }}"></div>
+                            </div>
+                        </div>
+                        <span class="detail-rating-number">
+                            {{ $course->studied_lessons_count }} / {{ $course->reviews->count() }}
+                        </span>
+                    </div>
+                    @endauth
+                    
                     <div class="info mt-3">
                         <ul class="nav nav-tabs info-nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
@@ -48,7 +65,8 @@
                                                 id="joined-course">
                                                 Joined</span>
                                         @else
-                                            <form class="" method="post" action="{{ route('course.join', [$course]) }}">
+                                            <form class="" method="post"
+                                                action="{{ route('course.join', [$course]) }}">
                                                 @csrf
                                                 <input type="submit"
                                                     class="green-btn hover-green-btn small-inset-shadow detail-link-input join-input"

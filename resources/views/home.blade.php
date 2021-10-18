@@ -32,65 +32,24 @@
     <div class="outstanding-session courses-session">
         <div class="container-fluid  container-fixed">
             <div class="row">
-                <div class="col-lg-4 col-md-4 d-flex justify-content-center">
-                    <div class="card outstanding-course-card">
-                        <div class="card-img d-flex align-items-center justify-content-center bg-light">
-                            <img src="images/frontend.png" alt="html/css/js">
-                        </div>
-                        <div class="card-body text-center">
-                            <h5 class="card-title">HTML/CSS/JS</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk
-                                of the card's content. Some quick example text to build on the card title and make up
-                                the bulk
-                                of the card's content. Some quick example text to build on the card title and make up
-                                the bulk
-                                of the card's content.</p>
-                            <div class="text-center course-link">
-                                <a href="#" class="green-btn hover-green-btn large-inset-shadow course-link-a">Take this
-                                    course</a>
+                @foreach ($outstandingCourses as $course)
+                    <div class="col-lg-4 col-md-4 d-flex justify-content-center">
+                        <div class="card outstanding-course-card">
+                            <div class="card-img d-flex align-items-center justify-content-center bg-light">
+                                <img src="{{ $course->logo }}" width='100%' alt="html/css/js">
+                            </div>
+                            <div class="card-body text-center">
+                                <h5 class="card-title">{{ $course->name }}</h5>
+                                <p class="card-text">{{ $course->description }}</p>
+                                <div class="text-center course-link">
+                                    <a href="{{ route('course.show', $course) }}"
+                                        class="green-btn hover-green-btn large-inset-shadow course-link-a">Take this
+                                        course</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-4 d-flex justify-content-center">
-                    <div class="card outstanding-course-card">
-                        <div class="card-img d-flex align-items-center justify-content-center bg-danger">
-                            <img src="images/java.png" alt="html/css/js">
-                        </div>
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Java TUTORIAL</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk
-                                of the card's content. Some quick example text to build on the card title and make up
-                                the bulk
-                                of the card's content. Some quick example text to build on the card title and make up
-                                the bulk
-                                of the card's content.</p>
-                            <div class="text-center course-link">
-                                <a href="#" class="green-btn hover-green-btn large-inset-shadow course-link-a">Take this
-                                    course</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 d-flex justify-content-center">
-                    <div class="card outstanding-course-card">
-                        <div class="card-img d-flex align-items-center justify-content-center badge-success">
-                            <img src="images/php.png" alt="html/css/js">
-                        </div>
-                        <div class="card-body text-center">
-                            <h5 class="card-title">PHP TUTORIAL</h5>
-                            <p class="card-text"> Some quick example text to build on the card title and make up
-                                the
-                                card's content. build on the card tit.</p>
-                            <div class="text-center course-link">
-                                <a href="#" class="green-btn hover-green-btn large-inset-shadow course-link-a">Take this
-                                    course</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -103,73 +62,27 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-4 col-md-4 d-flex justify-content-center">
-                    <div class="card outstanding-course-card">
-                        <div class="card-img d-flex align-items-center justify-content-center bg-light">
-                            <img src="images/frontend.png" alt="html/css/js">
-                        </div>
-                        <div class="card-body text-center">
-                            <h5 class="card-title">HTML/CSS/JS </h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk
-                                of the card's content. Some quick example text to build on the card title and make up
-                                the bulk
-                                of the card's content. Some quick example text to build on the card title and make up
-                                the bulk
-                                of the card's content.</p>
-                            <div class="text-center course-link">
-                                <a href="#" class="green-btn hover-green-btn large-inset-shadow course-link-a">Take this
-                                    course</a>
+                @foreach ($randomCourses as $course)
+                    <div class="col-lg-4 col-md-4 d-flex justify-content-center">
+                        <div class="card outstanding-course-card">
+                            <div class="card-img d-flex align-items-center justify-content-center bg-light">
+                                <img src="{{ $course->logo }}" width="100%" alt="html/css/js">
+                            </div>
+                            <div class="card-body text-center">
+                                <h5 class="card-title">{{ $course->name }}</h5>
+                                <p class="card-text">{{ $course->description }}</p>
+                                <div class="text-center course-link">
+                                    <a href="{{ route('course.show', $course) }}"
+                                        class="green-btn hover-green-btn large-inset-shadow course-link-a">Take this
+                                        course</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-4 d-flex justify-content-center">
-                    <div class="card outstanding-course-card">
-                        <div class="card-img d-flex align-items-center justify-content-center bg-light">
-                            <img src="images/frontend.png" alt="html/css/js">
-                        </div>
-                        <div class="card-body text-center">
-                            <h5 class="card-title">HTML/CSS/JS</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk
-                                of the card's content. Some quick example text to build on the card title and make up
-                                the bulk
-                                of the card's content. Some quick example text to build on the card title and make up
-                                the bulk
-                                of the card's content.</p>
-                            <div class="text-center course-link">
-                                <a href="#" class="green-btn hover-green-btn large-inset-shadow course-link-a">Take this
-                                    course</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 d-flex justify-content-center">
-                    <div class="card outstanding-course-card">
-                        <div class="card-img d-flex align-items-center justify-content-center bg-light">
-                            <img src="images/frontend.png" alt="html/css/js">
-                        </div>
-                        <div class="card-body text-center">
-                            <h5 class="card-title">HTML/CSS/JS</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk
-                                of the card's content. Some quick example text to build on the card title and make up
-                                the bulk
-                                of the card's content. Some quick example text to build on the card title and make up
-                                the bulk
-                                of the card's content.</p>
-                            <div class="text-center course-link">
-                                <a href="#" class="green-btn hover-green-btn large-inset-shadow course-link-a">Take
-                                    this
-                                    course</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="view-other-courses-title text-center font-weight-bold">
-                <a href="#" class="view-other-courses m-3">View all our courses
+                <a href="{{ route('course') }}" class="view-other-courses m-3">View all our courses
                     <i class="fas fa-long-arrow-alt-right"></i>
                 </a>
             </div>
@@ -351,15 +264,15 @@
             <div class="statistic-detail text-center d-flex justify-content-between">
                 <div class="statistic-detail-part">
                     <div class="statistic-subtitle">Courses</div>
-                    <div class="statistic-number">1,586</div>
+                    <div class="statistic-number">{{ $courseCount }}</div>
                 </div>
                 <div class="statistic-detail-part">
                     <div class="statistic-subtitle">Lessons</div>
-                    <div class="statistic-number">2,689</div>
+                    <div class="statistic-number">{{ $lessonCount }}</div>
                 </div>
                 <div class="statistic-detail-part">
                     <div class="statistic-subtitle">Learners</div>
-                    <div class="statistic-number">16,882</div>
+                    <div class="statistic-number">{{ $learnerCount }}</div>
                 </div>
             </div>
         </div>

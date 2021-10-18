@@ -8,4 +8,5 @@ return [
     'asc' => 'asc',
     'desc' => 'desc',
     'limit_suggestion' => 5,
+    'limit_homepage' => 3,
 ];

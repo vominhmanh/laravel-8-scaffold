@@ -89,7 +89,13 @@ class Course extends Model
     {
         return $this->reviews()->count() ?: 1;
     }
-    
+
+    public function getStudiedLessonsCountAttribute()
+    {
+        return $this->lessons()->whereHas('users', function ($q) {
+            $q->where('users.id', 12);
+        })->count();
+    }
 
     public function scopeKeyWord($query, $keyword)
     {
@@ -146,7 +152,7 @@ class Course extends Model
         }
         return $query;
     }
-    
+
     public function scopeRatings($query, $ratings)
     {
         if (isset($ratings)) {
@@ -170,5 +176,15 @@ class Course extends Model
     public function scopeSuggestion($query)
     {
         return $query->ratings('desc')->limit(config('variables.limit_suggestion'));
+    }
+
+    public function scopeHomepage($query)
+    {
+        return $query->ratings('desc')->limit(config('variables.limit_homepage'));
+    }
+
+    public function scopeRandom($query)
+    {
+        return $query->inRandomOrder()->limit(config('variables.limit_homepage'));
     }
 }
