@@ -34,4 +34,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/lesson/{lesson}/program/{program}', [LessonController::class, 'download'])->name('lesson.download')->middleware('joined');
     Route::get('/profile', [UserController::class, 'index'])->name('profile');
     Route::put('/profile/avatar', [UserController::class, 'avatarUpdate'])->name('profile.avatar.update');
+    Route::put('/profile/infomation', [UserController::class, 'avatarUpdate'])->name('profile.infomation.update');
 });
