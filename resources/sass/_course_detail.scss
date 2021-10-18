@@ -1,0 +1,266 @@
+.course-detail {
+  padding-top: 27px;
+  line-height: 40px;
+
+  @media only screen and (max-width: 575.98px) {
+    line-height: 34px;
+  }
+
+  .logo-course {
+    height: 440px;
+
+    @media only screen and (max-width: 767.98px) {
+      height: auto;
+    }
+
+    background: gray;
+    border-radius: 10px;
+
+    &-img {
+      @media only screen and (min-width: 768px) {
+        height: 100%;
+      }
+
+      @media only screen and (max-width: 767.98px) {
+        width: 100%;
+      }
+    }
+  }
+
+  .info {
+    background: white;
+    border-radius: 10px;
+    padding: 18px;
+    margin-bottom: 35px;
+
+    &-nav-tabs {
+      border-bottom: 2px solid $whitesmoke;
+      transform: rotate(-0.08deg);
+    }
+
+    .nav-item {
+      margin-right: 10%;
+    }
+  }
+
+  .nav-tabs .nav-link.active,
+  .nav-tabs .nav-item.show .nav-link {
+    color: $light-green;
+    background-color: white;
+    border: none;
+    border-bottom: 2px solid $light-green;
+    border-radius: 0px;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 25px;
+  }
+
+  .nav-tabs .nav-link {
+    margin-bottom: -1px;
+    border: 1px solid transparent;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 25px;
+    color: $dark;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 14px;
+
+  }
+
+  .teacher-tab-title {
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 31px;
+    color: $dark;
+    -webkit-text-stroke-width: 1px;
+  }
+}
+
+.other-courses-suggestion {
+  background: white;
+  border: 1px solid $whitesmoke;
+  box-sizing: border-box;
+  width: 100%;
+
+  &-title {
+    background: $light-green;
+    border: 1px solid $whitesmoke;
+    box-sizing: border-box;
+    font-size: 25px;
+    line-height: 52px;
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    height: 60px;
+    text-align: center;
+  }
+
+  &-list {
+    padding-bottom: 14px;
+    padding-left: 14px;
+    padding-right: 14px;
+
+    .a-course {
+      border-bottom: 1px solid $whitesmoke;
+      padding-top: 14px;
+      padding-bottom: 14px;
+      display: block;
+      text-decoration: none;
+      font-size: 16px;
+      line-height: 20px;
+      color: $dark;
+      -webkit-text-stroke-width: 0.5px;
+
+      &:hover {
+        color: $light-green;
+      }
+    }
+  }
+}
+
+.join-course-btn {
+  width: 100%;
+}
+
+.course-description {
+  background: white;
+  border: 1px solid $simplewhite;
+  box-sizing: border-box;
+  padding: 18px;
+
+  &-title {
+    font-weight: bold;
+    font-size: 25px;
+    color: $dark;
+    border-bottom: 1px solid $light-green;
+    padding-bottom: 17px;
+    -webkit-text-stroke-width: 1px;
+  }
+
+  &-content {
+    overflow: auto;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 26px;
+    color: gray;
+  }
+}
+
+.list-of-lessons {
+  border-top: 1px solid $whitesmoke;
+
+  .lesson {
+    border-bottom: 1px solid $whitesmoke;
+
+    &-title {
+      padding-left: 5px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      text-decoration: none;
+      font-size: 18px;
+      color: $dark;
+      -webkit-text-stroke-width: 0.5px;
+
+      &:hover {
+        color: $light-green;
+      }
+    }
+
+    &-btn {
+      width: 100%;
+    }
+  }
+}
+
+@media only screen and (max-width: 991.98px) {
+  .lessons-toolbar {
+    justify-content: center;
+
+    .search-form {
+      order: 2;
+    }
+
+    .join-input {
+      order: 1;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+
+.course-info {
+  background: white;
+  border: 1px solid $simplewhite;
+  box-sizing: border-box;
+
+  &-item {
+    border-bottom: 1px solid $simplewhite;
+    padding: 25px 10px;
+  }
+
+  img {
+    margin-right: 5px;
+    width: 35px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+    line-height: 31px;
+    color: $dark;
+    overflow: hidden;
+  }
+
+  .subtitle-value {
+    -webkit-text-stroke-width: 0.5px;
+  }
+
+  .subtitle-tag {
+    background: $light-gray;
+    border-radius: 2px;
+    padding: 2px 5px;
+    text-decoration: none;
+  }
+}
+
+.teacher {
+
+  .img-teacher {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+
+  .teacher-name {
+    font-weight: bold;
+    font-size: 18px;
+    color: $dark;
+    -webkit-text-stroke-width: 0.5px;
+  }
+
+  .teacher-experience {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: $dark;
+  }
+
+  .teacher-contact {
+    display: flex;
+    margin-top: 5px;
+
+    .teacher-info {
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 26px;
+      color: $gray;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+  }
+}

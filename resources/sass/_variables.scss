@@ -51,6 +51,7 @@ $quiteblack: #454545;
 $pretty--color-success: #b2d235;
 $simplewhite: #e2e2e2;
 $light-gray: #f2f2f2;
+$light-black: #949292;
 
 $font_Open_Sans: "Open Sans",
 sans-serif;
@@ -97,6 +98,13 @@ $font_UTM_BryantLG: "utm_bryantlgregular";
   border-radius: 50px;
   background-color: $active-bg;
   color: white !important;
+  font-weight: bolder;
+}
+
+.gray-btn {
+  border-radius: 50px;
+  background-color: $simplewhite;
+  color: $nearblack !important;
   font-weight: bolder;
 }
 
@@ -159,4 +167,8 @@ body {
   @media only screen and (max-width: 575.98px) {
     font-size: 45px !important;
   }
+}
+
+input {
+  border: none;
 }

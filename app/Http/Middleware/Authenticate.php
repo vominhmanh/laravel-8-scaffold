@@ -2,7 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class Authenticate extends Middleware
 {
@@ -14,8 +17,10 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        if (! $request->expectsJson()) {
-            return route('login');
+        if (!$request->expectsJson()) {
+            throw ValidationException::withMessages([
+                'email' => ['Please login or register first.'],
+            ])->errorBag('login');
         }
     }
 }

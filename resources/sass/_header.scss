@@ -83,6 +83,14 @@ header {
   }
 }
 
+.profile-dropdown {
+  line-height: 20px;
+
+  >a {
+    border-radius: 0 !important;
+  }
+}
+
 @media only screen and (min-width: 1200px) {
   .navbar-menu-div {
     display: flex;

@@ -43,8 +43,7 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request)
     {
-        return redirect($this->redirectTo)
-            ->with('success', trans('auth.loggedin'));
+        return back()->with('success', trans('auth.loggedin'));
     }
 
     protected function loggedOut(Request $request)

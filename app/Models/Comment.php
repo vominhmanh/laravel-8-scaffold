@@ -16,8 +16,18 @@ class Comment extends Model
         'user_id',
     ];
 
-    public function lessons()
+    public function lesson()
     {
         return $this->belongsTo(Lesson::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
     }
 }

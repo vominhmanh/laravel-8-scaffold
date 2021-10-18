@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class Course extends Model
 {
@@ -44,6 +45,26 @@ class Course extends Model
         return $this->hasMany(Lesson::class);
     }
 
+    public function getPriceAttribute($price)
+    {
+        return number_format($price);
+    }
+
+    public function getHoursAttribute()
+    {
+        return floor($this->getLessonsSumDurationAttribute() / 60);
+    }
+
+    public function getMinutesAttribute()
+    {
+        return $this->getLessonsSumDurationAttribute() % 60;
+    }
+
+    public function getIsJoinedAttribute()
+    {
+        return $this->users->contains(Auth::user()->id ?? false);
+    }
+
     public function getLessonsCountAttribute()
     {
         return $this->lessons()->count();
@@ -62,6 +83,18 @@ class Course extends Model
     public function getReviewsAvgRatingPointAttribute()
     {
         return $this->reviews()->avg('rating_point');
+    }
+
+    public function getReviewsCountAttribute()
+    {
+        return $this->reviews()->count() ?: 1;
+    }
+
+    public function getStudiedLessonsCountAttribute()
+    {
+        return $this->lessons()->whereHas('users', function ($q) {
+            $q->where('users.id', 12);
+        })->count();
     }
 
     public function scopeKeyWord($query, $keyword)
@@ -119,7 +152,7 @@ class Course extends Model
         }
         return $query;
     }
-    
+
     public function scopeRatings($query, $ratings)
     {
         if (isset($ratings)) {
@@ -128,7 +161,7 @@ class Course extends Model
         return $query;
     }
 
-    public function scopeFilter($query, $request)
+    public function scopeFilter($query)
     {
         return $query->keyword(request('keyword'))
             ->teacher(request('teacher'))
@@ -138,5 +171,20 @@ class Course extends Model
             ->lessons(request('lessons'))
             ->ratings(request('ratings'))
             ->createdat(request('created_at'));
+    }
+
+    public function scopeSuggestion($query)
+    {
+        return $query->ratings('desc')->limit(config('variables.limit_suggestion'));
+    }
+
+    public function scopeHomepage($query)
+    {
+        return $query->ratings('desc')->limit(config('variables.limit_homepage'));
+    }
+
+    public function scopeRandom($query)
+    {
+        return $query->inRandomOrder()->limit(config('variables.limit_homepage'));
     }
 }

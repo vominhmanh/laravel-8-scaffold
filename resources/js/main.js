@@ -42,4 +42,29 @@ $(function() {
     $("#successAlert").alert('close');
   }, 5000);
 
+  setTimeout(function() {
+    $("#dangerAlert").alert('close');
+  }, 5000);
+
+  var originalImageSrc = $('#avatar').attr('src');
+  $('#avatar_upload').change(() => {
+    let reader = new FileReader();
+
+    reader.onload = (e) => {
+      $('#avatar').attr('src', e.target.result);
+      $('#avatar_upload_label').toggleClass('hidden');
+      $('#avatar_submit_label').toggleClass('hidden');
+      $('#avatar_upload_cancel_label').toggleClass('hidden');
+    }
+    let input = document.getElementById('avatar_upload');
+    reader.readAsDataURL(input.files[0]);
+  });
+
+  $('#avatar_upload_cancel_label').click(() => {
+    $('#avatar_upload_label').toggleClass('hidden');
+    $('#avatar_submit_label').toggleClass('hidden');
+    $('#avatar_upload_cancel_label').toggleClass('hidden');
+    $('#avatar_upload').val('');
+    $('#avatar').attr('src', originalImageSrc);
+  })
 });
