@@ -70,7 +70,8 @@
                             </div>
                             <div class="mt-4 mb-sm-5 mb-4 login-with-txt">Login with</div>
                             <div class="d-flex flex-column align-items-center justify-content-center">
-                                <a href="#" class="login-with-google"><i class="fab fa-google-plus-g mr-2"></i>
+                                <a href="{{ route('auth.google') }}" class="login-with-google"><i
+                                        class="fab fa-google-plus-g mr-2"></i>
                                     Google</a>
                                 <a href="#" class="mb-5 login-with-facebook"><i class="fab fa-facebook-f mr-2"></i>
                                     Facebook</a>
