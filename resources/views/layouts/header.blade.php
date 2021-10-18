@@ -36,14 +36,16 @@
                         </li>
                     @else
                         <li class="dropdown nav-item d-none d-sm-block">
-                            <a class="nav-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle @if (Route::is('profile*')) active @endif"" id=" dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-user" style="font-size: 20px"></i>
                                 {{ Auth::user()->name }}
                             </a>
                             <div class="dropdown-menu profile-dropdown" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item text-center" type="button" href="{{ route('profile') }}">PROFILE</a>
-                                <a class="dropdown-item text-danger text-center" type="button" href="#" onclick="logoutform.submit()">LOGOUT</a>
+                                <a class="dropdown-item text-center" type="button"
+                                    href="{{ route('profile') }}">PROFILE</a>
+                                <a class="dropdown-item text-danger text-center" type="button" href="#"
+                                    onclick="logoutform.submit()">LOGOUT</a>
                             </div>
                         </li>
                         <li class="nav-item d-sm-none">
