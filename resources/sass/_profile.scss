@@ -86,7 +86,8 @@
   .list-courses {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: auto;
 
     &-item {
       margin: 5px;
@@ -138,13 +139,10 @@
 
   .input-style {
     height: 50px;
-    background: white;
-    border: 1px solid $light-black;
-    box-sizing: border-box;
-    border-radius: 5px;
   }
 
   .profile-title {
+    padding-top: 20px;
     font-size: 38px;
     margin-bottom: 30px;
     -webkit-text-stroke-width: 2px;
