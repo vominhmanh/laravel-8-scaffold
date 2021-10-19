@@ -26,7 +26,7 @@
                             </div>
                         </div>
                         <span class="detail-rating-number">
-                            {{ $course->studied_lessons_count }} / {{ $course->reviews->count() }}
+                            {{ $course->studied_lessons_count }} / {{ $course->lessons->count() }}
                         </span>
                     </div>
                     @endauth

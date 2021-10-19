@@ -51,8 +51,7 @@ class LessonController extends Controller
     public function show(Lesson $lesson)
     {
         $lesson->users()->syncWithoutDetaching(Auth::user()->id);
-        $comments = $lesson->comments()->paginate(config('variables.review_pagination'));
-        $comments->setPageName('comment_page');
+        $comments = $lesson->comments()->paginate(config('variables.review_pagination'), ['*'], 'review_page');
         return view('lessons.show', compact('lesson', 'comments'));
     }
 
