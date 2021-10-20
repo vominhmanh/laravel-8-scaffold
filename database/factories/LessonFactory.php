@@ -25,8 +25,8 @@ class LessonFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'duration' => $this->faker->numberBetween(1, 99),
-            'video_link' => $this->faker->imageUrl(730, 440),
-            'course_id' => $this->faker->numberBetween(1, 10),
+            'video_link' => '6t-MjBazs3o',
+            'course_id' => $this->faker->numberBetween(1, 100),
         ];
     }
 }

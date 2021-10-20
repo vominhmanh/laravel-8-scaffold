@@ -29,7 +29,7 @@ class CourseFactory extends Factory
             'finish_date' => $this->faker->date('Y-m-d', 'now'),
             'description' => $this->faker->paragraph(3, true),
             'teacher_id' => $this->faker->numberBetween(1, 10),
-            'logo' => $this->faker->imageUrl(90, 90),
+            'logo' => $this->faker->imageUrl(730, 440),
         ];
     }
 }

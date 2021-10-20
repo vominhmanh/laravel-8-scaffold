@@ -91,7 +91,7 @@ class LessonController extends Controller
 
     public function download(Lesson $lesson, Program $program)
     {
-        return response()->download(storage_path('app/programs/' . $program->path));
+        return response()->download(storage_path('app/' . $program->path));
     }
 
     public function comment(Lesson $lesson, Request $request)
@@ -101,7 +101,7 @@ class LessonController extends Controller
         $comment->lesson_id = $request->lesson->id;
         $comment->user_id = Auth::user()->id;
         $comment->save();
-        return back();
+        return back()->withFragment('comments');
     }
 
     public function reply(Lesson $lesson, Comment $comment, Request $request)
@@ -111,6 +111,6 @@ class LessonController extends Controller
         $reply->comment_id = $comment->id;
         $reply->user_id = Auth::user()->id;
         $reply->save();
-        return back();
+        return back()->withFragment('comments');
     }
 }

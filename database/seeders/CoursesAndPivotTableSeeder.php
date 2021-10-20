@@ -15,8 +15,8 @@ class CoursesAndPivotTableSeeder extends Seeder
      */
     public function run()
     {
-        Course::factory(200);
-        for ($i = 1; $i <= 200; $i++) {
+        Course::factory(100);
+        for ($i = 1; $i <= 100; $i++) {
             $course = Course::find($i);
             $course->users()->sync([1, 3, 5, 7]);
         }

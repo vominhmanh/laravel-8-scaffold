@@ -57,6 +57,6 @@ class CourseController extends Controller
         $review->course_id = $request->course->id;
         $review->user_id = Auth::user()->id;
         $review->save();
-        return back();
+        return back()->withFragment('reviews');
     }
 }
