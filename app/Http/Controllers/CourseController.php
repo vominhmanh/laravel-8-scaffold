@@ -38,8 +38,8 @@ class CourseController extends Controller
     {
         $otherCourses = Course::suggestion()->get();
         $lessons = $course->lessons()->paginate(config('variables.lesson_pagination'));
-        $reviews = $course->reviews()->paginate(config('variables.review_pagination'));
-        $reviews->setPageName('review_page');
+        $reviews = $course->reviews()->paginate(config('variables.review_pagination'), ['*'], 'review_page');
+
         return view('courses.show', compact(['course', 'lessons', 'reviews', 'otherCourses']));
     }
 
@@ -57,6 +57,6 @@ class CourseController extends Controller
         $review->course_id = $request->course->id;
         $review->user_id = Auth::user()->id;
         $review->save();
-        return back();
+        return back()->withFragment('reviews');
     }
 }

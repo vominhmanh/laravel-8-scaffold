@@ -93,7 +93,7 @@ class Course extends Model
     public function getStudiedLessonsCountAttribute()
     {
         return $this->lessons()->whereHas('users', function ($q) {
-            $q->where('users.id', 12);
+            $q->where('users.id', Auth::user()->id ?? null);
         })->count();
     }
 

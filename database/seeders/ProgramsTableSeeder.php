@@ -14,15 +14,17 @@ class ProgramsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('programs')->insert([
-            'name' => 'Slide_HTML_CSS_01.pdf',
-            'path' => "programs/Slide_HTML_CSS_01.pdf",
-            'lesson_id' => 7,
-        ]);
-        DB::table('programs')->insert([
-            'name' => 'Slide_HTML_CSS_02.pdf',
-            'path' => "programs/Slide_HTML_CSS_02.pdf",
-            'lesson_id' => 7,
-        ]);
+        for ($i = 1; $i <= 200; $i++) {
+            DB::table('programs')->insert([
+                'name' => 'Slide_HTML_CSS_01.pdf',
+                'path' => "programs/Slide_HTML_CSS_01.pdf",
+                'lesson_id' => $i,
+            ]);
+            DB::table('programs')->insert([
+                'name' => 'Slide_HTML_CSS_02.pdf',
+                'path' => "programs/Slide_HTML_CSS_02.pdf",
+                'lesson_id' => $i,
+            ]);
+        }
     }
 }

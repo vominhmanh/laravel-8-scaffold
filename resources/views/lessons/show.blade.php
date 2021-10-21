@@ -13,25 +13,28 @@
             <div class="row p-0">
                 <div class="col-md-8">
                     <div class="logo-course text-center">
-                        <img src="{{ $lesson->course->logo }}" alt="logo-course" class="logo-course-img">
+                        <iframe width="100%" height="100%" src="{{ $lesson->video_link }}" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
                     </div>
                     <div class="info mt-3">
                         <ul class="nav nav-tabs info-nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description"
-                                    role="tab" aria-controls="Lessons" aria-selected="true">Description</a>
+                                <a class="nav-link active" id="description-tab" onclick="return false;" data-toggle="tab"
+                                    href="#description" role="tab" aria-controls="Lessons"
+                                    aria-selected="true">Description</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="teacher-tab" data-toggle="tab" href="#teacher" role="tab"
-                                    aria-controls="teacher" aria-selected="false">Teacher</a>
+                                <a class="nav-link" id="teacher-tab" onclick="return false;" data-toggle="tab"
+                                    href="#teacher" role="tab" aria-controls="teacher" aria-selected="false">Teacher</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="programs-tab" data-toggle="tab" href="#programs" role="tab"
-                                    aria-controls="Programs" aria-selected="true">Programs</a>
+                                <a class="nav-link" id="programs-tab" onclick="return false;" data-toggle="tab"
+                                    href="#programs" role="tab" aria-controls="Programs" aria-selected="true">Programs</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab"
-                                    aria-controls="Reviews" aria-selected="false">Comments</a>
+                                <a class="nav-link" id="reviews-tab" onclick="return false;" data-toggle="tab"
+                                    href="#comments" role="tab" aria-controls="Reviews" aria-selected="false">Comments</a>
                             </li>
                         </ul>
 
@@ -40,6 +43,12 @@
                                 aria-labelledby="description-tab">
                                 <div class="teacher-tab-title mb-3">
                                     Description
+                                </div>
+                                <div class="col-12">
+                                    <div class="teacher-info">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Laudantium soluta harum, facere ipsa deleniti suscipit cumque, omnis placeat
+                                        sapiente odio, ab eius quam reprehenderit. Optio facilis reprehenderit vero iusto
+                                        in.</div>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="programs" role="tabpanel" aria-labelledby="programs-tab">
@@ -56,7 +65,8 @@
                                                 </a>
                                             </div>
                                             <div class="col-lg-2">
-                                                <form method="get" action="{{ route('lesson.download', ['lesson' => $lesson, 'program' => $program]) }}">
+                                                <form method="get"
+                                                    action="{{ route('lesson.download', ['lesson' => $lesson, 'program' => $program]) }}">
                                                     <input type="submit"
                                                         class="green-btn hover-green-btn small-inset-shadow lesson-btn"
                                                         id="join-course" value="Download">
@@ -96,7 +106,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                            <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="reviews-tab">
                                 <div class="teacher-tab-title my-3">
                                     {{ $lesson->comments->count() }} Comments
                                 </div>
@@ -107,7 +117,7 @@
                                     @endforeach
 
                                     <div class="mt-5 d-flex justify-content-end">
-                                        {{ $comments->appends(request()->all())->links() }}
+                                        {{ $comments->appends(request()->all())->fragment('comments')->links() }}
                                     </div>
                                 </div>
 

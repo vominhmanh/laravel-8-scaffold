@@ -12,25 +12,25 @@
             <div class="row p-0">
                 <div class="col-md-8">
                     <div class="logo-course text-center">
-                        <img src="{{ $course->logo }}" alt="logo-course" class="logo-course-img">
+                        <img src="{{ $course->logo }}" width="100%" alt="logo-course" class="logo-course-img">
                     </div>
                     @auth
                         <div class="rating-detail-list justify-content-between align-items-baseline">
-                        <div class="rating-detail-list-title">Progress </div>
-                        <div class="rating-detail-list-bar">
-                            <div class="progress custom-progress">
-                                <div class="progress-bar custom-progress-bar"
-                                    style="width: {{ ($course->studied_lessons_count / $course->lessons_count) * 100 }}%"
-                                    role="progressbar" aria-valuenow="0" aria-valuemin="0"
-                                    aria-valuemax="{{ $course->lessons->count() }}"></div>
+                            <div class="rating-detail-list-title">Progress </div>
+                            <div class="rating-detail-list-bar">
+                                <div class="progress custom-progress">
+                                    <div class="progress-bar custom-progress-bar"
+                                        style="width: {{ ($course->studied_lessons_count / $course->lessons_count) * 100 }}%"
+                                        role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                                        aria-valuemax="{{ $course->lessons->count() }}"></div>
+                                </div>
                             </div>
+                            <span class="detail-rating-number">
+                                {{ $course->studied_lessons_count }} / {{ $course->lessons->count() }}
+                            </span>
                         </div>
-                        <span class="detail-rating-number">
-                            {{ $course->studied_lessons_count }} / {{ $course->reviews->count() }}
-                        </span>
-                    </div>
                     @endauth
-                    
+
                     <div class="info mt-3">
                         <ul class="nav nav-tabs info-nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
@@ -105,7 +105,7 @@
                                     @endforeach
                                 </div>
                                 <div class="mt-5 d-flex justify-content-end">
-                                    {{ $lessons->appends(request()->all())->links() }}
+                                    {{ $lessons->appends(request()->all())->fragment('lessons')->links() }}
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="teacher" role="tabpanel" aria-labelledby="teacher-tab">
@@ -147,7 +147,7 @@
                                     @endforeach
 
                                     <div class="mt-5 d-flex justify-content-end">
-                                        {{ $reviews->appends(request()->all())->links() }}
+                                        {{ $reviews->appends(request()->all())->fragment('reviews')->links() }}
                                     </div>
                                 </div>
 
@@ -168,7 +168,6 @@
                                     </form>
                                 @endif
                             </div>
-
                         </div>
                     </div>
                 </div>
