@@ -60,11 +60,6 @@ class Course extends Model
         return $this->getLessonsSumDurationAttribute() % 60;
     }
 
-    public function getIsJoinedAttribute()
-    {
-        return $this->users->contains(Auth::user()->id ?? false);
-    }
-
     public function getLessonsCountAttribute()
     {
         return $this->lessons()->count();
