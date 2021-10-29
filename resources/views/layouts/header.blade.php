@@ -43,13 +43,13 @@
                             </a>
                             <div class="dropdown-menu profile-dropdown" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item text-center" type="button"
-                                    href="{{ route('profile') }}">PROFILE</a>
+                                    href="{{ route('profile.index') }}">PROFILE</a>
                                 <a class="dropdown-item text-danger text-center" type="button" href="#"
                                     onclick="logoutform.submit()">LOGOUT</a>
                             </div>
                         </li>
                         <li class="nav-item d-sm-none">
-                            <a class="nav-link @if (Route::is('profile*')) active @endif" href="{{ route('profile') }}"><i
+                            <a class="nav-link @if (Route::is('profile*')) active @endif" href="{{ route('profile.index') }}"><i
                                     class="fas fa-user" style="font-size: 20px"></i>
                                 {{ Auth::user()->name }}</a>
                         </li>

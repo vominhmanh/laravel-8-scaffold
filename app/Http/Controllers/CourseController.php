@@ -52,10 +52,10 @@ class CourseController extends Controller
     public function review(Course $course, Request $request)
     {
         $review = new Review();
-        $review->rating_point = $request->rating_point;
-        $review->comment = $request->comment;
-        $review->course_id = $request->course->id;
-        $review->user_id = Auth::user()->id;
+        $review['rating_point'] = $request['rating_point'];
+        $review['comment'] = $request['comment'];
+        $review['course_id'] = $request->course->id;
+        $review['user_id'] = Auth::user()->id;
         $review->save();
         return back()->withFragment('reviews');
     }

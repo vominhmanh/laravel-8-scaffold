@@ -34,11 +34,11 @@ class UserController extends Controller
     public function informationUpdate(InfomationUpdateRequest $request)
     {
         $user = User::find(Auth::user()->id);
-        $user->name = $request->name;
-        $user->dob = $request->dob;
-        $user->phone_number = $request->phone_number;
-        $user->address = $request->address;
-        $user->introduction = $request->introduction;
+        $user['name'] = $request['name'];
+        $user['dob'] = $request['dob'];
+        $user['phone_number'] = $request['phone_number'];
+        $user['address'] = $request['address'];
+        $user['introduction'] = $request['introduction'];
         $user->save();
         return redirect()->route('profile')->with('success', 'Your infomation has been changed successfully.');
     }
