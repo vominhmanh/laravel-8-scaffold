@@ -27,7 +27,7 @@ Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
 Route::middleware(['auth'])->group(function () {
-    Route::post('/courses/{course}', [CourseController::class, 'join'])->name('courses.join');
+    Route::post('/courses/{course}/join', [CourseController::class, 'join'])->name('courses.join');
     Route::post('/courses/{course}/review', [CourseController::class, 'review'])->name('courses.review');
 
     Route::resource('lessons', LessonController::class)->only(['index', 'show']);
