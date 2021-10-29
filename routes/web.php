@@ -37,8 +37,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/programs/{program}', [LessonController::class, 'download'])->name('lessons.download')->middleware('joined');
     });
 
-
-    Route::resource('profile', UserController::class)->only('index');
-    Route::post('/profile/avatar', [UserController::class, 'avatarUpdate'])->name('profile.avatar.update');
-    Route::post('/profile/information', [UserController::class, 'informationUpdate'])->name('profile.information.update');
+    Route::resource('/user', UserController::class)->only('index');
+    Route::post('/user/avatar', [UserController::class, 'avatarUpdate'])->name('user.update.avatar');
+    Route::post('/user/information', [UserController::class, 'informationUpdate'])->name('user.update.information');
 });
