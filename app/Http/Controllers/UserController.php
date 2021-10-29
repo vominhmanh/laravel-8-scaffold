@@ -28,7 +28,7 @@ class UserController extends Controller
         $path = $request->file('avatar_upload')->storeAs('avatars', $user->id . "." . $request->file('avatar_upload')->extension());
         $user->avatar = $path;
         $user->save();
-        return redirect()->route('profile')->with('success', 'Your avatar has just been changed.');
+        return redirect()->route('user.index')->with('success', 'Your avatar has just been changed.');
     }
 
     public function informationUpdate(InfomationUpdateRequest $request)
@@ -40,6 +40,6 @@ class UserController extends Controller
         $user['address'] = $request['address'];
         $user['introduction'] = $request['introduction'];
         $user->save();
-        return redirect()->route('profile')->with('success', 'Your infomation has been changed successfully.');
+        return redirect()->route('user.index')->with('success', 'Your infomation has been changed successfully.');
     }
 }

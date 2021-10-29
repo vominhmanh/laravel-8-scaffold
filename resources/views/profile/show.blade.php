@@ -16,7 +16,7 @@
                             </label>
                             <label class="avatar_upload_cancel cancel-btn hidden fas fa-times"
                                 id="avatar_upload_cancel_label"></label>
-                            <form action="{{ route('profile.avatar.update') }}" method="POST"
+                            <form action="{{ route('user.update.avatar') }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <input type="file" accept="image/*" class="hidden" name="avatar_upload"
@@ -75,7 +75,7 @@
                     </div>
                     <div class="edit-profile">
                         <div class="profile-title">Edit profile</div>
-                        <form action="{{ route('profile.information.update') }}" method="post" enctype="multipart/form-data" class="mt-3">
+                        <form action="{{ route('user.update.information') }}" method="post" enctype="multipart/form-data" class="mt-3">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
