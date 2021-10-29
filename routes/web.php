@@ -20,8 +20,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
-Route::resource('courses', CourseController::class)->only(['index', 'show']);
 Route::get('/courses/filter', [CourseController::class, 'filter'])->name('courses.filter');
+Route::resource('courses', CourseController::class)->only(['index', 'show']);
 
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
@@ -29,12 +29,15 @@ Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallba
 Route::middleware(['auth'])->group(function () {
     Route::post('/courses/{course}', [CourseController::class, 'join'])->name('courses.join');
     Route::post('/courses/{course}/review', [CourseController::class, 'review'])->name('courses.review');
-    
+
     Route::resource('lessons', LessonController::class)->only(['index', 'show']);
-    Route::post('/lessons/{lesson}/comment', [LessonController::class, 'comment'])->name('lessons.comment')->middleware('joined');
-    Route::post('/lessons/{lesson}/comments/{comment}/reply', [LessonController::class, 'reply'])->name('lessons.reply')->middleware('joined');
-    Route::get('/lessons/{lesson}/programs/{program}', [LessonController::class, 'download'])->name('lessons.download')->middleware('joined');
-    
+    Route::prefix('lessons/{lesson}')->group(function () {
+        Route::post('/comment', [LessonController::class, 'comment'])->name('lessons.comment')->middleware('joined');
+        Route::post('/comments/{comment}/reply', [LessonController::class, 'reply'])->name('lessons.reply')->middleware('joined');
+        Route::get('/programs/{program}', [LessonController::class, 'download'])->name('lessons.download')->middleware('joined');
+    });
+
+
     Route::resource('profile', UserController::class)->only('index');
     Route::post('/profile/avatar', [UserController::class, 'avatarUpdate'])->name('profile.avatar.update');
     Route::post('/profile/information', [UserController::class, 'informationUpdate'])->name('profile.information.update');
