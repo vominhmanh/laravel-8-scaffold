@@ -4,11 +4,11 @@
             <div class="course-card-top d-flex flex-row">
                 <img src="{{ $course->logo }}" alt="course img" class="course-card-top-img">
                 <div class="course-card-top-content w-100">
-                    <a href="{{ route('course.show', [$course->id]) }}" class="course-card-top-content-title">{{ $course->name }}</a>
+                    <a href="{{ route('courses.show', [$course->id]) }}" class="course-card-top-content-title">{{ $course->name }}</a>
                     <div><b>Teacher: {{ $course->teacher->name }}</b> </div>
                     <div class="course-card-top-content-description">{{ $course->description }}</div>
                     <div class="text-right">
-                        <a href="{{ route('course.show', [$course->id]) }}" class="green-btn hover-green-btn small-inset-shadow detail-link-a">More</a>
+                        <a href="{{ route('courses.show', [$course->id]) }}" class="green-btn hover-green-btn small-inset-shadow detail-link-a">More</a>
                     </div>
                 </div>
             </div>

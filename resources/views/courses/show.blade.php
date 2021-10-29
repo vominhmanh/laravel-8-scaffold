@@ -3,7 +3,7 @@
 @section('content')
     @include('utilities.breadcrumb', ['breadcrumbitems' => [
     'Home' => route('home'),
-    'All courses' => route('course'),
+    'All courses' => route('courses.index'),
     $course->name => '#',
     ]])
 
@@ -66,7 +66,7 @@
                                                 Joined</span>
                                         @else
                                             <form class="" method="post"
-                                                action="{{ route('course.join', [$course]) }}">
+                                                action="{{ route('courses.join', [$course]) }}">
                                                 @csrf
                                                 <input type="submit"
                                                     class="green-btn hover-green-btn small-inset-shadow detail-link-input join-input"
@@ -79,7 +79,7 @@
                                     @foreach ($lessons as $key => $lesson)
                                         <div class="row lesson align-items-baseline">
                                             <div class="col-lg-10">
-                                                <a href="{{ route('lesson.show', $lesson) }}" class="lesson-title">
+                                                <a href="{{ route('lessons.show', $lesson) }}" class="lesson-title">
                                                     <span>Lesson
                                                         {{ ($lessons->currentPage() - 1) * config('variables.lesson_pagination') + $key + 1 }}:
                                                     </span>
@@ -88,7 +88,7 @@
                                             </div>
                                             @if ($course->isJoined)
                                                 <div class="col-lg-2">
-                                                    <form method="get" action="{{ route('lesson.show', $lesson) }}">
+                                                    <form method="get" action="{{ route('lessons.show', $lesson) }}">
                                                         @if ($lesson->users->contains(Auth::user()->id))
                                                             <input type="submit"
                                                                 class="gray-btn small-inset-shadow lesson-btn"
@@ -162,7 +162,7 @@
                                     <div class="teacher-tab-title my-3">
                                         Leave a review
                                     </div>
-                                    <form method="post" action="{{ route('course.review', [$course]) }}">
+                                    <form method="post" action="{{ route('courses.review', [$course]) }}">
                                         @csrf
                                         @include('reviews.leave_a_comment')
                                     </form>
@@ -201,7 +201,7 @@
                             <img src="{{ asset('images/tags.png') }}" alt="tags">
                             <span class="subtitle">Tags:
                                 @foreach ($course->tags as $tag)
-                                    <a href="{{ route('course.filter', ['tag' => $tag]) }}"
+                                    <a href="{{ route('courses.filter', ['tag' => $tag]) }}"
                                         class="subtitle-value subtitle-tag"> #{{ $tag->name }}</a>
                                 @endforeach
                             </span>
@@ -227,7 +227,7 @@
                         </div>
 
                         <div class="text-center">
-                            <a href="{{ route('course') }}"
+                            <a href="{{ route('courses.index') }}"
                                 class="green-btn hover-green-btn small-inset-shadow detail-link-a">View other
                                 courses</a>
                         </div>

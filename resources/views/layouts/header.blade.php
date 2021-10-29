@@ -21,10 +21,10 @@
                                 class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @if (Route::is('course*')) active @endif" href="{{ route('course') }}">ALL COURSES</a>
+                        <a class="nav-link @if (Route::is('course*')) active @endif" href="{{ route('courses.index') }}">ALL COURSES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @if (Route::is('lesson*')) active @endif" href="{{ route('lesson') }}">LESSON DETAILS</a>
+                        <a class="nav-link @if (Route::is('lesson*')) active @endif" href="{{ route('lessons.index') }}">LESSON DETAILS</a>
                     </li>
                     <li class="nav-item d-xl-none">
                         <a class="nav-link" href="#">CONTACT</a>

@@ -60,12 +60,12 @@
                         </div>
                         <div class="list-courses">
                             @foreach ($user->courses as $course)
-                                <a href="{{ route('course.show', $course) }}" class="list-courses-item">
+                                <a href="{{ route('courses.show', $course) }}" class="list-courses-item">
                                     <img class="img-course" src="{{ $course->logo }}" alt="img course">
                                     <div class="mt-2 course-title">{{ $course->name }}</div>
                                 </a>
                             @endforeach
-                            <a href="{{ route('course') }}" class="list-courses-item">
+                            <a href="{{ route('courses.index') }}" class="list-courses-item">
                                 <div class="add-new-course">
                                     <i class="fas fa-plus"></i>
                                 </div>
