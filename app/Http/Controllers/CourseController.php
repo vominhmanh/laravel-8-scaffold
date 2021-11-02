@@ -31,7 +31,6 @@ class CourseController extends Controller
         $otherCourses = Course::suggestion()->get();
         $lessons = $course->lessons()->paginate(config('variables.lesson_pagination'));
         $reviews = $course->reviews()->paginate(config('variables.review_pagination'), ['*'], 'review_page');
-
         return view('courses.show', compact(['course', 'lessons', 'reviews', 'otherCourses']));
     }
 

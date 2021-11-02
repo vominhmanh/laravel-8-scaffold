@@ -10,25 +10,28 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Lesson  $lesson
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function show()
     {
         $user = User::find(Auth::user()->id);
         return view('profile.show', compact('user'));
     }
 
+    public function update(Request $request)
+    {
+        if ($request->file('avatar_upload')) {
+            return $this->avatarUpdate(new AvatarUpdateRequest($request->all()));
+        } else {
+            return $this->informationUpdate(new InfomationUpdateRequest($request->all()));
+        }
+    }
+
     public function avatarUpdate(AvatarUpdateRequest $request)
     {
         $user = User::find(Auth::user()->id);
-        $path = $request->file('avatar_upload')->storeAs('avatars', $user->id . "." . $request->file('avatar_upload')->extension());
+        $path = $request->input('avatar_upload')->storeAs('avatars', $user->id . "." . $request->input('avatar_upload')->extension());
         $user->avatar = $path;
         $user->save();
-        return redirect()->route('user.index')->with('success', 'Your avatar has just been changed.');
+        return redirect()->route('user.show', $user)->with('success', 'Your avatar has just been changed.');
     }
 
     public function informationUpdate(InfomationUpdateRequest $request)
@@ -40,6 +43,6 @@ class UserController extends Controller
         $user['address'] = $request['address'];
         $user['introduction'] = $request['introduction'];
         $user->save();
-        return redirect()->route('user.index')->with('success', 'Your infomation has been changed successfully.');
+        return redirect()->route('user.show', $user)->with('success', 'Your infomation has been changed successfully.');
     }
 }

@@ -16,9 +16,10 @@
                             </label>
                             <label class="avatar_upload_cancel cancel-btn hidden fas fa-times"
                                 id="avatar_upload_cancel_label"></label>
-                            <form action="{{ route('user.update.avatar') }}" method="POST"
+                            <form action="{{ route('user.update', Auth::user()) }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
                                 <input type="file" accept="image/*" class="hidden" name="avatar_upload"
                                     id="avatar_upload">
                                 <input type="submit" class="hidden" name="avatar_submit" id="avatar_submit">
@@ -75,8 +76,9 @@
                     </div>
                     <div class="edit-profile">
                         <div class="profile-title">Edit profile</div>
-                        <form action="{{ route('user.update.information') }}" method="post" enctype="multipart/form-data" class="mt-3">
+                        <form action="{{ route('user.update', Auth::user()) }}" method="post" enctype="multipart/form-data" class="mt-3">
                             @csrf
+                            @method('PUT')
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">

@@ -30,14 +30,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/courses/{course}/join', [CourseController::class, 'join'])->name('courses.join');
     Route::post('/courses/{course}/review', [CourseController::class, 'review'])->name('courses.review');
 
-    Route::resource('lessons', LessonController::class)->only(['index', 'show']);
+    Route::resource('lessons', LessonController::class)->only(['show']);
     Route::prefix('lessons/{lesson}')->group(function () {
         Route::post('/comment', [LessonController::class, 'comment'])->name('lessons.comment')->middleware('joined');
         Route::post('/comments/{comment}/reply', [LessonController::class, 'reply'])->name('lessons.reply')->middleware('joined');
         Route::get('/programs/{program}', [LessonController::class, 'download'])->name('lessons.download')->middleware('joined');
     });
 
-    Route::resource('/user', UserController::class)->only('index');
-    Route::post('/user/avatar', [UserController::class, 'avatarUpdate'])->name('user.update.avatar');
-    Route::post('/user/information', [UserController::class, 'informationUpdate'])->name('user.update.information');
+    Route::resource('/user', UserController::class)->only('show', 'update');
 });
