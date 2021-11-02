@@ -18,7 +18,7 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request = null)
+    public function index(Request $request)
     {
         $courses = Course::filter(request())->paginate(config('variables.pagination'));
         $teachers = User::teacher()->get();
