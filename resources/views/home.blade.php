@@ -42,7 +42,7 @@
                                 <h5 class="card-title">{{ $course->name }}</h5>
                                 <p class="card-text">{{ $course->description }}</p>
                                 <div class="text-center course-link">
-                                    <a href="{{ route('course.show', $course) }}"
+                                    <a href="{{ route('courses.show', $course) }}"
                                         class="green-btn hover-green-btn large-inset-shadow course-link-a">Take this
                                         course</a>
                                 </div>
@@ -72,7 +72,7 @@
                                 <h5 class="card-title">{{ $course->name }}</h5>
                                 <p class="card-text">{{ $course->description }}</p>
                                 <div class="text-center course-link">
-                                    <a href="{{ route('course.show', $course) }}"
+                                    <a href="{{ route('courses.show', $course) }}"
                                         class="green-btn hover-green-btn large-inset-shadow course-link-a">Take this
                                         course</a>
                                 </div>
@@ -82,7 +82,7 @@
                 @endforeach
             </div>
             <div class="view-other-courses-title text-center font-weight-bold">
-                <a href="{{ route('course') }}" class="view-other-courses m-3">View all our courses
+                <a href="{{ route('courses.index') }}" class="view-other-courses m-3">View all our courses
                     <i class="fas fa-long-arrow-alt-right"></i>
                 </a>
             </div>

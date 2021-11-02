@@ -38,7 +38,7 @@
             </div>
             @auth
                 <div class="collapse mt-4" id="review-{{ $review->id }}">
-                    <form method="post" action="{{ route('lesson.reply', [$lesson, $comment]) }}">
+                    <form method="post" action="{{ route('lessons.reply', [$lesson, $comment]) }}">
                         @csrf
                         @include('reviews.leave_a_comment')
                     </form>

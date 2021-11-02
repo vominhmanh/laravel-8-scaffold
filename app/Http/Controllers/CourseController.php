@@ -18,17 +18,9 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $courses = Course::paginate(config('variables.pagination'));
-        $teachers = User::teacher()->get();
-        $tags = Tag::all();
-        return view('courses.index', compact(['courses', 'teachers', 'tags']));
-    }
-
-    public function filter(Request $request)
-    {
-        $courses = Course::filter($request->all())->paginate(config('variables.pagination'));
+        $courses = Course::filter(request())->paginate(config('variables.pagination'));
         $teachers = User::teacher()->get();
         $tags = Tag::all();
         return view('courses.index', compact(['courses', 'teachers', 'tags']));
@@ -39,7 +31,6 @@ class CourseController extends Controller
         $otherCourses = Course::suggestion()->get();
         $lessons = $course->lessons()->paginate(config('variables.lesson_pagination'));
         $reviews = $course->reviews()->paginate(config('variables.review_pagination'), ['*'], 'review_page');
-
         return view('courses.show', compact(['course', 'lessons', 'reviews', 'otherCourses']));
     }
 
@@ -52,10 +43,10 @@ class CourseController extends Controller
     public function review(Course $course, Request $request)
     {
         $review = new Review();
-        $review->rating_point = $request->rating_point;
-        $review->comment = $request->comment;
-        $review->course_id = $request->course->id;
-        $review->user_id = Auth::user()->id;
+        $review['rating_point'] = $request['rating_point'];
+        $review['comment'] = $request['comment'];
+        $review['course_id'] = $request->course->id;
+        $review['user_id'] = Auth::user()->id;
         $review->save();
         return back()->withFragment('reviews');
     }

@@ -4,7 +4,7 @@
     <div class="all-courses">
         <!-- toolbar -->
         <div class="container">
-            <form method="get" action="{{ route('course.filter') }}" class="search-form">
+            <form method="get" action="{{ route('courses.index') }}" class="search-form">
                 <div class="d-flex">
                     <a class="filter-button" id="filter-button" data-toggle="collapse" href="#filter-collapse"
                         role="button">

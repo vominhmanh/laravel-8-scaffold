@@ -3,8 +3,8 @@
 @section('content')
     @include('utilities.breadcrumb', ['breadcrumbitems' => [
     'Home' => route('home'),
-    'All courses' => route('course'),
-    $lesson->course->name => route('course.show', [$lesson->course]),
+    'All courses' => route('courses.index'),
+    $lesson->course->name => route('courses.show', [$lesson->course]),
     $lesson->name => '#'
     ]])
 
@@ -59,14 +59,14 @@
                                     @foreach ($lesson->programs as $key => $program)
                                         <div class="row lesson align-items-baseline">
                                             <div class="col-lg-10">
-                                                <a href="{{ route('lesson.download', ['lesson' => $lesson, 'program' => $program]) }}"
+                                                <a href="{{ route('lessons.download', ['lesson' => $lesson, 'program' => $program]) }}"
                                                     class="lesson-title">
                                                     {{ $program->name }}
                                                 </a>
                                             </div>
                                             <div class="col-lg-2">
                                                 <form method="get"
-                                                    action="{{ route('lesson.download', ['lesson' => $lesson, 'program' => $program]) }}">
+                                                    action="{{ route('lessons.download', ['lesson' => $lesson, 'program' => $program]) }}">
                                                     <input type="submit"
                                                         class="green-btn hover-green-btn small-inset-shadow lesson-btn"
                                                         id="join-course" value="Download">
@@ -124,7 +124,7 @@
                                 <div class="teacher-tab-title my-3">
                                     Leave a comment
                                 </div>
-                                <form method="post" action="{{ route('lesson.comment', [$lesson]) }}">
+                                <form method="post" action="{{ route('lessons.comment', [$lesson]) }}">
                                     @csrf
                                     @include('reviews.leave_a_comment')
                                 </form>
@@ -160,7 +160,7 @@
                             <img src="{{ asset('images/tags.png') }}" alt="tags">
                             <span class="subtitle">Tags:
                                 @foreach ($lesson->course->tags as $tag)
-                                    <a href="{{ route('course.filter', ['tag' => $tag]) }}"
+                                    <a href="{{ route('courses.filter', ['tag' => $tag]) }}"
                                         class="subtitle-value subtitle-tag"> #{{ $tag->name }}</a>
                                 @endforeach
                             </span>
@@ -180,7 +180,7 @@
                         </div>
 
                         <div class="text-center">
-                            <a href="{{ route('course') }}"
+                            <a href="{{ route('courses.index') }}"
                                 class="green-btn hover-green-btn small-inset-shadow detail-link-a">View other
                                 courses</a>
                         </div>

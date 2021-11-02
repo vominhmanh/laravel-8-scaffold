@@ -97,9 +97,9 @@ class LessonController extends Controller
     public function comment(Lesson $lesson, Request $request)
     {
         $comment = new Comment();
-        $comment->comment = $request->comment;
-        $comment->lesson_id = $request->lesson->id;
-        $comment->user_id = Auth::user()->id;
+        $comment['comment'] = $request['comment'];
+        $comment['lesson_id'] = $request->lesson->id;
+        $comment['user_id'] = Auth::user()->id;
         $comment->save();
         return back()->withFragment('comments');
     }
@@ -107,9 +107,9 @@ class LessonController extends Controller
     public function reply(Lesson $lesson, Comment $comment, Request $request)
     {
         $reply = new Reply();
-        $reply->comment = $request->comment;
-        $reply->comment_id = $comment->id;
-        $reply->user_id = Auth::user()->id;
+        $reply['comment'] = $request['comment'];
+        $reply['comment_id'] = $comment->id;
+        $reply['user_id'] = Auth::user()->id;
         $reply->save();
         return back()->withFragment('comments');
     }

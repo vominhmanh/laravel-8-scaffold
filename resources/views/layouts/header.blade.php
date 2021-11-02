@@ -21,10 +21,10 @@
                                 class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @if (Route::is('course*')) active @endif" href="{{ route('course') }}">ALL COURSES</a>
+                        <a class="nav-link @if (Route::is('course*')) active @endif" href="{{ route('courses.index') }}">ALL COURSES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @if (Route::is('lesson*')) active @endif" href="{{ route('lesson') }}">LESSON DETAILS</a>
+                        <a class="nav-link @if (Route::is('lesson*')) active @endif" href="">LESSON DETAILS</a>
                     </li>
                     <li class="nav-item d-xl-none">
                         <a class="nav-link" href="#">CONTACT</a>
@@ -36,20 +36,20 @@
                         </li>
                     @else
                         <li class="dropdown nav-item d-none d-sm-block">
-                            <a class="nav-link dropdown-toggle @if (Route::is('profile*')) active @endif"" id=" dropdownMenuButton"
+                            <a class="nav-link dropdown-toggle @if (Route::is('profile*')) active @endif" id=" dropdownMenuButton"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-user" style="font-size: 20px"></i>
                                 {{ Auth::user()->name }}
                             </a>
                             <div class="dropdown-menu profile-dropdown" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item text-center" type="button"
-                                    href="{{ route('profile') }}">PROFILE</a>
+                                    href="{{ route('user.show', Auth::user() ) }}">PROFILE</a>
                                 <a class="dropdown-item text-danger text-center" type="button" href="#"
                                     onclick="logoutform.submit()">LOGOUT</a>
                             </div>
                         </li>
                         <li class="nav-item d-sm-none">
-                            <a class="nav-link @if (Route::is('profile*')) active @endif" href="{{ route('profile') }}"><i
+                            <a class="nav-link @if (Route::is('user.*')) active @endif" href="{{ route('user.show', Auth::user()) }}"><i
                                     class="fas fa-user" style="font-size: 20px"></i>
                                 {{ Auth::user()->name }}</a>
                         </li>

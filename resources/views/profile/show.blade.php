@@ -16,9 +16,10 @@
                             </label>
                             <label class="avatar_upload_cancel cancel-btn hidden fas fa-times"
                                 id="avatar_upload_cancel_label"></label>
-                            <form action="{{ route('profile.avatar.update') }}" method="POST"
+                            <form action="{{ route('user.update', Auth::user()) }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
                                 <input type="file" accept="image/*" class="hidden" name="avatar_upload"
                                     id="avatar_upload">
                                 <input type="submit" class="hidden" name="avatar_submit" id="avatar_submit">
@@ -60,12 +61,12 @@
                         </div>
                         <div class="list-courses">
                             @foreach ($user->courses as $course)
-                                <a href="{{ route('course.show', $course) }}" class="list-courses-item">
+                                <a href="{{ route('courses.show', $course) }}" class="list-courses-item">
                                     <img class="img-course" src="{{ $course->logo }}" alt="img course">
                                     <div class="mt-2 course-title">{{ $course->name }}</div>
                                 </a>
                             @endforeach
-                            <a href="{{ route('course') }}" class="list-courses-item">
+                            <a href="{{ route('courses.index') }}" class="list-courses-item">
                                 <div class="add-new-course">
                                     <i class="fas fa-plus"></i>
                                 </div>
@@ -75,8 +76,9 @@
                     </div>
                     <div class="edit-profile">
                         <div class="profile-title">Edit profile</div>
-                        <form action="{{ route('profile.information.update') }}" method="post" enctype="multipart/form-data" class="mt-3">
+                        <form action="{{ route('user.update', Auth::user()) }}" method="post" enctype="multipart/form-data" class="mt-3">
                             @csrf
+                            @method('PUT')
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
